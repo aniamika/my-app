@@ -14,10 +14,11 @@ const MainContent = styled.main`
   margin-left: 16px;
 `;
 
-const Content = styled.div`
+const Content = styled.section`
   max-width: 1200px;
-  margin: 0 auto;
   display: flex;
+  margin: 0 auto;
+  flex: auto;
 `;
 
 const MainPage: FC = () => {
