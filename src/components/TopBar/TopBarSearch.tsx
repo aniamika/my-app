@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Colors } from '../../styledHelpers/Colors';
 
 const Wrapper = styled.div`
-    border: 1px solid ${Colors.gray};
+    border: 1px solid ${Colors.gray01};
     border-radius: 4px;
     flex: 3;
     display: flex;
@@ -12,7 +12,7 @@ const Wrapper = styled.div`
     position: relative;
 `
 const Search = styled.input`
-    color: ${Colors.grayMiddle};
+    color: ${Colors.gray03};
     width: 100%;
     padding: 8px;
     border: none;

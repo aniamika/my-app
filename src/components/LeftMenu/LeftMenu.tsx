@@ -1,69 +1,112 @@
 import { FC } from 'react';
 import styled from 'styled-components';
+import { Colors } from '../../styledHelpers/Colors';
 
 const Wrapper = styled.aside`
-    flex: 1;
+    flex: 2;
     margin-right: 16px;
 `
 const Card = styled.div`
-    background: #FFF;
+    background: ${Colors.white};
     border-radius: 4px;
     box-shadow: 1px 3px 5px 1px rgba(0,0,0,0.07);
 `
-const CardHeader = styled.div`
+const Header = styled.div`
     padding: 16px;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid ${Colors.gray02};
     display: flex;
     flex-direction: column;
     align-items: center;
 `
 const ImageBox= styled.div`
-    border: 1px solid #2A3F9D;
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     margin-bottom: 8px;
+    overflow: hidden;
 `
-const Image= styled.div`
-    padding: 16px;
+const Image= styled.img`
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 `
 const Name= styled.p`
-    color: #2A3F9D;
+    color: ${Colors.blue01};
     margin-bottom: 8px;
     text-transform: capitalize;
 `
 const Description= styled.p`
-    color: #96999E;
+    color: ${Colors.gray03};
     margin-bottom: 8px;
 `
 const CardList= styled.ul`
     padding: 16px;
 `
-const CardItem= styled.li`
+const Item= styled.li`
     margin-bottom: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 `
 
-const CardItemLink= styled.div`
+const CardItemLinkContainer= styled.div`
     display: flex;
     align-items: center;
 `
 
-const CardIcon= styled.i`
+const CardItemLink= styled.a`
+    color: ${Colors.blue02};
+    text-decoration: none;
+`
+
+const CardIconNetwork= styled.i`
     margin-right: 8px;
     width: 24px;
     height: 24px;
+    background-image: url('./media/icons/people.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 `
-const CardButton=styled.button`
-    border: 1px solid #000;
+
+const CardIconPublications= styled.i`
+    margin-right: 8px;
+    width: 24px;
+    height: 24px;
+    background-image: url('./media/icons/publications.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+`
+
+const CardButtonNetwork=styled.button`
+    border: 1px solid ${Colors.blue02};
     width: 32px;
     height: 24px;
-    background-color: #FFF;
+    background-color: ${Colors.white};
     border-radius: 4px;
     box-shadow: 1px 3px 5px 1px rgba(0,0,0,0.07);
+    background-image: url('./media/icons/network.svg');
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: center;
+    cursor: pointer;
 `
+
+const CardButtonPublications=styled.button`
+    border: 1px solid ${Colors.blue02};
+    width: 32px;
+    height: 24px;
+    background-color: ${Colors.white};
+    border-radius: 4px;
+    box-shadow: 1px 3px 5px 1px rgba(0,0,0,0.07);
+    background-image: url('./media/icons/plus.svg');
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: center;
+    cursor: pointer;
+`
+
 const Navigation= styled.nav`
     padding: 16px;
 `
@@ -71,13 +114,16 @@ const Navigation= styled.nav`
 const List= styled.ul`
 `
 
-const Link= styled.li`
+const ListItem= styled.li`
     display: flex;
     align-items: center;
-    color: #808695;
     margin-bottom: 16px;
 `
-const LinkIconPublications= styled.i`
+const Link= styled.a`
+    color: ${Colors.blue02};
+    text-decoration: none;
+`
+const PublicationsIcon= styled.i`
     margin-right: 16px;
     width: 40px;
     height: 40px;
@@ -86,20 +132,20 @@ const LinkIconPublications= styled.i`
     background-size: cover;
     background-position: center;
 `
-const LinkIconEcosystem= styled.i`
+const EcosystemIcon= styled.i`
     margin-right: 16px;
     width: 40px;
     height: 40px;
-    background-image: url('./media/icons/cog.svg');
+    background-image: url('./media/icons/ecosystem.svg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 `
-const LinkIconEntities= styled.i`
+const EntitiesIcon= styled.i`
     margin-right: 16px;
     width: 40px;
     height: 40px;
-    background-image: url('./media/icons/entities2.svg');
+    background-image: url('./media/icons/entities2.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -109,44 +155,44 @@ export const LeftMenu: FC = () => {
     return (
         <Wrapper>
             <Card>
-                <CardHeader>
+                <Header>
                     <ImageBox>
-                        <Image/>
+                        <Image src='./media/employee-photo.jpg' />
                     </ImageBox>
                     <Name>Humberta Swift</Name>
                     <Description>Job title - Company</Description>
-                </CardHeader>
+                </Header>
                 <CardList>
-                   <CardItem>
-                       <CardItemLink>
-                            <CardIcon />
-                            Your network
-                       </CardItemLink>
-                        <CardButton />
-                   </CardItem>
-                   <CardItem>
-                        <CardItemLink>
-                            <CardIcon />
-                            Your Publications
-                       </CardItemLink>
-                        <CardButton />
-                    </CardItem>
+                   <Item>
+                       <CardItemLinkContainer>
+                            <CardIconNetwork />
+                            <CardItemLink href='#'>Your network</CardItemLink>
+                       </CardItemLinkContainer>
+                        <CardButtonNetwork />
+                   </Item>
+                   <Item>
+                        <CardItemLinkContainer>
+                            <CardIconPublications />
+                            <CardItemLink href='#'>Your Publications</CardItemLink>
+                       </CardItemLinkContainer>
+                        <CardButtonPublications />
+                    </Item>
                 </CardList>
             </Card>
             <Navigation>
                 <List>
-                    <Link>
-                        <LinkIconPublications/>
-                        Publications
-                    </Link>
-                    <Link>
-                        <LinkIconEcosystem/>
-                        Ecosystem
-                    </Link>
-                    <Link>
-                        <LinkIconEntities/>
-                        Entities
-                    </Link>
+                    <ListItem>
+                        <PublicationsIcon/>
+                        <Link href='#'>Publications</Link>
+                    </ListItem>
+                    <ListItem>
+                        <EcosystemIcon/>
+                        <Link href='#'>Ecosystem</Link>
+                    </ListItem>
+                    <ListItem>
+                        <EntitiesIcon/>
+                        <Link href='#'>Entities</Link>
+                    </ListItem>
                 </List>
             </Navigation>
         </Wrapper>
