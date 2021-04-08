@@ -4,7 +4,6 @@ import { createGlobalStyle } from 'styled-components';
 import { LeftMenu } from './components/LeftMenu/LeftMenu';
 import { TopBar } from './components/TopBar/TopBar';
 import { Colors } from './styledHelpers/Colors';
-import { fontSize } from './styledHelpers/FontSize';
 
 const GlobalStyle = createGlobalStyle`
   body {

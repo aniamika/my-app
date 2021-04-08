@@ -10,8 +10,8 @@ const Select = styled.select`
     padding: 8px;
     border: none;
 `
-const Option = styled.option`
-`
+
+const Option = styled.option``
 
 export const Dropdown: FC = () => {
     return (
