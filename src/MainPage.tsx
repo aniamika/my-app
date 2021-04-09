@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
 import { LeftMenu } from './components/LeftMenu/LeftMenu';
+import Slider from './components/Slider/Slider';
 import { TopBar } from './components/TopBar/TopBar';
 import { Colors } from './styledHelpers/Colors';
 
@@ -59,7 +60,7 @@ const MainPage: FC = () => {
         <Content>
           <LeftMenu />
           <MainContent>
-            Main Page Main Content
+            <Slider/>
           </MainContent>
         </Content>
       </MainPageWrapper>
