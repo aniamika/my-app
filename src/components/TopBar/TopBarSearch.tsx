@@ -14,24 +14,34 @@ const Search = styled.input`
     border-radius: 4px;
     color: ${Colors.blue02};
     width: 100%;
-    padding: 8px;
+    height: 32px;
+    padding: 4px 8px;
     text-transform: capitalize;
-    ::placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    &::placeholder {
         text-align: center;
         color: ${Colors.gray03};
+        font-weight: 300;
     }
 `
-const SearchIcon = styled.img`
+const SearchButton = styled.button`
     padding: 8px;
     position: absolute;
     right: 0;
+    width: 32px;
+    height: 32px;
+    background-image: url('./media/icons/search.svg');
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
 `
 
 export const TopBarSearch: FC = () => {
     return (
         <Wrapper>
             <Search type="text" placeholder="Search Legalcluster"/>
-            <SearchIcon src='./media/icons/search.svg'/>
+            <SearchButton />
         </Wrapper>
     )
 }

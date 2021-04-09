@@ -19,6 +19,7 @@ const Wrapper = styled.header`
 const LeftContainer = styled.div`
     display: flex;
     flex: 2;
+    align-items: center;
 `
 const LogoContainer = styled.div`
     max-width: 32px;
@@ -85,6 +86,13 @@ const Icon = styled.img`
     height: 24px;
     width: 24px;
 `
+
+const HomeButton = styled.img`
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+`
+
 export const TopBar: FC = () => {
     return (
         <Wrapper>
@@ -92,6 +100,7 @@ export const TopBar: FC = () => {
                 <LogoContainer> 
                     <Logo src='./media/icons/logo.png' />
                 </LogoContainer> 
+                <HomeButton src='./media/icons/house2.svg'/>
                 <Dropdown />
             </LeftContainer>
             <TopBarSearch />
