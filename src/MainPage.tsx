@@ -4,15 +4,33 @@ import { createGlobalStyle } from 'styled-components';
 import { LeftMenu } from './components/LeftMenu/LeftMenu';
 import { TopBar } from './components/TopBar/TopBar';
 import { Colors } from './styledHelpers/Colors';
-import { fontSize } from './styledHelpers/FontSize';
 
 const GlobalStyle = createGlobalStyle`
+  html {
+    box-sizing: border-box;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
   body {
     background-color: ${Colors.gray01};
     min-height: 100vh;
-    font-family: 'Roboto', sans-serif;
+    width: 100%;
     color: ${Colors.blue02};
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
+    letter-spacing: 0.3px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+  }
+  button {
+    border: none;
+    cursor: pointer;
+    background: transparent;
   }
 `
 

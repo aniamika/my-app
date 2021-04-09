@@ -32,11 +32,15 @@ const Image= styled.img`
 `
 const Name= styled.p`
     color: ${Colors.blue01};
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     text-transform: capitalize;
+    font-weight: 500;
+    font-size: 18px;
 `
 const Description= styled.p`
     color: ${Colors.gray03};
+    font-size: 14px;
+    font-weight: 300;
     margin-bottom: 8px;
 `
 const CardList= styled.ul`
