@@ -133,10 +133,14 @@ export const TopBar: FC = () => {
                         <HomeButton src='./media/icons/house2.svg'/>
                         <span>Home</span>
                     </MenuLeftContainer>
-                    <img src='./media/icons/arrow-down.svg' />
-                    {dropdownOpen && 
-                        <ExpandedMenu/>
-                    }
+                    {dropdownOpen ? (
+                        <>
+                            <img src='./media/icons/arrow-up.png' />
+                            <ExpandedMenu/>
+                        </>
+                    ) : (
+                        <img src='./media/icons/arrow-down.png' />
+                    )}
                 </MenuWrapper>
             </LeftContainer>
             <TopBarSearch />

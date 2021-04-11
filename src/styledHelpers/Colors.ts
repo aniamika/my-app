@@ -9,4 +9,5 @@ export const Colors = {
     blue01: '#2a3f9d',
     blue02: '#232c47',
     blue03: '#0381be',
+    blue04: '#4b5268',
 }
