@@ -1,8 +1,10 @@
 import React, { FC } from 'react';
+import useDropdown from 'react-dropdown-hook';
 import styled from 'styled-components';
 import { BoxShadow } from '../../styledHelpers/BoxShadow';
 import { Colors } from '../../styledHelpers/Colors';
-import Dropdown from '../Dropdown/Dropdown';
+import { fontSize } from '../../styledHelpers/FontSize';
+import ExpandedMenu from '../ExpandedMenu/ExpandedMenu';
 import { TopBarSearch } from './TopBarSearch';
 
 const Wrapper = styled.header`
@@ -76,7 +78,7 @@ const Badge = styled.span`
     height: 12px;
     min-width: 18px;
     color: ${Colors.white};
-    font-size: 8px;
+    font-size: ${fontSize[8]};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,16 +94,53 @@ const HomeButton = styled.img`
     height: 24px;
     margin-right: 8px;
 `
+const MenuWrapper = styled.div`
+    padding-right: 40px;
+    width: 100%;
+    border: 2px solid green;
+    cursor: pointer;
+    position: relative;
+    padding: 8px;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-size: ${fontSize[14]};
+
+    &:after {
+        content: "▼";
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        z-index: 1;
+        text-align: center;
+        pointer-events: none;
+    }
+`
 
 export const TopBar: FC = () => {
+    const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
+
+    const menuHandler = () => {
+        toggleDropdown();
+    }
+
     return (
         <Wrapper>
             <LeftContainer>
                 <LogoContainer> 
                     <Logo src='./media/icons/logo.png' />
                 </LogoContainer> 
-                <HomeButton src='./media/icons/house2.svg'/>
-                <Dropdown />
+           
+
+                <MenuWrapper ref={wrapperRef} onClick={menuHandler}>
+                    <HomeButton src='./media/icons/house2.svg'/>
+                    <span>Home</span>
+                    {dropdownOpen && 
+                        <ExpandedMenu/>
+                    }
+                </MenuWrapper>
+
+
             </LeftContainer>
             <TopBarSearch />
             <IconsSection >          

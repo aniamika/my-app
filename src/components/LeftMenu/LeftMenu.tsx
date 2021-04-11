@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import styled from 'styled-components';
+
 import { Colors } from '../../styledHelpers/Colors';
+import { fontSize } from '../../styledHelpers/FontSize';
 
 const Wrapper = styled.aside`
     flex: 2;
@@ -17,7 +19,14 @@ const Header = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-`
+    span {
+        color: ${Colors.blue01};
+        margin-bottom: 10px;
+        text-transform: capitalize;
+        font-weight: 500;
+        ${fontSize[18]};
+    }
+`;
 const ImageBox= styled.div`
     width: 80px;
     height: 80px;
@@ -30,16 +39,9 @@ const Image= styled.img`
     height: 100%;
     object-fit: cover;
 `
-const Name= styled.p`
-    color: ${Colors.blue01};
-    margin-bottom: 10px;
-    text-transform: capitalize;
-    font-weight: 500;
-    font-size: 18px;
-`
 const Description= styled.p`
     color: ${Colors.gray03};
-    font-size: 14px;
+    font-size: ${fontSize[14]};
     font-weight: 300;
     margin-bottom: 8px;
 `
@@ -71,16 +73,10 @@ const CardIconNetwork= styled.i`
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-`
+`;
 
-const CardIconPublications= styled.i`
-    margin-right: 8px;
-    width: 24px;
-    height: 24px;
+const CardIconPublications= styled(CardIconNetwork)`
     background-image: url('./media/icons/publications.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
 `
 
 const CardButtonNetwork=styled.button`
@@ -163,7 +159,7 @@ export const LeftMenu: FC = () => {
                     <ImageBox>
                         <Image src='./media/employee-photo.jpg' />
                     </ImageBox>
-                    <Name>Humberta Swift</Name>
+                    <span>Humberta Swift</span>
                     <Description>Job title - Company</Description>
                 </Header>
                 <CardList>
