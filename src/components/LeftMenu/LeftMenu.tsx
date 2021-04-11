@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import styled from 'styled-components';
+import { BoxShadow } from '../../styledHelpers/BoxShadow';
 
 import { Colors } from '../../styledHelpers/Colors';
-import { fontSize } from '../../styledHelpers/FontSize';
+import { FontSize } from '../../styledHelpers/FontSize';
 
 const Wrapper = styled.aside`
     flex: 2;
@@ -11,7 +12,7 @@ const Wrapper = styled.aside`
 const Card = styled.div`
     background: ${Colors.white};
     border-radius: 4px;
-    box-shadow: 1px 3px 5px 1px rgba(0,0,0,0.07);
+    box-shadow: ${BoxShadow.small};
 `
 const Header = styled.div`
     padding: 16px;
@@ -24,7 +25,7 @@ const Header = styled.div`
         margin-bottom: 10px;
         text-transform: capitalize;
         font-weight: 500;
-        ${fontSize[18]};
+        ${FontSize[18]};
     }
 `;
 const ImageBox= styled.div`
@@ -41,7 +42,7 @@ const Image= styled.img`
 `
 const Description= styled.p`
     color: ${Colors.gray03};
-    font-size: ${fontSize[14]};
+    font-size: ${FontSize[14]};
     font-weight: 300;
     margin-bottom: 8px;
 `
@@ -85,7 +86,7 @@ const CardButtonNetwork=styled.button`
     height: 24px;
     background-color: ${Colors.white};
     border-radius: 4px;
-    box-shadow: 1px 3px 5px 1px rgba(0,0,0,0.07);
+    box-shadow: ${BoxShadow.small};
     background-image: url('./media/icons/network.svg');
     background-repeat: no-repeat;
     background-size: 16px;
@@ -99,7 +100,7 @@ const CardButtonPublications=styled.button`
     height: 24px;
     background-color: ${Colors.white};
     border-radius: 4px;
-    box-shadow: 1px 3px 5px 1px rgba(0,0,0,0.07);
+    box-shadow: ${BoxShadow.small};
     background-image: url('./media/icons/plus.svg');
     background-repeat: no-repeat;
     background-size: 16px;

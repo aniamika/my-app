@@ -1,39 +1,9 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { createGlobalStyle } from 'styled-components';
 import { LeftMenu } from './components/LeftMenu/LeftMenu';
 import Slider from './components/Slider/Slider';
 import { TopBar } from './components/TopBar/TopBar';
-import { Colors } from './styledHelpers/Colors';
-
-const GlobalStyle = createGlobalStyle`
-  html {
-    box-sizing: border-box;
-  }
-
-  *,
-  *:before,
-  *:after {
-    box-sizing: inherit;
-  }
-  body {
-    background-color: ${Colors.gray01};
-    min-height: 100vh;
-    width: 100%;
-    color: ${Colors.blue02};
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    letter-spacing: 0.3px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow: hidden;
-  }
-  button {
-    border: none;
-    cursor: pointer;
-    background: transparent;
-  }
-`
+import GlobalStyles from './GlobalStyle';
 
 const MainPageWrapper = styled.section`
 `;
@@ -54,7 +24,7 @@ const Content = styled.section`
 const MainPage: FC = () => {
   return (
     <>
-      <GlobalStyle />
+      <GlobalStyles />
       <MainPageWrapper>
         <TopBar/>
         <Content>
