@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 import { Colors } from '../../styledHelpers/Colors';
+import { FontSize } from '../../styledHelpers/FontSize';
 
 const Wrapper = styled.div`
     flex: 3;
@@ -18,7 +19,7 @@ const Search = styled.input`
     padding: 4px 8px;
     text-transform: capitalize;
     font-family: 'Roboto', sans-serif;
-    font-size: 14px;
+    font-size: ${FontSize[14]};
     &::placeholder {
         text-align: center;
         color: ${Colors.gray03};

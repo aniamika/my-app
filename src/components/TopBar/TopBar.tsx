@@ -1,8 +1,10 @@
 import React, { FC } from 'react';
+import useDropdown from 'react-dropdown-hook';
 import styled from 'styled-components';
 import { BoxShadow } from '../../styledHelpers/BoxShadow';
 import { Colors } from '../../styledHelpers/Colors';
-import Dropdown from '../Dropdown/Dropdown';
+import { FontSize } from '../../styledHelpers/FontSize';
+import ExpandedMenu from '../ExpandedMenu/ExpandedMenu';
 import { TopBarSearch } from './TopBarSearch';
 
 const Wrapper = styled.header`
@@ -11,7 +13,7 @@ const Wrapper = styled.header`
     justify-content: space-between;
     flex-wrap: wrap;
     background-color: ${Colors.white};
-    box-shadow: ${BoxShadow.basic};
+    box-shadow: ${BoxShadow.medium};
     padding: 0 16px;
     margin-bottom: 16px;
     min-height: 48px;
@@ -24,7 +26,7 @@ const LeftContainer = styled.div`
 const LogoContainer = styled.div`
     max-width: 32px;
     height: 32px;
-    margin-right: 16px;
+    margin-right: 24px;
 `
 const Logo = styled.img`
     height: 100%;
@@ -42,7 +44,7 @@ const HomeIcon = styled.img`
     height: 24px;
     margin-right: 16px;
 `
-const CommentsWrapper = styled.button`
+const Comments = styled.button`
     width: 40px;
     height: 40px;
     display: flex;
@@ -55,7 +57,7 @@ const CommentsWrapper = styled.button`
     border: 0;
     cursor: pointer;
 `
-const NotificationsWrapper = styled.button`
+const Notifications = styled.button`
     width: 40px;
     height: 40px;
     display: flex;
@@ -76,7 +78,7 @@ const Badge = styled.span`
     height: 12px;
     min-width: 18px;
     color: ${Colors.white};
-    font-size: 8px;
+    font-size: ${FontSize[8]};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,30 +92,68 @@ const Icon = styled.img`
 const HomeButton = styled.img`
     width: 24px;
     height: 24px;
-    margin-right: 8px;
+    margin-right: 16px;
+`
+const MenuWrapper = styled.div`
+    margin-right: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border: 1px solid ${Colors.gray02};
+    cursor: pointer;
+    position: relative;
+    padding: 0 8px;
+    height: 32px;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: ${FontSize[14]};
+`
+const MenuLeftContainer = styled.div`
+    display: flex;
+    align-items: center;
 `
 
 export const TopBar: FC = () => {
+    const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
+
+    const menuHandler = () => {
+        toggleDropdown();
+    }
+
     return (
         <Wrapper>
             <LeftContainer>
                 <LogoContainer> 
                     <Logo src='./media/icons/logo.png' />
                 </LogoContainer> 
-                <HomeButton src='./media/icons/house2.svg'/>
-                <Dropdown />
+                <MenuWrapper ref={wrapperRef} onClick={menuHandler}>
+                    <MenuLeftContainer>
+                        <HomeButton src='./media/icons/house2.svg'/>
+                        <span>Home</span>
+                    </MenuLeftContainer>
+                    {dropdownOpen ? (
+                        <>
+                            <img src='./media/icons/arrow-up.png' />
+                            <ExpandedMenu/>
+                        </>
+                    ) : (
+                        <img src='./media/icons/arrow-down.png' />
+                    )}
+                </MenuWrapper>
             </LeftContainer>
             <TopBarSearch />
             <IconsSection >          
                 <HomeIcon src='./media/icons/house.svg' />
-            <CommentsWrapper>
-                <Icon src='./media/icons/comments.svg'/>
-                <Badge> 1 </Badge>
-            </CommentsWrapper>
-            <NotificationsWrapper>
-                <Icon src='./media/icons/bell.svg' />
-                <Badge> 3 </Badge>
-            </NotificationsWrapper>
+                <Comments>
+                    <Icon src='./media/icons/comments.svg'/>
+                    <Badge> 1 </Badge>
+                </Comments>
+                <Notifications>
+                    <Icon src='./media/icons/bell.svg' />
+                    <Badge> 3 </Badge>
+                </Notifications>
            </IconsSection>
         </Wrapper>
     )
