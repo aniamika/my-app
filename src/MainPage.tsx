@@ -7,15 +7,17 @@ import Slider from './components/Slider/Slider';
 import { TopBar } from './components/TopBar/TopBar';
 import Workspaces from './components/Workspaces/Workspaces';
 import { Colors } from './styledHelpers/Colors';
+import { Margins } from './styledHelpers/Margins';
+import { Paddings } from './styledHelpers/Paddings';
 
 const MainContent = styled.main`
   flex: 6;
-  margin-left: 16px;
+  margin-left: ${Margins[16]};
 `;
 
 const Content = styled.section`
   max-width: 1200px;
-  padding: 8px 16px;
+  padding: ${Paddings[8]} ${Paddings[16]};
   display: flex;
   margin: 0 auto;
   flex: auto;
