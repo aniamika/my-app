@@ -4,10 +4,12 @@ import { BoxShadow } from '../../styledHelpers/BoxShadow';
 
 import { Colors } from '../../styledHelpers/Colors';
 import { FontSize } from '../../styledHelpers/FontSize';
+import { Margins } from '../../styledHelpers/Margins';
+import { Paddings } from '../../styledHelpers/Paddings';
 
 const Wrapper = styled.aside`
     flex: 2;
-    margin-right: 16px;
+    margin-right: ${Margins[16]};
 `
 const Card = styled.div`
     background: ${Colors.white};
@@ -15,14 +17,14 @@ const Card = styled.div`
     box-shadow: ${BoxShadow.small};
 `
 const Header = styled.div`
-    padding: 16px;
+    padding: ${Paddings[16]};
     border-bottom: 1px solid ${Colors.gray02};
     display: flex;
     flex-direction: column;
     align-items: center;
     span {
         color: ${Colors.blue01};
-        margin-bottom: 10px;
+        margin-bottom: ${Margins[8]};
         text-transform: capitalize;
         font-weight: 500;
         ${FontSize[18]};
@@ -32,7 +34,7 @@ const ImageBox= styled.div`
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    margin-bottom: 8px;
+    margin-bottom: ${Margins[8]};
     overflow: hidden;
 `
 const Image= styled.img`
@@ -44,13 +46,13 @@ const Description= styled.p`
     color: ${Colors.gray03};
     font-size: ${FontSize[14]};
     font-weight: 300;
-    margin-bottom: 8px;
+    margin-bottom: ${Margins[8]};
 `
 const CardList= styled.ul`
-    padding: 16px;
+    padding: ${Paddings[16]};
 `
 const Item= styled.li`
-    margin-bottom: 8px;
+    margin-bottom: ${Margins[8]};
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -67,7 +69,7 @@ const CardItemLink= styled.a`
 `
 
 const CardIconNetwork= styled.i`
-    margin-right: 8px;
+    margin-right: ${Margins[8]};
     width: 24px;
     height: 24px;
     background-image: url('./media/icons/people.svg');
@@ -109,7 +111,7 @@ const CardButtonPublications=styled.button`
 `
 
 const Navigation= styled.nav`
-    padding: 16px;
+    padding: ${Paddings[16]};
 `
 
 const List= styled.ul`
@@ -118,14 +120,14 @@ const List= styled.ul`
 const ListItem= styled.li`
     display: flex;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: ${Margins[16]};
 `
 const Link= styled.a`
     color: ${Colors.blue02};
     text-decoration: none;
 `
 const PublicationsIcon= styled.i`
-    margin-right: 16px;
+    margin-right: ${Margins[16]};
     width: 40px;
     height: 40px;
     background-image: url('./media/icons/publications.svg');
@@ -134,7 +136,7 @@ const PublicationsIcon= styled.i`
     background-position: center;
 `
 const EcosystemIcon= styled.i`
-    margin-right: 16px;
+    margin-right: ${Margins[16]};
     width: 40px;
     height: 40px;
     background-image: url('./media/icons/ecosystem.svg');
@@ -143,7 +145,7 @@ const EcosystemIcon= styled.i`
     background-position: center;
 `
 const EntitiesIcon= styled.i`
-    margin-right: 16px;
+    margin-right: ${Margins[16]};
     width: 40px;
     height: 40px;
     background-image: url('./media/icons/entities2.png');

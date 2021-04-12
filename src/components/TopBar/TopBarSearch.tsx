@@ -2,6 +2,7 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import { Colors } from '../../styledHelpers/Colors';
 import { FontSize } from '../../styledHelpers/FontSize';
+import { Paddings } from '../../styledHelpers/Paddings';
 
 const Wrapper = styled.div`
     flex: 3;
@@ -16,7 +17,7 @@ const Search = styled.input`
     color: ${Colors.blue02};
     width: 100%;
     height: 32px;
-    padding: 4px 8px;
+    padding: ${Paddings[4]} ${Paddings[8]};
     text-transform: capitalize;
     font-family: 'Roboto', sans-serif;
     font-size: ${FontSize[14]};
@@ -27,7 +28,7 @@ const Search = styled.input`
     }
 `
 const SearchButton = styled.button`
-    padding: 8px;
+    padding: ${Paddings[8]};
     position: absolute;
     right: 0;
     width: 32px;

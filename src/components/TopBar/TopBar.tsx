@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { BoxShadow } from '../../styledHelpers/BoxShadow';
 import { Colors } from '../../styledHelpers/Colors';
 import { FontSize } from '../../styledHelpers/FontSize';
+import { Margins } from '../../styledHelpers/Margins';
+import { Paddings } from '../../styledHelpers/Paddings';
 import ExpandedMenu from '../ExpandedMenu/ExpandedMenu';
 import { TopBarSearch } from './TopBarSearch';
 
@@ -14,8 +16,8 @@ const Wrapper = styled.header`
     flex-wrap: wrap;
     background-color: ${Colors.white};
     box-shadow: ${BoxShadow.medium};
-    padding: 0 16px;
-    margin-bottom: 16px;
+    padding: 0 ${Paddings[16]};
+    margin-bottom: ${Margins[16]};
     min-height: 48px;
 `
 const LeftContainer = styled.div`
@@ -26,7 +28,7 @@ const LeftContainer = styled.div`
 const LogoContainer = styled.div`
     max-width: 32px;
     height: 32px;
-    margin-right: 24px;
+    margin-right: ${Margins[24]};
 `
 const Logo = styled.img`
     height: 100%;
@@ -42,7 +44,7 @@ const IconsSection = styled.div`
 const HomeIcon = styled.img`
     width: 24px;
     height: 24px;
-    margin-right: 16px;
+    margin-right: ${Margins[16]};
 `
 const Comments = styled.button`
     width: 40px;
@@ -50,7 +52,7 @@ const Comments = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 8px;
+    margin-right: ${Margins[8]};
     background-color: ${Colors.gray02};
     border-radius: 50%;
     position: relative;
@@ -92,10 +94,10 @@ const Icon = styled.img`
 const HomeButton = styled.img`
     width: 24px;
     height: 24px;
-    margin-right: 16px;
+    margin-right: ${Margins[16]};
 `
 const MenuWrapper = styled.div`
-    margin-right: 40px;
+    margin-right: ${Margins[40]};
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -103,7 +105,7 @@ const MenuWrapper = styled.div`
     border: 1px solid ${Colors.gray02};
     cursor: pointer;
     position: relative;
-    padding: 0 8px;
+    padding: 0 ${Paddings[8]};
     height: 32px;
     border-radius: 4px;
     font-family: 'Roboto', sans-serif;

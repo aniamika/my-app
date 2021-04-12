@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { BoxShadow } from '../../styledHelpers/BoxShadow';
 import { Colors } from '../../styledHelpers/Colors';
 import { FontSize } from '../../styledHelpers/FontSize';
+import { Margins } from '../../styledHelpers/Margins';
+import { Paddings } from '../../styledHelpers/Paddings';
 
 const Wrapper = styled.div`
     position: absolute;
@@ -11,35 +13,35 @@ const Wrapper = styled.div`
     width: 100%;
     top: 32px;
     left: 0;
-    padding-top: 4px;
+    padding-top: ${Paddings[4]}
     border-radius: 0 0 4px 4px;
     ul li {
         font-size: ${FontSize[16]};
         font-weight: 500;
         display: flex;
         align-items: center;
-        padding: 4px 0;
-        padding: 8px;
+        padding: ${Paddings[4]} 0;
+        padding: ${Paddings[8]};
         height: 40px;
         &:hover {
             background-color: ${Colors.gray02};
         }
     }
     img {
-        margin-right: 16px;
+        margin-right: ${Margins[16]};
         width: 32px;
         height: 32px;
     }
 `
 const FilterContainer = styled.div`
-    padding: 4px 8px;
+    padding: ${Paddings[4]} ${Paddings[8]};
     input {
         width: 100%;
         border: 1px solid ${Colors.gray02};
         border-radius: 4px;
-        padding: 0 8px;
+        padding: 0 ${Paddings[8]};
         height: 32px;
-        margin-bottom: 4px;
+        margin-bottom: ${Margins[4]};
         font-size: ${FontSize[14]};
         font-weight: 300;
         &::placeholder {
@@ -57,14 +59,14 @@ const Container = styled.div`
     border-bottom: 1px solid ${Colors.gray02};
 `
 const GroupHeader = styled.span`
-    padding: 8px;
+    padding: ${Paddings[8]};
     color: ${Colors.gray03};
     font-weight: 400;
     width: 100%;
     display: block;
 `
 const LogoutButton = styled.button`
-    padding: 12px 0;
+    padding: ${Paddings[16]} 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -72,17 +74,24 @@ const LogoutButton = styled.button`
     font-size: ${FontSize[16]};
     font-weight: 500;
     width: 100%;
+`
+const LogoutButtonContainer = styled.div`
+    display: flex;
+    align-items: center;
+    position: relative;
     img {
-        margin-left: -36px;
+        position: absolute;
+        left: -36px;
     }
 `
+
 const AccountListItem = styled.li`
         font-size: ${FontSize[16]};
         font-weight: 500;
         display: flex;
         align-items: center;
-        padding: 4px 0;
-        padding: 8px;
+        padding: ${Paddings[4]} 0;
+        padding: ${Paddings[8]};
         height: 40px;
         &:hover {
             background-color: ${Colors.gray02};
@@ -92,7 +101,7 @@ const AccountListItem = styled.li`
             flex-direction: column;
         }
         span {
-            margin-top: 4px;
+            margin-top: ${Margins[4]};
             color: ${Colors.blue01};
             font-weight: 400;
             font-size: ${FontSize[14]};
@@ -104,7 +113,7 @@ const AccountImageContainer = styled.div`
     height: 32px;
     border-radius: 50%;
     overflow: hidden;
-    margin-right: 16px;
+    margin-right: ${Margins[16]};
 
     img {
         width: 100%;
@@ -189,9 +198,11 @@ export const ExpandedMenu: FC = () => {
                     </li>
                 </ul>
             </Container>
-            <LogoutButton>              
+            <LogoutButton>    
+                <LogoutButtonContainer>
                     <img src='./media/icons/logout.svg' />
                     <span>Logout</span>
+                </LogoutButtonContainer>          
             </LogoutButton>
         </Wrapper>
     )
