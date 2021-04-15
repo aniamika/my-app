@@ -128,32 +128,32 @@ export const TopBar: FC = () => {
         <Wrapper>
             <LeftContainer>
                 <LogoContainer> 
-                    <Logo src='./media/icons/logo.png' />
+                    <Logo src='./media/icons/logo.png' alt=''/>
                 </LogoContainer> 
                 <MenuWrapper ref={wrapperRef} onClick={menuHandler}>
                     <MenuLeftContainer>
-                        <HomeButton src='./media/icons/house2.svg'/>
+                        <HomeButton src='./media/icons/house2.svg' alt=''/>
                         <span>Home</span>
                     </MenuLeftContainer>
                     {dropdownOpen ? (
                         <>
-                            <img src='./media/icons/arrow-up.png' />
+                            <img src='./media/icons/arrow-up.png' alt=''/>
                             <ExpandedMenu/>
                         </>
                     ) : (
-                        <img src='./media/icons/arrow-down.png' />
+                        <img src='./media/icons/arrow-down.png' alt=''/>
                     )}
                 </MenuWrapper>
             </LeftContainer>
             <TopBarSearch />
             <IconsSection >          
-                <HomeIcon src='./media/icons/house.svg' />
+                <HomeIcon src='./media/icons/house.svg' alt=''/>
                 <Comments>
-                    <Icon src='./media/icons/comments.svg'/>
+                    <Icon src='./media/icons/comments.svg' alt=''/>
                     <Badge> 1 </Badge>
                 </Comments>
                 <Notifications>
-                    <Icon src='./media/icons/bell.svg' />
+                    <Icon src='./media/icons/bell.svg' alt=''/>
                     <Badge> 3 </Badge>
                 </Notifications>
            </IconsSection>
