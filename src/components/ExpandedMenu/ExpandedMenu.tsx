@@ -13,7 +13,7 @@ const Wrapper = styled.div`
     width: 100%;
     top: 32px;
     left: 0;
-    padding-top: ${Paddings[4]}
+    padding-top: ${Paddings[4]};
     border-radius: 0 0 4px 4px;
     ul li {
         font-size: ${FontSize[16]};
@@ -132,46 +132,46 @@ export const ExpandedMenu: FC = () => {
                 <GroupHeader>Platform</GroupHeader>
                 <ul>
                     <li>
-                        <img src='./media/icons/house2.svg' />
+                        <img src='./media/icons/house2.svg' alt=''/>
                         <span>Home</span>
                     </li>
                     <li>
-                        <img src='./media/icons/publications.svg' />
+                        <img src='./media/icons/publications.svg' alt=''/>
                         <span>Publications</span>
                     </li>
                     <li>
-                        <img src='./media/icons/people.svg' />
+                        <img src='./media/icons/people.svg' alt=''/>
                         <span>People</span>
                     </li>
                     <li>
-                        <img src='./media/icons/entities2.svg' />
+                        <img src='./media/icons/entities2.svg' alt=''/>
                         <span>Entities</span>
                     </li>
                     <li>
-                        <img src='./media/icons/administration.svg' /> 
+                        <img src='./media/icons/administration.svg' alt=''/> 
                         <span>Administration</span>
                     </li>
                 </ul>
                 <GroupHeader>Workspaces</GroupHeader>
                 <ul>
                     <li>
-                        <img src='./media/icons/entities2.svg' />
+                        <img src='./media/icons/entities2.svg' alt=''/>
                         <span>Client contract</span>
                     </li>
                     <li>
-                        <img src='./media/icons/entities2.svg' />
+                        <img src='./media/icons/entities2.svg' alt=''/>
                         <span>Supplier contract</span>
                     </li>
                     <li>
-                        <img src='./media/icons/entities.svg' />
+                        <img src='./media/icons/entities.svg' alt=''/>
                         <span>Corporate</span>
                     </li>
                     <li>
-                        <img src='./media/icons/entities2.svg' />
+                        <img src='./media/icons/entities2.svg' alt=''/>
                         <span>Group Norms</span>
                     </li>
                     <li>
-                        <img src='./media/icons/entities2.svg' />
+                        <img src='./media/icons/entities2.svg' alt=''/>
                         <span>Real estate contracts</span>
                     </li>
                 </ul>
@@ -181,7 +181,7 @@ export const ExpandedMenu: FC = () => {
                 <ul>
                     <AccountListItem>
                         <AccountImageContainer>
-                            <img src='./media/employee-photo.jpg' />
+                            <img src='./media/employee-photo.jpg' alt=''/>
                         </AccountImageContainer>
                         <div>
                             Jeanne-Marie de la cli
@@ -189,18 +189,18 @@ export const ExpandedMenu: FC = () => {
                         </div>
                     </AccountListItem>
                     <li>
-                        <img src='./media/icons/privacy.svg' />
+                        <img src='./media/icons/privacy.svg' alt=''/>
                         <span>Privacy</span>
                     </li>
                     <li>
-                        <img src='./media/icons/settings.svg' />
+                        <img src='./media/icons/settings.svg' alt=''/>
                         <span>Settings</span> 
                     </li>
                 </ul>
             </Container>
             <LogoutButton>    
                 <LogoutButtonContainer>
-                    <img src='./media/icons/logout.svg' />
+                    <img src='./media/icons/logout.svg' alt=''/>
                     <span>Logout</span>
                 </LogoutButtonContainer>          
             </LogoutButton>
