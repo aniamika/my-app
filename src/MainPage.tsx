@@ -1,14 +1,14 @@
-import React, { FC } from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
-import { LeftMenu } from './components/LeftMenu/LeftMenu';
-import Pagination from './components/Pagination/Pagination';
-import Resume from './components/Resume/Resume';
-import Slider from './components/Slider/Slider';
-import { TopBar } from './components/TopBar/TopBar';
-import Workspaces from './components/Workspaces/Workspaces';
-import { Colors } from './styledHelpers/Colors';
-import { Margins } from './styledHelpers/Margins';
-import { Paddings } from './styledHelpers/Paddings';
+import React, { FC } from "react";
+import styled, { createGlobalStyle } from "styled-components";
+import { LeftMenu } from "./components/LeftMenu/LeftMenu";
+import Pagination from "./components/Pagination/Pagination";
+import Resume from "./components/Resume/Resume";
+import Slider from "./components/Slider/Slider";
+import { TopBar } from "./components/TopBar/TopBar";
+import Workspaces from "./components/Workspaces/Workspaces";
+import { Colors } from "./styledHelpers/Colors";
+import { Margins } from "./styledHelpers/Margins";
+import { Paddings } from "./styledHelpers/Paddings";
 
 const MainContent = styled.main`
   flex: 6;
@@ -23,7 +23,6 @@ const Content = styled.section`
   flex: auto;
 `;
 
-
 const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${Colors.gray01};
@@ -37,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     overflow: hidden;
   }
-`
+`;
 const Reset = createGlobalStyle`
   html {
     box-sizing: border-box;
@@ -60,7 +59,7 @@ const Reset = createGlobalStyle`
       outline: none;
     }
   }
-`
+`;
 
 const Scrollbar = createGlobalStyle`
   ::-webkit-scrollbar {
@@ -82,7 +81,7 @@ const Scrollbar = createGlobalStyle`
         background-color: ${Colors.gray03};
       }
     }
-`
+`;
 
 const MainPage: FC = () => {
   return (
@@ -91,11 +90,11 @@ const MainPage: FC = () => {
       <GlobalStyle />
       <Scrollbar />
       <section>
-        <TopBar/>
+        <TopBar />
         <Content>
           <LeftMenu />
           <MainContent>
-            <Slider/>
+            <Slider />
             <Workspaces />
             <Resume />
             <Pagination />
@@ -104,5 +103,5 @@ const MainPage: FC = () => {
       </section>
     </>
   );
-}
+};
 export default MainPage;
