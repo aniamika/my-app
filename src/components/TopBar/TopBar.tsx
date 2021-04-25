@@ -6,6 +6,7 @@ import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
 import { Paddings } from "../../styledHelpers/Paddings";
+import IconButtonGeneric from "../Common/IconButtonGeneric";
 import ExpandedMenu from "../ExpandedMenu/ExpandedMenu";
 import { TopBarSearch } from "./TopBarSearch";
 
@@ -46,7 +47,7 @@ const HomeIcon = styled.img`
   height: 24px;
   margin-right: ${Margins[16]};
 `;
-const Comments = styled.button`
+const Comments = styled.div`
   width: 40px;
   height: 40px;
   display: flex;
@@ -59,7 +60,7 @@ const Comments = styled.button`
   border: 0;
   cursor: pointer;
 `;
-const Notifications = styled.button`
+const Notifications = styled.div`
   width: 40px;
   height: 40px;
   display: flex;
@@ -116,6 +117,12 @@ const MenuLeftContainer = styled.div`
   display: flex;
   align-items: center;
 `;
+const Button = styled.button`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
 
 export const TopBar: FC = () => {
   const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
@@ -130,23 +137,24 @@ export const TopBar: FC = () => {
         <LogoContainer>
           <Logo src="./media/icons/logo.png" alt="" />
         </LogoContainer>
-        <MenuWrapper ref={wrapperRef} onClick={menuHandler}>
-          <MenuLeftContainer>
-            <HomeButton src="./media/icons/house2.svg" alt="" />
-            <span>Home</span>
-          </MenuLeftContainer>
-          {dropdownOpen ? (
-            <>
-              <img src="./media/icons/arrow-up.png" alt="" />
-              <ExpandedMenu />
-            </>
-          ) : (
-            <img src="./media/icons/arrow-down.png" alt="" />
-          )}
+        <MenuWrapper ref={wrapperRef} >
+          <Button onClick={menuHandler}>
+          <MenuLeftContainer >
+              <HomeButton src="./media/icons/house2.svg" alt="" />
+              <span>Home</span>
+            </MenuLeftContainer>
+            {dropdownOpen ? (
+                <img src="./media/icons/arrow-up.png" alt="" />
+            ) : (
+              <img src="./media/icons/arrow-down.png" alt="" />
+            )}
+          </Button>
+          {dropdownOpen && <ExpandedMenu />}
         </MenuWrapper>
       </LeftContainer>
       <TopBarSearch />
       <IconsSection>
+        {/* <IconButtonGeneric />  */}
         <HomeIcon src="./media/icons/house.svg" alt="" />
         <Comments>
           <Icon src="./media/icons/comments.svg" alt="" />
