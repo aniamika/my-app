@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { ChangeEvent, FC, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { BoxShadow } from "../../styledHelpers/BoxShadow";
@@ -140,111 +140,150 @@ const AccountImageContainer = styled.div`
 `;
 
 export const ExpandedMenu: FC = () => {
+
+  const [inputText, setInputText] = useState<string>('');
+
+  const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const text = e.target.value;
+    setInputText(text);
+  }
+
   return (
     <Wrapper>
+
       <FilterContainer>
-        <input type="text" placeholder="Filter..." />
+        <input type="text" value={inputText} onChange={inputHandler} placeholder="Filter..." />
       </FilterContainer>
+
+
       <MainContainer>
         <GroupHeader>Platform</GroupHeader>
         <ul>
-          <Link to="/">
-            <li>
-              <img src="./media/icons/house2.svg" alt="" />
-              <span>Home</span>
-            </li>
-          </Link>
-          <Link to="/test">
-            <li>
-              <img src="./media/icons/publications.svg" alt="" />
-              <span>Publications</span>
-            </li>
-          </Link>
-          <Link to="/test">
-            <li>
-              <img src="./media/icons/people.svg" alt="" />
-              <span>People</span>
-            </li>
-          </Link>
-          <Link to="/entities">
-            <li>
-              <img src="./media/icons/entities2.svg" alt="" />
-              <span>Entities</span>
-            </li>
-          </Link>
-          <Link to="/test">
-            <li>
-              <img src="./media/icons/administration.svg" alt="" />
-              <span>Administration</span>
-            </li>
-          </Link>
+          {'Home'.toLowerCase().includes(inputText.toLowerCase()) && 
+            <Link to="/">
+              <li>
+                <img src="./media/icons/house2.svg" alt="" />
+                  <span>Home</span>
+              </li>
+            </Link>
+          }
+          {'Publications'.toLowerCase().includes(inputText.toLowerCase()) && 
+            <Link to="/test">
+              <li>
+                <img src="./media/icons/publications.svg" alt="" />
+                  <span>Publications</span>
+              </li>
+            </Link>
+          }
+          {'People'.toLowerCase().includes(inputText.toLowerCase()) && 
+            <Link to="/test">
+              <li>
+                <img src="./media/icons/people.svg" alt="" />
+                  <span>People</span>
+              </li>
+            </Link>
+          }
+          {'Entities'.toLowerCase().includes(inputText.toLowerCase()) && 
+            <Link to="/entities">
+              <li>
+                <img src="./media/icons/entities2.svg" alt="" />
+                  <span>Entities</span>
+              </li>
+            </Link>
+          }
+          {'Administration'.toLowerCase().includes(inputText.toLowerCase()) && 
+            <Link to="/test">
+              <li>
+                <img src="./media/icons/administration.svg" alt="" />
+                  <span>Administration</span>
+              </li>
+            </Link>
+          }
         </ul>
         <GroupHeader>Workspaces</GroupHeader>
         <ul>
-          <Link to="/test">
-            <li>
-              <img src="./media/icons/entities2.svg" alt="" />
-              <span>Client contract</span>
-            </li>
-          </Link>
-          <Link to="/test">
-            <li>
-              <img src="./media/icons/entities2.svg" alt="" />
-              <span>Supplier contract</span>
-            </li>
-          </Link>
-          <Link to="/test">
-            <li>
-              <img src="./media/icons/entities.svg" alt="" />
-              <span>Corporate</span>
-            </li>
-          </Link>
-          <Link to="/test">
-            <li>
-              <img src="./media/icons/entities2.svg" alt="" />
-              <span>Group Norms</span>
-            </li>
-          </Link>
-          <Link to="/test">
-            <li>
-              <img src="./media/icons/entities2.svg" alt="" />
-              <span>Real estate contracts</span>
-            </li>
-          </Link>
+          {'Client contract'.toLowerCase().includes(inputText.toLowerCase()) && 
+            <Link to="/test">
+              <li>
+                <img src="./media/icons/entities2.svg" alt="" />
+                  <span>Client contract</span>
+              </li>
+            </Link>
+          }
+          {'Supplier contract'.toLowerCase().includes(inputText.toLowerCase()) && 
+            <Link to="/test">
+              <li>
+                <img src="./media/icons/entities2.svg" alt="" />
+                  <span>Supplier contract</span>
+              </li>
+            </Link>
+          }
+          {'Corporate'.toLowerCase().includes(inputText.toLowerCase()) && 
+            <Link to="/test">
+              <li>
+                <img src="./media/icons/entities.svg" alt="" />
+                  <span>Corporate</span>
+              </li>
+            </Link>
+          }
+          {'Group Norms'.toLowerCase().includes(inputText.toLowerCase()) && 
+            <Link to="/test">
+              <li>
+                <img src="./media/icons/entities2.svg" alt="" />
+                  <span>Group Norms</span>
+              </li>
+            </Link>
+          }
+          {'Real estate contracts'.toLowerCase().includes(inputText.toLowerCase()) && 
+            <Link to="/test">
+              <li>
+                <img src="./media/icons/entities2.svg" alt="" />
+                  <span>Real estate contracts</span>
+              </li>
+            </Link>
+          }
         </ul>
       </MainContainer>
       <Container>
         <GroupHeader>Account</GroupHeader>
         <ul>
-        <Link to="/profile">
-          <AccountListItem>
-            <AccountImageContainer>
-              <img src="./media/employee-photo.jpg" alt="" />
-            </AccountImageContainer>
-            <div>
-              <p>Jeanne-Marie de la cli</p>
-              <span>See profile</span>
-            </div>
-          </AccountListItem>
-        </Link>
-        <Link to="/test">
-          <li>
-            <img src="./media/icons/privacy.svg" alt="" />
-            <span>Privacy</span>
-          </li>
-        </Link>
-        <Link to="/test">
-          <li>
-            <img src="./media/icons/settings.svg" alt="" />
-            <span>Settings</span>
-          </li>
-        </Link>
+          {'See profile'.toLowerCase().includes(inputText.toLowerCase()) && 
+            <Link to="/profile">
+              <AccountListItem>
+                <AccountImageContainer>
+                  <img src="./media/employee-photo.jpg" alt="" />
+                </AccountImageContainer>
+                <div>
+                  <p>Jeanne-Marie de la cli</p>
+                  <span>See profile</span>
+                </div>
+              </AccountListItem>
+            </Link>
+          }
+          {'Privacy'.toLowerCase().includes(inputText.toLowerCase()) && 
+            <Link to="/test">
+              <li>
+                <img src="./media/icons/privacy.svg" alt="" />
+                  <span>Privacy</span>
+              </li>
+            </Link>
+          }
+          {'Settings'.toLowerCase().includes(inputText.toLowerCase()) && 
+            <Link to="/test">
+              <li>
+                <img src="./media/icons/settings.svg" alt="" />
+                  <span>Settings</span>
+              </li>
+            </Link>
+          }
         </ul>
       </Container>
       <LogoutButton>
         <LogoutButtonContainer>
           <img src="./media/icons/logout.svg" alt="" />
-          <span>Logout</span>
+          {'Logout'.toLowerCase().includes(inputText.toLowerCase()) && 
+            <span>Logout</span>
+          }
         </LogoutButtonContainer>
       </LogoutButton>
     </Wrapper>
