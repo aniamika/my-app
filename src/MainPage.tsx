@@ -6,11 +6,12 @@ import { TopBar } from "./components/TopBar/TopBar";
 import { Colors } from "./styledHelpers/Colors";
 import { Margins } from "./styledHelpers/Margins";
 import { Paddings } from "./styledHelpers/Paddings";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import WorkspacePage from "./pages/WorkspacePage/WorkspacePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import EntitiesPage from "./pages/EntitiesPage/EntitiesPage";
+import TestPage from "./pages/TestPage/TestPage";
 
 const MainContent = styled.main`
   flex: 6;
@@ -55,6 +56,9 @@ const Reset = createGlobalStyle`
     &:focus {
       outline: none;
     }
+  }
+  a {
+    text-decoration: none;
   }
   input {
     &:focus {
@@ -107,6 +111,9 @@ const MainPage: FC = () => {
               </Route> 
               <Route path="/workspace" exact>
                   <WorkspacePage />
+              </Route> 
+              <Route path="/test" exact>
+                  <TestPage />
               </Route> 
               <Route path="/" exact>
                 <HomePage/>
