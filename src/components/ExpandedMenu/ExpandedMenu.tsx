@@ -26,6 +26,13 @@ const Wrapper = styled.div`
     &:hover {
       background-color: ${Colors.gray02};
     }
+    span {
+      max-width: 100%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      display: block;
+    }
   }
   img {
     margin-right: ${Margins[16]};
@@ -99,6 +106,13 @@ const AccountListItem = styled.li`
   div {
     display: flex;
     flex-direction: column;
+    max-width: calc(100% - 3rem);
+  }
+  p {
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
   span {
     margin-top: ${Margins[4]};
@@ -110,7 +124,9 @@ const AccountListItem = styled.li`
 
 const AccountImageContainer = styled.div`
   width: 32px;
+  min-width: 32px;
   height: 32px;
+  min-height: 32px;
   border-radius: 50%;
   overflow: hidden;
   margin-right: ${Margins[16]};
@@ -184,7 +200,7 @@ export const ExpandedMenu: FC = () => {
               <img src="./media/employee-photo.jpg" alt="" />
             </AccountImageContainer>
             <div>
-              Jeanne-Marie de la cli
+              <p>Jeanne-Marie de la cli</p>
               <span>See profile</span>
             </div>
           </AccountListItem>

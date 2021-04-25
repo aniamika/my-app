@@ -58,7 +58,6 @@ const Comments = styled.div`
   border-radius: 50%;
   position: relative;
   border: 0;
-  cursor: pointer;
 `;
 const Notifications = styled.div`
   width: 40px;
@@ -70,7 +69,6 @@ const Notifications = styled.div`
   border-radius: 50%;
   position: relative;
   border: 0;
-  cursor: pointer;
 `;
 const Badge = styled.span`
   border-radius: 16px;

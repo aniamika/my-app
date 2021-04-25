@@ -2,13 +2,15 @@ import React, { FC } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import { LeftMenu } from "./components/LeftMenu/LeftMenu";
 import Pagination from "./components/Pagination/Pagination";
-import Resume from "./components/Resume/Resume";
-import Slider from "./components/Slider/Slider";
 import { TopBar } from "./components/TopBar/TopBar";
-import Workspaces from "./components/Workspaces/Workspaces";
 import { Colors } from "./styledHelpers/Colors";
 import { Margins } from "./styledHelpers/Margins";
 import { Paddings } from "./styledHelpers/Paddings";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import HomePage from "./pages/HomePage/HomePage";
+import WorkspacePage from "./pages/WorkspacePage/WorkspacePage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import EntitiesPage from "./pages/EntitiesPage/EntitiesPage";
 
 const MainContent = styled.main`
   flex: 6;
@@ -86,21 +88,36 @@ const Scrollbar = createGlobalStyle`
 const MainPage: FC = () => {
   return (
     <>
-      <Reset />
-      <GlobalStyle />
+    <Reset />
+    <GlobalStyle />
+    <Router>
       <Scrollbar />
       <section>
         <TopBar />
         <Content>
-          <LeftMenu />
+          <LeftMenu/>
           <MainContent>
-            <Slider />
-            <Workspaces />
-            <Resume />
+            
+            <Switch>
+              <Route path="/entities" exact>
+                  <EntitiesPage />
+              </Route> 
+              <Route path="/profile" exact>
+                  <ProfilePage />
+              </Route> 
+              <Route path="/workspace" exact>
+                  <WorkspacePage />
+              </Route> 
+              <Route path="/" exact>
+                <HomePage/>
+              </Route>
+            </Switch>
+
             <Pagination />
           </MainContent>
         </Content>
       </section>
+    </Router>
     </>
   );
 };
