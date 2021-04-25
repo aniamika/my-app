@@ -60,7 +60,7 @@ const Comments = styled.div`
   border: 0;
   cursor: pointer;
 `;
-const Notifications = styled.button`
+const Notifications = styled.div`
   width: 40px;
   height: 40px;
   display: flex;
