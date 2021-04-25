@@ -14,12 +14,12 @@ const IconButton = styled.button`
     border: 1px solid ${Colors.gray03};
     border-radius: 4px;
     margin-right: 1rem;
-    width:${(props: IconButtonGenericProps) => props.sm && "1rem"}
+    /* width:${(props: IconButtonGenericProps) => props.sm && "1rem"}
             ${(props: IconButtonGenericProps) => props.md && "1.5rem"} 
             ${(props: IconButtonGenericProps) => props.lg && "2rem"};
     height:${(props: IconButtonGenericProps) => props.sm && "1rem"} 
             ${(props: IconButtonGenericProps) => props.md && "1.5rem"} 
-            ${(props: IconButtonGenericProps) => props.lg && "2rem"};
+            ${(props: IconButtonGenericProps) => props.lg && "2rem"}; */
 `;
 
 export const IconButtonGeneric:FC = () => {

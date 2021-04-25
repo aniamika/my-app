@@ -1,7 +1,7 @@
 import { FC } from "react";
 import styled from "styled-components";
 import { BoxShadow } from "../../styledHelpers/BoxShadow";
-
+import { Link } from "react-router-dom";
 import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
@@ -57,17 +57,21 @@ const Item = styled.li`
   justify-content: space-between;
   align-items: center;
 `;
-
 const CardItemLinkContainer = styled.div`
   display: flex;
   align-items: center;
+  flex: 1;
+  a {
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
 `;
-
-const CardItemLink = styled.a`
+const LinkName = styled.span`
   color: ${Colors.blue02};
   text-decoration: none;
+  flex: 1;
 `;
-
 const CardIconNetwork = styled.i`
   margin-right: ${Margins[8]};
   width: 24px;
@@ -77,11 +81,9 @@ const CardIconNetwork = styled.i`
   background-size: contain;
   background-position: center;
 `;
-
 const CardIconPublications = styled(CardIconNetwork)`
   background-image: url("./media/icons/publications.svg");
 `;
-
 const CardButtonNetwork = styled.button`
   border: 1px solid ${Colors.blue02};
   width: 32px;
@@ -95,7 +97,6 @@ const CardButtonNetwork = styled.button`
   background-position: center;
   cursor: pointer;
 `;
-
 const CardButtonPublications = styled.button`
   border: 1px solid ${Colors.blue02};
   width: 32px;
@@ -109,21 +110,14 @@ const CardButtonPublications = styled.button`
   background-position: center;
   cursor: pointer;
 `;
-
 const Navigation = styled.nav`
   padding: ${Paddings[16]};
 `;
-
 const List = styled.ul``;
-
 const ListItem = styled.li`
   display: flex;
   align-items: center;
   margin-bottom: ${Margins[16]};
-`;
-const Link = styled.a`
-  color: ${Colors.blue02};
-  text-decoration: none;
 `;
 const PublicationsIcon = styled.i`
   margin-right: ${Margins[16]};
@@ -157,6 +151,7 @@ export const LeftMenu: FC = () => {
   return (
     <Wrapper>
       <Card>
+      <Link to="/profile">
         <Header>
           <ImageBox>
             <Image src="./media/employee-photo.jpg" />
@@ -164,37 +159,52 @@ export const LeftMenu: FC = () => {
           <span>Humberta Swift</span>
           <Description>Job title - Company</Description>
         </Header>
+      </Link>
         <CardList>
           <Item>
-            <CardItemLinkContainer>
-              <CardIconNetwork />
-              <CardItemLink href="#">Your network</CardItemLink>
-            </CardItemLinkContainer>
-            <CardButtonNetwork />
+              <CardItemLinkContainer>
+                <Link to="/test"> 
+                    <CardIconNetwork />
+                    <LinkName>Your network</LinkName>
+                </Link>
+              </CardItemLinkContainer>
+            <Link to="/test">
+              <CardButtonNetwork/>
+            </Link>
           </Item>
           <Item>
             <CardItemLinkContainer>
-              <CardIconPublications />
-              <CardItemLink href="#">Your Publications</CardItemLink>
+              <Link to="/test"> 
+                  <CardIconPublications />
+                  <LinkName>Your Publications</LinkName>
+              </Link>
             </CardItemLinkContainer>
-            <CardButtonPublications />
+            <Link to="/test">
+              <CardButtonPublications />
+            </Link>
           </Item>
         </CardList>
       </Card>
       <Navigation>
         <List>
-          <ListItem>
-            <PublicationsIcon />
-            <Link href="#">Publications</Link>
-          </ListItem>
-          <ListItem>
-            <EcosystemIcon />
-            <Link href="#">Ecosystem</Link>
-          </ListItem>
-          <ListItem>
-            <EntitiesIcon />
-            <Link href="#">Entities</Link>
-          </ListItem>
+          <Link to="/test">
+            <ListItem>
+              <PublicationsIcon />
+              <LinkName>Publications</LinkName>
+            </ListItem>
+          </Link>
+          <Link to="/test">
+            <ListItem>
+              <EcosystemIcon />
+              <LinkName>Ecosystem</LinkName>
+            </ListItem>
+          </Link>
+          <Link to="/entities">
+            <ListItem>
+              <EntitiesIcon />
+              <LinkName>Entities</LinkName>
+            </ListItem>
+          </Link>
         </List>
       </Navigation>
     </Wrapper>
