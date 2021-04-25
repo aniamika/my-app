@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { BoxShadow } from "../../styledHelpers/BoxShadow";
 import { Colors } from "../../styledHelpers/Colors";
@@ -147,54 +148,75 @@ export const ExpandedMenu: FC = () => {
       <MainContainer>
         <GroupHeader>Platform</GroupHeader>
         <ul>
-          <li>
-            <img src="./media/icons/house2.svg" alt="" />
-            <span>Home</span>
-          </li>
-          <li>
-            <img src="./media/icons/publications.svg" alt="" />
-            <span>Publications</span>
-          </li>
-          <li>
-            <img src="./media/icons/people.svg" alt="" />
-            <span>People</span>
-          </li>
-          <li>
-            <img src="./media/icons/entities2.svg" alt="" />
-            <span>Entities</span>
-          </li>
-          <li>
-            <img src="./media/icons/administration.svg" alt="" />
-            <span>Administration</span>
-          </li>
+          <Link to="/">
+            <li>
+              <img src="./media/icons/house2.svg" alt="" />
+              <span>Home</span>
+            </li>
+          </Link>
+          <Link to="/test">
+            <li>
+              <img src="./media/icons/publications.svg" alt="" />
+              <span>Publications</span>
+            </li>
+          </Link>
+          <Link to="/test">
+            <li>
+              <img src="./media/icons/people.svg" alt="" />
+              <span>People</span>
+            </li>
+          </Link>
+          <Link to="/entities">
+            <li>
+              <img src="./media/icons/entities2.svg" alt="" />
+              <span>Entities</span>
+            </li>
+          </Link>
+          <Link to="/test">
+            <li>
+              <img src="./media/icons/administration.svg" alt="" />
+              <span>Administration</span>
+            </li>
+          </Link>
         </ul>
         <GroupHeader>Workspaces</GroupHeader>
         <ul>
-          <li>
-            <img src="./media/icons/entities2.svg" alt="" />
-            <span>Client contract</span>
-          </li>
-          <li>
-            <img src="./media/icons/entities2.svg" alt="" />
-            <span>Supplier contract</span>
-          </li>
-          <li>
-            <img src="./media/icons/entities.svg" alt="" />
-            <span>Corporate</span>
-          </li>
-          <li>
-            <img src="./media/icons/entities2.svg" alt="" />
-            <span>Group Norms</span>
-          </li>
-          <li>
-            <img src="./media/icons/entities2.svg" alt="" />
-            <span>Real estate contracts</span>
-          </li>
+          <Link to="/test">
+            <li>
+              <img src="./media/icons/entities2.svg" alt="" />
+              <span>Client contract</span>
+            </li>
+          </Link>
+          <Link to="/test">
+            <li>
+              <img src="./media/icons/entities2.svg" alt="" />
+              <span>Supplier contract</span>
+            </li>
+          </Link>
+          <Link to="/test">
+            <li>
+              <img src="./media/icons/entities.svg" alt="" />
+              <span>Corporate</span>
+            </li>
+          </Link>
+          <Link to="/test">
+            <li>
+              <img src="./media/icons/entities2.svg" alt="" />
+              <span>Group Norms</span>
+            </li>
+          </Link>
+          <Link to="/test">
+            <li>
+              <img src="./media/icons/entities2.svg" alt="" />
+              <span>Real estate contracts</span>
+            </li>
+          </Link>
         </ul>
       </MainContainer>
       <Container>
         <GroupHeader>Account</GroupHeader>
         <ul>
+        <Link to="/profile">
           <AccountListItem>
             <AccountImageContainer>
               <img src="./media/employee-photo.jpg" alt="" />
@@ -204,14 +226,19 @@ export const ExpandedMenu: FC = () => {
               <span>See profile</span>
             </div>
           </AccountListItem>
+        </Link>
+        <Link to="/test">
           <li>
             <img src="./media/icons/privacy.svg" alt="" />
             <span>Privacy</span>
           </li>
+        </Link>
+        <Link to="/test">
           <li>
             <img src="./media/icons/settings.svg" alt="" />
             <span>Settings</span>
           </li>
+        </Link>
         </ul>
       </Container>
       <LogoutButton>

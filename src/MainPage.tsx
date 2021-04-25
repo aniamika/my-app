@@ -58,6 +58,7 @@ const Reset = createGlobalStyle`
     }
   }
   a {
+    color: inherit;
     text-decoration: none;
   }
   input {

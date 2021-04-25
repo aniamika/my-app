@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import useDropdown from "react-dropdown-hook";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { BoxShadow } from "../../styledHelpers/BoxShadow";
 import { Colors } from "../../styledHelpers/Colors";
@@ -132,9 +133,11 @@ export const TopBar: FC = () => {
   return (
     <Wrapper>
       <LeftContainer>
-        <LogoContainer>
-          <Logo src="./media/icons/logo.png" alt="" />
-        </LogoContainer>
+        <Link to="/">
+          <LogoContainer>
+            <Logo src="./media/icons/logo.png" alt="" />
+          </LogoContainer>
+        </Link>
         <MenuWrapper ref={wrapperRef} >
           <Button onClick={menuHandler}>
           <MenuLeftContainer >
@@ -153,7 +156,9 @@ export const TopBar: FC = () => {
       <TopBarSearch />
       <IconsSection>
         {/* <IconButtonGeneric />  */}
-        <HomeIcon src="./media/icons/house.svg" alt="" />
+        <Link to="/">
+          <HomeIcon src="./media/icons/house.svg" alt="" />
+        </Link>
         <Comments>
           <Icon src="./media/icons/comments.svg" alt="" />
           <Badge> 1 </Badge>
