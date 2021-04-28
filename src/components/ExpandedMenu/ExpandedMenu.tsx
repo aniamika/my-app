@@ -278,14 +278,14 @@ export const ExpandedMenu: FC = () => {
           }
         </ul>
       </Container>
+      {'Logout'.toLowerCase().includes(inputText.toLowerCase()) && 
       <LogoutButton>
         <LogoutButtonContainer>
           <img src="./media/icons/logout.svg" alt="" />
-          {'Logout'.toLowerCase().includes(inputText.toLowerCase()) && 
             <span>Logout</span>
-          }
         </LogoutButtonContainer>
       </LogoutButton>
+      }
     </Wrapper>
   );
 };
