@@ -1,33 +1,38 @@
-import React, { FC } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Colors } from '../../styledHelpers/Colors';
-
 interface IconButtonGenericProps {
-    // size?: string;
-    sm?: boolean;
-    md?: boolean;
-    lg?: boolean;
+    className?: string;
+    alt: string;
+    src: string;
 }
-
-const IconButton = styled.button`
-    background: ${Colors.white};
-    border: 1px solid ${Colors.gray03};
-    border-radius: 4px;
-    margin-right: 1rem;
-    /* width:${(props: IconButtonGenericProps) => props.sm && "1rem"}
-            ${(props: IconButtonGenericProps) => props.md && "1.5rem"} 
-            ${(props: IconButtonGenericProps) => props.lg && "2rem"};
-    height:${(props: IconButtonGenericProps) => props.sm && "1rem"} 
-            ${(props: IconButtonGenericProps) => props.md && "1.5rem"} 
-            ${(props: IconButtonGenericProps) => props.lg && "2rem"}; */
+  
+const IconButton = styled.img`
+    /* border: 1px solid red; */
+    &.sm {
+        width: 1rem;
+        height: 1rem;
+    }
+    &.md {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    &.lg {
+        width: 2rem;
+        height: 2rem;
+    }
+    &.white {
+        background: ${Colors.white};
+    }
+    &.h-margin-right-16 {
+        margin-right: 1rem;
+    }
 `;
 
-export const IconButtonGeneric:FC = () => {
+export const IconButtonGeneric = (props: IconButtonGenericProps) => {
 
     return (
-        <IconButton lg>
-            IconButton
-        </IconButton>
+        <IconButton className={props.className} src={props.src} alt={props.alt}/>
     )
 }
 export default IconButtonGeneric;

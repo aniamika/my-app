@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
 import { Paddings } from "../../styledHelpers/Paddings";
+import IconButtonGeneric from "../Common/IconButtonGeneric";
 
 const Wrapper = styled.div`
   flex: 3;
@@ -27,23 +28,21 @@ const Search = styled.input`
     font-weight: 300;
   }
 `;
-const SearchButton = styled.button`
-  padding: ${Paddings[8]};
+const SearchButtonContainer = styled.button`
   position: absolute;
   right: 0;
-  width: 32px;
-  height: 32px;
-  background-image: url("./media/icons/search.svg");
-  background-repeat: no-repeat;
-  background-size: auto;
-  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const TopBarSearch: FC = () => {
   return (
     <Wrapper>
       <Search type="text" placeholder="Search Legalcluster" />
-      <SearchButton />
+      <SearchButtonContainer>
+        <IconButtonGeneric className="md" src="./media/icons/search.svg" alt="search icon"/>
+      </SearchButtonContainer>
     </Wrapper>
   );
 };

@@ -28,25 +28,13 @@ const LeftContainer = styled.div`
   align-items: center;
 `;
 const LogoContainer = styled.div`
-  max-width: 32px;
-  height: 32px;
   margin-right: ${Margins[24]};
-`;
-const Logo = styled.img`
-  height: 100%;
-  max-height: 32px;
-  width: auto;
 `;
 const IconsSection = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
   flex: 2;
-`;
-const HomeIcon = styled.img`
-  width: 24px;
-  height: 24px;
-  margin-right: ${Margins[16]};
 `;
 const Comments = styled.div`
   width: 40px;
@@ -84,11 +72,6 @@ const Badge = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const Icon = styled.img`
-  height: 24px;
-  width: 24px;
 `;
 
 const HomeButton = styled.img`
@@ -135,7 +118,7 @@ export const TopBar: FC = () => {
       <LeftContainer>
         <Link to="/">
           <LogoContainer>
-            <Logo src="./media/icons/logo.png" alt="" />
+            <IconButtonGeneric src="./media/icons/logo.png" className="lg" alt="logo"/>
           </LogoContainer>
         </Link>
         <MenuWrapper ref={wrapperRef} >
@@ -155,16 +138,15 @@ export const TopBar: FC = () => {
       </LeftContainer>
       <TopBarSearch />
       <IconsSection>
-        {/* <IconButtonGeneric />  */}
         <Link to="/">
-          <HomeIcon src="./media/icons/house.svg" alt="" />
+          <IconButtonGeneric className="md h-margin-right-16" src="./media/icons/house.svg" alt="home icon"/>
         </Link>
         <Comments>
-          <Icon src="./media/icons/comments.svg" alt="" />
+          <IconButtonGeneric className="md" src="./media/icons/comments.svg" alt="comments icon"/>
           <Badge> 1 </Badge>
         </Comments>
         <Notifications>
-          <Icon src="./media/icons/bell.svg" alt="" />
+          <IconButtonGeneric className="md" src="./media/icons/bell.svg" alt="notifications icon"/>
           <Badge> 3 </Badge>
         </Notifications>
       </IconsSection>
