@@ -9,14 +9,7 @@ import { Paddings } from "../../styledHelpers/Paddings";
 import IconButtonGeneric from "../Common/IconButtonGeneric";
 
 const Wrapper = styled.div`
-  position: absolute;
-  background-color: ${Colors.white};
-  box-shadow: ${BoxShadow.small};
   width: 100%;
-  top: 32px;
-  left: 0;
-  padding-top: ${Paddings[4]};
-  border-radius: 0 0 4px 4px;
   ul li {
     font-size: ${FontSize[16]};
     font-weight: 500;
@@ -155,7 +148,6 @@ export const ExpandedMenu: FC = () => {
       <FilterContainer>
         <input type="text" value={inputText} onChange={inputHandler} placeholder="Filter..." />
       </FilterContainer>
-
 
       <MainContainer>
         <GroupHeader>Platform</GroupHeader>
