@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 import { BoxShadow } from "../../styledHelpers/BoxShadow";
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
 import { Paddings } from "../../styledHelpers/Paddings";
+import IconButtonGeneric from "../Common/IconButtonGeneric";
 
 const Wrapper = styled.aside`
   flex: 2;
@@ -72,42 +73,28 @@ const LinkName = styled.span`
   text-decoration: none;
   flex: 1;
 `;
-const CardIconNetwork = styled.i`
-  margin-right: ${Margins[8]};
-  width: 24px;
-  height: 24px;
-  background-image: url("./media/icons/people.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-`;
-const CardIconPublications = styled(CardIconNetwork)`
-  background-image: url("./media/icons/publications.svg");
-`;
 const CardButtonNetwork = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid ${Colors.blue02};
   width: 32px;
   height: 24px;
   background-color: ${Colors.white};
   border-radius: 4px;
   box-shadow: ${BoxShadow.small};
-  background-image: url("./media/icons/network.svg");
-  background-repeat: no-repeat;
-  background-size: 16px;
-  background-position: center;
   cursor: pointer;
 `;
 const CardButtonPublications = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid ${Colors.blue02};
   width: 32px;
   height: 24px;
   background-color: ${Colors.white};
   border-radius: 4px;
   box-shadow: ${BoxShadow.small};
-  background-image: url("./media/icons/plus.svg");
-  background-repeat: no-repeat;
-  background-size: 16px;
-  background-position: center;
   cursor: pointer;
 `;
 const Navigation = styled.nav`
@@ -118,33 +105,6 @@ const ListItem = styled.li`
   display: flex;
   align-items: center;
   margin-bottom: ${Margins[16]};
-`;
-const PublicationsIcon = styled.i`
-  margin-right: ${Margins[16]};
-  width: 40px;
-  height: 40px;
-  background-image: url("./media/icons/publications.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-`;
-const EcosystemIcon = styled.i`
-  margin-right: ${Margins[16]};
-  width: 40px;
-  height: 40px;
-  background-image: url("./media/icons/ecosystem.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-`;
-const EntitiesIcon = styled.i`
-  margin-right: ${Margins[16]};
-  width: 40px;
-  height: 40px;
-  background-image: url("./media/icons/entities2.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
 `;
 
 export const LeftMenu: FC = () => {
@@ -164,23 +124,27 @@ export const LeftMenu: FC = () => {
           <Item>
               <CardItemLinkContainer>
                 <Link to="/test"> 
-                    <CardIconNetwork />
-                    <LinkName>Your network</LinkName>
+                  <IconButtonGeneric src="./media/icons/people.svg" className="lg h-margin-right-8" alt=""/>
+                  <LinkName>Your network</LinkName>
                 </Link>
               </CardItemLinkContainer>
             <Link to="/test">
-              <CardButtonNetwork/>
+              <CardButtonNetwork> 
+                <IconButtonGeneric src="./media/icons/network.svg" className="sm" alt=""/>
+              </CardButtonNetwork>
             </Link>
           </Item>
           <Item>
             <CardItemLinkContainer>
               <Link to="/test"> 
-                  <CardIconPublications />
+                  <IconButtonGeneric src="./media/icons/publications.svg" className="lg h-margin-right-8" alt=""/>
                   <LinkName>Your Publications</LinkName>
               </Link>
             </CardItemLinkContainer>
             <Link to="/test">
-              <CardButtonPublications />
+              <CardButtonPublications> 
+                <IconButtonGeneric src="./media/icons/plus.svg" className="sm" alt=""/>
+              </CardButtonPublications>
             </Link>
           </Item>
         </CardList>
@@ -189,19 +153,19 @@ export const LeftMenu: FC = () => {
         <List>
           <Link to="/test">
             <ListItem>
-              <PublicationsIcon />
+              <IconButtonGeneric src="./media/icons/publications.svg" className="xl h-margin-right-16" alt=""/>
               <LinkName>Publications</LinkName>
             </ListItem>
           </Link>
           <Link to="/test">
             <ListItem>
-              <EcosystemIcon />
+              <IconButtonGeneric src="./media/icons/ecosystem.svg" className="xl h-margin-right-16" alt=""/>
               <LinkName>Ecosystem</LinkName>
             </ListItem>
           </Link>
           <Link to="/entities">
             <ListItem>
-              <EntitiesIcon />
+              <IconButtonGeneric src="./media/icons/entities2.png" className="xl h-margin-right-16" alt=""/>
               <LinkName>Entities</LinkName>
             </ListItem>
           </Link>
