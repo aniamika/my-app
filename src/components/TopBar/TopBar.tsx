@@ -73,12 +73,6 @@ const Badge = styled.span`
   justify-content: center;
   align-items: center;
 `;
-
-const HomeButton = styled.img`
-  width: 24px;
-  height: 24px;
-  margin-right: ${Margins[16]};
-`;
 const MenuWrapper = styled.div`
   margin-right: ${Margins[40]};
   display: flex;
@@ -124,9 +118,9 @@ export const TopBar: FC = () => {
         <MenuWrapper ref={wrapperRef} >
           <Button onClick={menuHandler}>
           <MenuLeftContainer >
-              <HomeButton src="./media/icons/house2.svg" alt="" />
-              <span>Home</span>
-            </MenuLeftContainer>
+            <IconButtonGeneric src="./media/icons/house2.svg" className="lg h-margin-right-16" alt=""/>
+            <span>Home</span>
+          </MenuLeftContainer>
             {dropdownOpen ? (
                 <img src="./media/icons/arrow-up.png" alt="" />
             ) : (

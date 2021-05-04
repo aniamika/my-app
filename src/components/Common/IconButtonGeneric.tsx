@@ -8,7 +8,6 @@ interface IconButtonGenericProps {
 }
   
 const IconButton = styled.img`
-    /* border: 1px solid red; */
     &.sm {
         width: 1rem;
         height: 1rem;
@@ -20,6 +19,10 @@ const IconButton = styled.img`
     &.lg {
         width: 2rem;
         height: 2rem;
+    }
+    &.xl {
+        width: 2.5rem;
+        height: 2.5rem;
     }
     &.rounded {
         border-radius: 50%;

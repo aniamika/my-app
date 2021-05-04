@@ -6,6 +6,7 @@ import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
 import { Paddings } from "../../styledHelpers/Paddings";
+import IconButtonGeneric from "../Common/IconButtonGeneric";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -162,40 +163,40 @@ export const ExpandedMenu: FC = () => {
           {'Home'.toLowerCase().includes(inputText.toLowerCase()) && 
             <Link to="/">
               <li>
-                <img src="./media/icons/house2.svg" alt="" />
-                  <span>Home</span>
+                <IconButtonGeneric src="./media/icons/house2.svg" className="lg" alt=""/>
+                <span>Home</span>
               </li>
             </Link>
           }
           {'Publications'.toLowerCase().includes(inputText.toLowerCase()) && 
             <Link to="/test">
               <li>
-                <img src="./media/icons/publications.svg" alt="" />
-                  <span>Publications</span>
+                <IconButtonGeneric src="./media/icons/publications.svg" className="lg" alt=""/>
+                <span>Publications</span>
               </li>
             </Link>
           }
           {'People'.toLowerCase().includes(inputText.toLowerCase()) && 
             <Link to="/test">
               <li>
-                <img src="./media/icons/people.svg" alt="" />
-                  <span>People</span>
+                <IconButtonGeneric src="./media/icons/people.svg" className="lg" alt=""/>
+                <span>People</span>
               </li>
             </Link>
           }
           {'Entities'.toLowerCase().includes(inputText.toLowerCase()) && 
             <Link to="/entities">
               <li>
-                <img src="./media/icons/entities2.svg" alt="" />
-                  <span>Entities</span>
+                <IconButtonGeneric src="./media/icons/entities2.svg" className="lg" alt=""/>
+                <span>Entities</span>
               </li>
             </Link>
           }
           {'Administration'.toLowerCase().includes(inputText.toLowerCase()) && 
             <Link to="/test">
               <li>
-                <img src="./media/icons/administration.svg" alt="" />
-                  <span>Administration</span>
+                <IconButtonGeneric src="./media/icons/administration.svg" className="lg" alt=""/>
+                <span>Administration</span>
               </li>
             </Link>
           }
@@ -205,40 +206,40 @@ export const ExpandedMenu: FC = () => {
           {'Client contract'.toLowerCase().includes(inputText.toLowerCase()) && 
             <Link to="/test">
               <li>
-                <img src="./media/icons/entities2.svg" alt="" />
-                  <span>Client contract</span>
+                <IconButtonGeneric src="./media/icons/entities2.svg" className="lg" alt=""/>
+                <span>Client contract</span>
               </li>
             </Link>
           }
           {'Supplier contract'.toLowerCase().includes(inputText.toLowerCase()) && 
             <Link to="/test">
               <li>
-                <img src="./media/icons/entities2.svg" alt="" />
-                  <span>Supplier contract</span>
+                <IconButtonGeneric src="./media/icons/entities2.svg" className="lg" alt=""/>
+                <span>Supplier contract</span>
               </li>
             </Link>
           }
           {'Corporate'.toLowerCase().includes(inputText.toLowerCase()) && 
             <Link to="/test">
               <li>
-                <img src="./media/icons/entities.svg" alt="" />
-                  <span>Corporate</span>
+                <IconButtonGeneric src="./media/icons/entities.svg" className="lg" alt=""/>
+                <span>Corporate</span>
               </li>
             </Link>
           }
           {'Group Norms'.toLowerCase().includes(inputText.toLowerCase()) && 
             <Link to="/test">
               <li>
-                <img src="./media/icons/entities2.svg" alt="" />
-                  <span>Group Norms</span>
+                <IconButtonGeneric src="./media/icons/entities2.svg" className="lg" alt=""/>
+                <span>Group Norms</span>
               </li>
             </Link>
           }
           {'Real estate contracts'.toLowerCase().includes(inputText.toLowerCase()) && 
             <Link to="/test">
               <li>
-                <img src="./media/icons/entities2.svg" alt="" />
-                  <span>Real estate contracts</span>
+                <IconButtonGeneric src="./media/icons/entities2.svg" className="lg" alt=""/>
+                <span>Real estate contracts</span>
               </li>
             </Link>
           }
@@ -263,16 +264,16 @@ export const ExpandedMenu: FC = () => {
           {'Privacy'.toLowerCase().includes(inputText.toLowerCase()) && 
             <Link to="/test">
               <li>
-                <img src="./media/icons/privacy.svg" alt="" />
-                  <span>Privacy</span>
+                <IconButtonGeneric src="./media/icons/privacy.svg" className="lg" alt=""/>
+                <span>Privacy</span>
               </li>
             </Link>
           }
           {'Settings'.toLowerCase().includes(inputText.toLowerCase()) && 
             <Link to="/test">
               <li>
-                <img src="./media/icons/settings.svg" alt="" />
-                  <span>Settings</span>
+                <IconButtonGeneric src="./media/icons/settings.svg" className="lg" alt=""/>
+                <span>Settings</span>
               </li>
             </Link>
           }
@@ -281,8 +282,8 @@ export const ExpandedMenu: FC = () => {
       {'Logout'.toLowerCase().includes(inputText.toLowerCase()) && 
       <LogoutButton>
         <LogoutButtonContainer>
-          <img src="./media/icons/logout.svg" alt="" />
-            <span>Logout</span>
+          <IconButtonGeneric src="./media/icons/logout.svg" className="lg" alt=""/>
+          <span>Logout</span>
         </LogoutButtonContainer>
       </LogoutButton>
       }
