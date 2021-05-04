@@ -21,8 +21,14 @@ const IconButton = styled.img`
         width: 2rem;
         height: 2rem;
     }
+    &.rounded {
+        border-radius: 50%;
+    }
     &.white {
         background: ${Colors.white};
+    }
+    &.h-margin-right-8 {
+        margin-right: 0.5rem;
     }
     &.h-margin-right-16 {
         margin-right: 1rem;
