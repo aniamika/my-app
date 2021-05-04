@@ -99,6 +99,23 @@ const Button = styled.button`
   align-items: center;
   justify-content: space-between;
 `
+const ExpandedMenuContainer = styled.div`
+  position: absolute;
+  background-color: ${Colors.white};
+  box-shadow: ${BoxShadow.small};
+  width: 100%;
+  top: 32px;
+  left: 0;
+  padding-top: ${Paddings[4]};
+  border-radius: 0 0 4px 4px;
+  max-height: 0;
+  transition: all .5s ease;
+  overflow: hidden;
+
+  &.isOpen {
+    max-height: 42.75rem;
+  }
+`
 
 export const TopBar: FC = () => {
   const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
@@ -118,7 +135,7 @@ export const TopBar: FC = () => {
         <MenuWrapper ref={wrapperRef} >
           <Button onClick={menuHandler}>
           <MenuLeftContainer >
-            <IconButtonGeneric src="./media/icons/house2.svg" className="lg h-margin-right-16" alt=""/>
+            <IconButtonGeneric src="./media/icons/house2.svg" className="md h-margin-right-16" alt=""/>
             <span>Home</span>
           </MenuLeftContainer>
             {dropdownOpen ? (
@@ -127,7 +144,9 @@ export const TopBar: FC = () => {
               <img src="./media/icons/arrow-down.png" alt="" />
             )}
           </Button>
-          {dropdownOpen && <ExpandedMenu />}
+          <ExpandedMenuContainer className={dropdownOpen ? 'isOpen' : ''}>
+            <ExpandedMenu />
+          </ExpandedMenuContainer>
         </MenuWrapper>
       </LeftContainer>
       <TopBarSearch />
