@@ -21,12 +21,18 @@ const MainContent = styled.main`
 
 const Content = styled.section`
   max-width: 1200px;
-  padding: ${Paddings[8]} ${Paddings[16]};
+  padding: ${Paddings[24]} ${Paddings[16]} ${Paddings[8]} ${Paddings[16]};
   display: flex;
   margin: 0 auto;
   flex: auto;
+  overflow: auto;
 `;
 
+const MainBox = styled.section`
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100vh;
+`
 const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${Colors.gray01};
@@ -98,8 +104,8 @@ const MainPage: FC = () => {
     <GlobalStyle />
     <Router>
       <Scrollbar />
-      <section>
-        <TopBar />
+      <TopBar />
+      <MainBox>
         <Content>
           <LeftMenu/>
           <MainContent>
@@ -125,7 +131,7 @@ const MainPage: FC = () => {
             <Pagination />
           </MainContent>
         </Content>
-      </section>
+      </MainBox>
     </Router>
     </>
   );

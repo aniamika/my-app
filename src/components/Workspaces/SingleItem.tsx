@@ -6,82 +6,82 @@ import { FontSize } from '../../styledHelpers/FontSize';
 import IconButtonGeneric from '../Common/IconButtonGeneric';
 
 const ItemWrapper = styled.div`
-background: ${Colors.white};
-border-radius: 0.25rem;
-box-shadow: ${BoxShadow.small};
-width: 15.25rem;
-overflow: hidden;
-min-width: 15.25rem;
-height: 12.063rem;
-margin-right: 1rem;
-display: flex;
-flex-direction: column;
+    background: ${Colors.white};
+    border-radius: 0.25rem;
+    box-shadow: ${BoxShadow.small};
+    width: 15.25rem;
+    overflow: hidden;
+    min-width: 15.25rem;
+    height: 12.063rem;
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
 `
 const TopBox = styled.div`
-flex: 2;
-overflow: hidden;
+    flex: 2;
+    overflow: hidden;
 `
 const BackgroundImage = styled.img`
-width: 100%;
-height: 100%;
-max-width: 100%;
-max-height: 100%;
-object-fit: cover;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
 `
 const MainContent = styled.div`
-flex: 3;
-padding: 0.5rem;
+    flex: 3;
+    padding: 0.5rem;
 `
 const Category = styled.div`
-display: flex;
-margin-bottom: 1rem;
+    display: flex;
+    margin-bottom: 1rem;
 `
 const CategoryIconBox = styled.div`
-background: ${Colors.white};
-border-radius: 0.25rem;
-box-shadow: ${BoxShadow.small};
-width: 5.125rem;
-min-width: 5.125rem;
-height: 5.125rem;
-display: flex;
-align-items: center;
-justify-content: center;
-margin-top: -1.5rem;
+    background: ${Colors.white};
+    border-radius: 0.25rem;
+    box-shadow: ${BoxShadow.small};
+    width: 5.125rem;
+    min-width: 5.125rem;
+    height: 5.125rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -1.5rem;
 `
 const CategoryName = styled.div`
-color: ${Colors.blue02};
-font-weight: 500;
-padding: 0.5rem;
+    color: ${Colors.blue02};
+    font-weight: 500;
+    padding: 0.5rem;
 `
 const DescriptionBox = styled.div`
-display: flex;
+    display: flex;
 `
 const CategoryBox = styled.div`
-display: flex;
-align-items: center;
-color: ${Colors.blue05};
-font-size: ${FontSize[12]};
-position: relative;
-padding-right: 0.5rem;
-&:after {
-  content: "•";
-  display: block;
-  position: absolute;
-  right: -0.1rem;
-}
+    display: flex;
+    align-items: center;
+    color: ${Colors.blue05};
+    font-size: ${FontSize[12]};
+    position: relative;
+    padding-right: 0.5rem;
+    &:after {
+        content: "•";
+        display: block;
+        position: absolute;
+        right: -0.1rem;
+    }
 `
 const UsersBox = styled.div`
-display: flex;
-align-items: center;
-color: ${Colors.blue05};
-font-size: ${FontSize[12]};
-padding-left: 0.5rem;
+    display: flex;
+    align-items: center;
+    color: ${Colors.blue05};
+    font-size: ${FontSize[12]};
+    padding-left: 0.5rem;
 `
 const Footer = styled.p`
-font-size: ${FontSize[12]};
-color: ${Colors.gray04};
-padding: 0 0.5rem;
-margin-bottom: 0.5rem;
+    font-size: ${FontSize[12]};
+    color: ${Colors.gray04};
+    padding: 0 0.5rem;
+    margin-bottom: 0.5rem;
 `
 
 
