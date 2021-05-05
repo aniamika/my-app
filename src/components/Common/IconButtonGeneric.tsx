@@ -24,6 +24,10 @@ const IconButton = styled.img`
         width: 2.5rem;
         height: 2.5rem;
     }
+    &.xxl {
+        width: 3rem;
+        height: 3rem;
+    }
     &.rounded {
         border-radius: 50%;
     }

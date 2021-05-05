@@ -15,6 +15,7 @@ import TestPage from "./pages/TestPage/TestPage";
 
 const MainContent = styled.main`
   flex: 6;
+  overflow: hidden;
   margin-left: ${Margins[16]};
 `;
 
