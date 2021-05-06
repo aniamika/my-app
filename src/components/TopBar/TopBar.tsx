@@ -19,8 +19,10 @@ const Wrapper = styled.header`
   background-color: ${Colors.white};
   box-shadow: ${BoxShadow.medium};
   padding: 0 ${Paddings[16]};
-  margin-bottom: ${Margins[16]};
   min-height: 48px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 `;
 const LeftContainer = styled.div`
   display: flex;
