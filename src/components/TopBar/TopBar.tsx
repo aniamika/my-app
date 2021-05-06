@@ -22,6 +22,7 @@ const Wrapper = styled.header`
   min-height: 48px;
   position: sticky;
   top: 0;
+  z-index: 1;
 `;
 const LeftContainer = styled.div`
   display: flex;
