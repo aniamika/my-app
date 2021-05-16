@@ -32,7 +32,6 @@ const MainBox = styled.section`
   overflow-y: auto;
   overflow-x: hidden;
   height: 100vh;
-  padding-top: 3rem;
 `
 const GlobalStyle = createGlobalStyle`
   body {
