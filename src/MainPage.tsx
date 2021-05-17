@@ -1,7 +1,6 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import { LeftMenu } from "./components/LeftMenu/LeftMenu";
-import Pagination from "./components/Pagination/Pagination";
 import { TopBar } from "./components/TopBar/TopBar";
 import { Colors } from "./styledHelpers/Colors";
 import { Margins } from "./styledHelpers/Margins";
@@ -12,13 +11,17 @@ import WorkspacePage from "./pages/WorkspacePage/WorkspacePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import EntitiesPage from "./pages/EntitiesPage/EntitiesPage";
 import TestPage from "./pages/TestPage/TestPage";
+import { useDispatch } from "react-redux";
+import { getSomeData, getUsers } from "./actions/usersActions";
+
+type GetUsers = ReturnType<typeof getUsers>;
+type GetSomeData = ReturnType<typeof getSomeData>;
 
 const MainContent = styled.main`
   flex: 6;
   overflow: hidden;
   margin-left: ${Margins[16]};
 `;
-
 const Content = styled.section`
   max-width: 1200px;
   padding: ${Paddings[24]} ${Paddings[16]} ${Paddings[8]} ${Paddings[16]};
@@ -27,11 +30,11 @@ const Content = styled.section`
   flex: auto;
   overflow: auto;
 `;
-
 const MainBox = styled.section`
   overflow-y: auto;
   overflow-x: hidden;
   height: 100vh;
+  padding-top: 3rem;
 `
 const GlobalStyle = createGlobalStyle`
   body {
@@ -74,7 +77,6 @@ const Reset = createGlobalStyle`
     }
   }
 `;
-
 const Scrollbar = createGlobalStyle`
   ::-webkit-scrollbar {
     border-radius: 6px;
@@ -98,6 +100,16 @@ const Scrollbar = createGlobalStyle`
 `;
 
 const MainPage: FC = () => {
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch<GetUsers>(getUsers());
+  }, []);
+
+  // const clickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+  //   dispatch<GetSomeData>(getSomeData('Lalalalalala'));
+  // }
+
   return (
     <>
     <Reset />
@@ -128,7 +140,6 @@ const MainPage: FC = () => {
               </Route>
             </Switch>
 
-            <Pagination />
           </MainContent>
         </Content>
       </MainBox>

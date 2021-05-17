@@ -7,6 +7,9 @@ import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
 import { Paddings } from "../../styledHelpers/Paddings";
 import IconButtonGeneric from "../Common/IconButtonGeneric";
+import { IState } from "../../reducers";
+import { IUsersReducer } from "../../reducers/usersReducers";
+import { useSelector } from "react-redux";
 
 const Wrapper = styled.aside`
   flex: 2;
@@ -108,8 +111,15 @@ const ListItem = styled.li`
 `;
 
 export const LeftMenu: FC = () => {
+
+  const { usersList, someData } = useSelector<IState, IUsersReducer>(state => ({
+    ...state.users
+  }))
+  
   return (
     <Wrapper>
+      {someData}
+      {console.log(usersList)}
       <Card>
       <Link to="/profile">
         <Header>

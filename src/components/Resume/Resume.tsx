@@ -5,6 +5,7 @@ import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
 import { Paddings } from "../../styledHelpers/Paddings";
 import IconButtonGeneric from "../Common/IconButtonGeneric";
+import Pagination from "../Pagination/Pagination";
 import ResumeItem from "./ResumeItem";
 
 const Wrapper = styled.section`
@@ -61,6 +62,9 @@ const SearchButtonContainer = styled.button`
 const SelectContainer = styled.div`
   margin-right: ${Margins[24]};
 `
+const ResumeItemWrapper = styled.div`
+  border: 2px solid red;
+`
 export const Resume: FC = () => {
   const [inputText, setInputText] = useState<string>('');
 
@@ -86,11 +90,17 @@ export const Resume: FC = () => {
           </SelectContainer>
         </FilterBox>
       </Header>
-      <ResumeItem/>
-      <ResumeItem/>
-      <ResumeItem/>
-      <ResumeItem/>
-      <ResumeItem/>
+      <ResumeItemWrapper>
+        {'something'.toLowerCase().includes(inputText.toLowerCase()) && 
+          <div>something</div>
+        }
+        <ResumeItem/>
+        <ResumeItem/>
+        <ResumeItem/>
+        <ResumeItem/>
+        <ResumeItem/>
+      </ResumeItemWrapper>
+      <Pagination />
     </Wrapper>
   );
 };
