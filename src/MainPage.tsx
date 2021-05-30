@@ -5,13 +5,13 @@ import Pagination from "./components/Pagination/Pagination";
 import { TopBar } from "./components/TopBar/TopBar";
 import { Colors } from "./styledHelpers/Colors";
 import { Margins } from "./styledHelpers/Margins";
-import { Paddings } from "./styledHelpers/Paddings";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import WorkspacePage from "./pages/WorkspacePage/WorkspacePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import EntitiesPage from "./pages/EntitiesPage/EntitiesPage";
 import TestPage from "./pages/TestPage/TestPage";
+import { Padding } from "./styledHelpers/Padding";
 
 const MainContent = styled.main`
   flex: 6;
@@ -21,7 +21,7 @@ const MainContent = styled.main`
 
 const Content = styled.section`
   max-width: 1200px;
-  padding: ${Paddings[24]} ${Paddings[16]} ${Paddings[8]} ${Paddings[16]};
+  padding: ${Padding[24]} ${Padding[16]} ${Padding[8]} ${Padding[16]};
   display: flex;
   margin: 0 auto;
   flex: auto;

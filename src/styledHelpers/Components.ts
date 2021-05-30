@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Colors } from "./Colors";
-import { Paddings } from "./Paddings";
+import { Padding } from "./Padding";
 
 export type Styles = {
   [ruleOrSelector: string]: string | number | Styles;
@@ -14,6 +14,6 @@ export const Wrapper = styled.div`
   background: grey;
   display: flex;
   justify-content: center;
-  padding: ${Paddings[8]};
+  padding: ${Padding[8]};
   box-shadow: ${boxShadow()}​​;
 `;

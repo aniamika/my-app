@@ -2,7 +2,7 @@ import { FC } from "react";
 import styled from "styled-components";
 import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
-import { Paddings } from "../../styledHelpers/Paddings";
+import { Padding } from "../../styledHelpers/Padding";
 import IconButtonGeneric from "../Common/IconButtonGeneric";
 
 const Wrapper = styled.div`
@@ -18,7 +18,7 @@ const Search = styled.input`
   color: ${Colors.blue02};
   width: 100%;
   height: 32px;
-  padding: ${Paddings[4]} ${Paddings[8]};
+  padding: ${Padding[4]} ${Padding[8]};
   text-transform: capitalize;
   font-family: "Roboto", sans-serif;
   font-size: ${FontSize[14]};
