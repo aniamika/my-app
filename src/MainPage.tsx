@@ -10,12 +10,13 @@ import WorkspacePage from "./pages/WorkspacePage/WorkspacePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import EntitiesPage from "./pages/EntitiesPage/EntitiesPage";
 import TestPage from "./pages/TestPage/TestPage";
-
 import { useDispatch } from "react-redux";
 import { getSomeData, getUsers } from "./actions/usersActions";
 import { Padding } from "./styledHelpers/Padding";
+import { getPhotos } from "./actions/photosActions";
 
 type GetUsers = ReturnType<typeof getUsers>;
+type GetPhotos = ReturnType<typeof getPhotos>;
 type GetSomeData = ReturnType<typeof getSomeData>;
 
 const MainContent = styled.main`
@@ -25,7 +26,7 @@ const MainContent = styled.main`
 `;
 const Content = styled.section`
   max-width: 1200px;
-  padding: ${Paddings[24]} ${Paddings[16]} ${Paddings[8]} ${Paddings[16]};
+  padding: ${Padding[24]} ${Padding[16]} ${Padding[8]} ${Padding[16]};
   display: flex;
   margin: 0 auto;
   flex: auto;
@@ -107,6 +108,10 @@ const MainPage: FC = () => {
     dispatch<GetUsers>(getUsers());
   }, []);
 
+  useEffect(()=> {
+    dispatch<GetPhotos>(getPhotos());
+  }, []);
+  
   // const clickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
   //   dispatch<GetSomeData>(getSomeData('Lalalalalala'));
   // }

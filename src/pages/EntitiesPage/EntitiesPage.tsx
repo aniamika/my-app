@@ -322,7 +322,6 @@ export const EntitiesPage: FC = () => {
           </ListEntitieContainer>
         </ListViewContainer>
       )}
-
     </Wrapper>
   );
 };

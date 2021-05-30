@@ -8,7 +8,7 @@ export interface IUsersReducer {
 
 const defaultState = (): IUsersReducer => ({
     usersList: [],
-    someData: 'Ala ma kota'
+    someData: ''
 });
 
 // eslint-disable-next-line import/no-anonymous-default-export

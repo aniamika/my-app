@@ -10,6 +10,7 @@ import { IState } from "../../reducers";
 import { Padding } from "../../styledHelpers/Padding";
 import { IUsersReducer } from "../../reducers/usersReducers";
 import { useSelector } from "react-redux";
+import { IPhotosReducer } from "../../reducers/photosReducers";
 
 const Wrapper = styled.aside`
   flex: 2;
@@ -115,23 +116,23 @@ const ListItem = styled.li`
 
 export const LeftMenu: FC = () => {
 
-  const { usersList, someData } = useSelector<IState, IUsersReducer>(state => ({
-    ...state.users
-  }))
+  const { usersList, photosList } = useSelector<IState, IUsersReducer & IPhotosReducer>(state => ({
+    ...state.users,
+    ...state.photos
+  }));
   
   return (
     <Wrapper>
-      {someData}
-
       {console.log(usersList?.[0])}
+      {console.log(photosList?.[0])}
       <Card>
       <Link to="/profile">
         <Header>
           <ImageBox>
-            <Image src="./media/employee-photo.jpg" />
+            <Image src={photosList[0]?.url} />
           </ImageBox>
-          <span>Humberta Swift</span>
-          <Description>Job title - Company</Description>
+          <span>{usersList[0]?.name}</span>
+          <Description>{usersList[0]?.company.name}</Description>
         </Header>
       </Link>
         <CardList>
