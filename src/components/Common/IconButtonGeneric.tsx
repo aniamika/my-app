@@ -37,6 +37,9 @@ const IconButton = styled.img`
     &.h-margin-right-8 {
         margin-right: 0.5rem;
     }
+    &.h-margin-left-8 {
+        margin-left: 0.5rem;
+    }
     &.h-margin-right-16 {
         margin-right: 1rem;
     }

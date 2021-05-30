@@ -3,14 +3,14 @@ import styled from "styled-components";
 import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
-import { Paddings } from "../../styledHelpers/Paddings";
+import { Padding } from "../../styledHelpers/Padding";
 import IconButtonGeneric from "../Common/IconButtonGeneric";
 import Pagination from "../Pagination/Pagination";
 import ResumeItem from "./ResumeItem";
 
 const Wrapper = styled.section`
   width: 100%;
-  padding: ${Paddings[8]} 0;
+  padding: ${Padding[8]} 0;
   display: flex;
   flex-direction: column;
   margin-bottom: ${Margins[16]};
@@ -22,7 +22,7 @@ const Header = styled.div`
   margin-bottom: ${Margins[16]};
 `
 const Heading = styled.h1`
-  padding-left: ${Paddings[8]};
+  padding-left: ${Padding[8]};
   font-weight: 500;
   font-size: ${FontSize[20]};
   color: ${Colors.blue04};
@@ -41,7 +41,7 @@ const FilterContainer = styled.div`
     width: 100%;
     border: 1px solid ${Colors.gray02};
     border-radius: 4px;
-    padding: 0 ${Paddings[32]} 0 ${Paddings[8]};
+    padding: 0 ${Padding[32]} 0 ${Padding[8]};
     height: 32px;
     font-size: ${FontSize[14]};
     font-weight: 300;

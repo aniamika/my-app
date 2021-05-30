@@ -10,7 +10,7 @@ const Wrapper = styled.div`
     padding: 0.5rem;
     margin: 0.5rem;
     display: flex;
-    width: calc(25% - 1rem);
+    min-height: 5.3rem;
 `
 const ImageContainer = styled.div`
     border: 1px solid ${Colors.gray04};

@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
-import { Paddings } from "../../styledHelpers/Paddings";
 import IconButtonGeneric from "../Common/IconButtonGeneric";
 import { IState } from "../../reducers";
+import { Padding } from "../../styledHelpers/Padding";
 import { IUsersReducer } from "../../reducers/usersReducers";
 import { useSelector } from "react-redux";
 
@@ -21,7 +21,8 @@ const Card = styled.div`
   box-shadow: ${BoxShadow.small};
 `;
 const Header = styled.div`
-  padding: ${Paddings[16]};
+
+  padding: ${Padding[16]};
   border-bottom: 1px solid ${Colors.gray02};
   display: flex;
   flex-direction: column;
@@ -53,7 +54,8 @@ const Description = styled.p`
   margin-bottom: ${Margins[8]};
 `;
 const CardList = styled.ul`
-  padding: ${Paddings[16]};
+
+  padding: ${Padding[16]};
 `;
 const Item = styled.li`
   margin-bottom: ${Margins[8]};
@@ -101,7 +103,8 @@ const CardButtonPublications = styled.button`
   cursor: pointer;
 `;
 const Navigation = styled.nav`
-  padding: ${Paddings[16]};
+
+  padding: ${Padding[16]};
 `;
 const List = styled.ul``;
 const ListItem = styled.li`

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
-import { Paddings } from "../../styledHelpers/Paddings";
+import { Padding } from "../../styledHelpers/Padding";
 import IconButtonGeneric from "../Common/IconButtonGeneric";
 
 const Wrapper = styled.div`
@@ -14,8 +14,8 @@ const Wrapper = styled.div`
     font-weight: 500;
     display: flex;
     align-items: center;
-    padding: ${Paddings[4]} 0;
-    padding: ${Paddings[8]};
+    padding: ${Padding[4]} 0;
+    padding: ${Padding[8]};
     height: 40px;
     &:hover {
       background-color: ${Colors.gray02};
@@ -35,12 +35,12 @@ const Wrapper = styled.div`
   }
 `;
 const FilterContainer = styled.div`
-  padding: ${Paddings[4]} ${Paddings[8]};
+  padding: ${Padding[4]} ${Padding[8]};
   input {
     width: 100%;
     border: 1px solid ${Colors.gray02};
     border-radius: 4px;
-    padding: 0 ${Paddings[8]};
+    padding: 0 ${Padding[8]};
     height: 32px;
     margin-bottom: ${Margins[4]};
     font-size: ${FontSize[14]};
@@ -60,14 +60,14 @@ const Container = styled.div`
   border-bottom: 1px solid ${Colors.gray02};
 `;
 const GroupHeader = styled.span`
-  padding: ${Paddings[8]};
+  padding: ${Padding[8]};
   color: ${Colors.gray03};
   font-weight: 400;
   width: 100%;
   display: block;
 `;
 const LogoutButton = styled.button`
-  padding: ${Paddings[16]} 0;
+  padding: ${Padding[16]} 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,8 +91,8 @@ const AccountListItem = styled.li`
   font-weight: 500;
   display: flex;
   align-items: center;
-  padding: ${Paddings[4]} 0;
-  padding: ${Paddings[8]};
+  padding: ${Padding[4]} 0;
+  padding: ${Padding[8]};
   height: 40px;
   &:hover {
     background-color: ${Colors.gray02};

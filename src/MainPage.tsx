@@ -4,15 +4,16 @@ import { LeftMenu } from "./components/LeftMenu/LeftMenu";
 import { TopBar } from "./components/TopBar/TopBar";
 import { Colors } from "./styledHelpers/Colors";
 import { Margins } from "./styledHelpers/Margins";
-import { Paddings } from "./styledHelpers/Paddings";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import WorkspacePage from "./pages/WorkspacePage/WorkspacePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import EntitiesPage from "./pages/EntitiesPage/EntitiesPage";
 import TestPage from "./pages/TestPage/TestPage";
+
 import { useDispatch } from "react-redux";
 import { getSomeData, getUsers } from "./actions/usersActions";
+import { Padding } from "./styledHelpers/Padding";
 
 type GetUsers = ReturnType<typeof getUsers>;
 type GetSomeData = ReturnType<typeof getSomeData>;
