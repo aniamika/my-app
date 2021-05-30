@@ -119,7 +119,8 @@ export const LeftMenu: FC = () => {
   return (
     <Wrapper>
       {someData}
-      {console.log(usersList)}
+
+      {console.log(usersList?.[0])}
       <Card>
       <Link to="/profile">
         <Header>
