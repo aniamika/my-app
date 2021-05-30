@@ -5,7 +5,7 @@ import { BoxShadow } from "../../styledHelpers/BoxShadow";
 import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
-import { Paddings } from "../../styledHelpers/Paddings";
+import { Padding } from "../../styledHelpers/Padding";
 import SliderPublication from "./SliderPublication";
 
 const SliderWrapper = styled.section`
@@ -23,7 +23,7 @@ const LeftContainer = styled.div`
   background-repeat: no-repeat;
   background-position: center; 
   background-size: cover;
-  padding: ${Paddings[16]};
+  padding: ${Padding[16]};
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -71,7 +71,7 @@ const PersonImage=styled.div`
     background-position: center;
 `
 const RightContainer = styled.div`
-  padding: ${Paddings[16]};
+  padding: ${Padding[16]};
   display: flex;
   flex-direction: column;
   justify-content: space-between;

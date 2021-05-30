@@ -3,16 +3,16 @@ import styled from "styled-components";
 import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
-import { Paddings } from "../../styledHelpers/Paddings";
+import { Padding } from "../../styledHelpers/Padding";
 import SingleItem from "./SingleItem";
 
 const Wrapper = styled.section`
   width: 100%;
-  padding: ${Paddings[8]} 0; 
+  padding: ${Padding[8]} 0; 
   margin-bottom: ${Margins[16]};
 `;
 const Header = styled.h1`
-  padding-left: ${Paddings[8]};
+  padding-left: ${Padding[8]};
   margin-bottom: ${Margins[16]};
   font-weight: 500;
   font-size: ${FontSize[20]};

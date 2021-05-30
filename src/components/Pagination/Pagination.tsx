@@ -4,11 +4,11 @@ import styled from "styled-components";
 import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
-import { Paddings } from "../../styledHelpers/Paddings";
+import { Padding } from "../../styledHelpers/Padding";
 
 const PaginationWrapper = styled.section`
   width: 100%;
-  padding: ${Paddings[8]};
+  padding: ${Padding[8]};
   display: flex;
   align-items: center;
   justify-content: center;

@@ -6,7 +6,7 @@ import { BoxShadow } from "../../styledHelpers/BoxShadow";
 import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
-import { Paddings } from "../../styledHelpers/Paddings";
+import { Padding } from "../../styledHelpers/Padding";
 import IconButtonGeneric from "../Common/IconButtonGeneric";
 import ExpandedMenu from "../ExpandedMenu/ExpandedMenu";
 import { TopBarSearch } from "./TopBarSearch";
@@ -18,7 +18,7 @@ const Wrapper = styled.header`
   flex-wrap: wrap;
   background-color: ${Colors.white};
   box-shadow: ${BoxShadow.medium};
-  padding: 0 ${Paddings[16]};
+  padding: 0 ${Padding[16]};
   min-height: 48px;
   position: sticky;
   top: 0;
@@ -84,7 +84,7 @@ const MenuWrapper = styled.div`
   border: 1px solid ${Colors.gray02};
   cursor: pointer;
   position: relative;
-  padding: 0 ${Paddings[8]};
+  padding: 0 ${Padding[8]};
   height: 32px;
   border-radius: 4px;
   font-family: "Roboto", sans-serif;
@@ -108,7 +108,7 @@ const ExpandedMenuContainer = styled.div`
   width: 100%;
   top: 32px;
   left: 0;
-  padding-top: ${Paddings[4]};
+  padding-top: ${Padding[4]};
   border-radius: 0 0 4px 4px;
   max-height: 0;
   transition: all .5s ease;

@@ -4,14 +4,14 @@ import { BoxShadow } from '../../styledHelpers/BoxShadow';
 import { Colors } from '../../styledHelpers/Colors';
 import { FontSize } from '../../styledHelpers/FontSize';
 import { Margins } from '../../styledHelpers/Margins';
-import { Paddings } from '../../styledHelpers/Paddings';
+import { Padding } from '../../styledHelpers/Padding';
 import IconButtonGeneric from '../Common/IconButtonGeneric';
 
 const Wrapper = styled.div`
     background: ${Colors.white};
     border-radius: 0.25rem;
     box-shadow: ${BoxShadow.small};
-    padding: ${Paddings[8]} ${Paddings[16]}; 
+    padding: ${Padding[8]} ${Padding[16]}; 
     margin-bottom: ${Margins[16]};
     p {
         margin-bottom: ${Margins[8]};
