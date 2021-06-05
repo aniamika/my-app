@@ -6,7 +6,15 @@ import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
 import IconButtonGeneric from "../Common/IconButtonGeneric";
+import { IState } from "../../reducers";
 import { Padding } from "../../styledHelpers/Padding";
+import { IUsersReducer } from "../../reducers/usersReducers";
+import { useSelector } from "react-redux";
+import { IPhotosReducer } from "../../reducers/photosReducers";
+import { IAlbumsReducer } from "../../reducers/albumsReducers";
+import { ICommentsReducer } from "../../reducers/commentsReducers";
+import { ITodosReducer } from "../../reducers/todosReducers";
+import { IPostsReducer } from "../../reducers/postsReducers";
 
 const Wrapper = styled.aside`
   flex: 2;
@@ -18,6 +26,7 @@ const Card = styled.div`
   box-shadow: ${BoxShadow.small};
 `;
 const Header = styled.div`
+
   padding: ${Padding[16]};
   border-bottom: 1px solid ${Colors.gray02};
   display: flex;
@@ -50,6 +59,7 @@ const Description = styled.p`
   margin-bottom: ${Margins[8]};
 `;
 const CardList = styled.ul`
+
   padding: ${Padding[16]};
 `;
 const Item = styled.li`
@@ -98,6 +108,7 @@ const CardButtonPublications = styled.button`
   cursor: pointer;
 `;
 const Navigation = styled.nav`
+
   padding: ${Padding[16]};
 `;
 const List = styled.ul``;
@@ -108,16 +119,32 @@ const ListItem = styled.li`
 `;
 
 export const LeftMenu: FC = () => {
+
+  const { albumsList, commentsList, photosList, postsList, todosList, usersList } = useSelector<IState, IAlbumsReducer & ICommentsReducer & IPhotosReducer & IPostsReducer & ITodosReducer & IUsersReducer >(state => ({
+    ...state.albums,
+    ...state.comments,
+    ...state.photos,
+    ...state.posts,
+    ...state.todos,
+    ...state.users,
+  }));
+  
   return (
-    <Wrapper>
+    <Wrapper>      
+      {console.log(albumsList?.[0])}
+      {console.log(commentsList?.[0])}
+      {console.log(photosList?.[0])}
+      {console.log(postsList?.[0])}
+      {console.log(todosList?.[0])}
+      {console.log(usersList?.[0])}
       <Card>
       <Link to="/profile">
         <Header>
           <ImageBox>
-            <Image src="./media/employee-photo.jpg" />
+            <Image src={photosList[0]?.url} />
           </ImageBox>
-          <span>Humberta Swift</span>
-          <Description>Job title - Company</Description>
+          <span>{usersList[0]?.name}</span>
+          <Description>{usersList[0]?.company.name}</Description>
         </Header>
       </Link>
         <CardList>

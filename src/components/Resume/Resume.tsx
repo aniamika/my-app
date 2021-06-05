@@ -1,10 +1,14 @@
 import React, { ChangeEvent, FC, useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { IState } from "../../reducers";
+import { IPostsReducer } from "../../reducers/postsReducers";
 import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
 import { Padding } from "../../styledHelpers/Padding";
 import IconButtonGeneric from "../Common/IconButtonGeneric";
+import Pagination from "../Pagination/Pagination";
 import ResumeItem from "./ResumeItem";
 
 const Wrapper = styled.section`
@@ -61,6 +65,9 @@ const SearchButtonContainer = styled.button`
 const SelectContainer = styled.div`
   margin-right: ${Margins[24]};
 `
+const ResumeItemWrapper = styled.div`
+
+`
 export const Resume: FC = () => {
   const [inputText, setInputText] = useState<string>('');
 
@@ -68,6 +75,11 @@ export const Resume: FC = () => {
     const text = e.target.value;
     setInputText(text);
   }
+
+  const { postsList } = useSelector<IState, IPostsReducer >(state => ({
+    ...state.posts,
+  }));
+  
   return (
     <Wrapper>
       <Header>
@@ -86,11 +98,15 @@ export const Resume: FC = () => {
           </SelectContainer>
         </FilterBox>
       </Header>
-      <ResumeItem/>
-      <ResumeItem/>
-      <ResumeItem/>
-      <ResumeItem/>
-      <ResumeItem/>
+      <ResumeItemWrapper>
+        {'something'.toLowerCase().includes(inputText.toLowerCase()) && 
+          <div>something</div>
+        }
+         {postsList?.map(() => (
+            <ResumeItem/>
+          ))}
+      </ResumeItemWrapper>
+      <Pagination />
     </Wrapper>
   );
 };

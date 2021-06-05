@@ -1,5 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { IState } from '../../reducers';
+import { IPhotosReducer } from '../../reducers/photosReducers';
+import { IUsersReducer } from '../../reducers/usersReducers';
 import { Colors } from '../../styledHelpers/Colors';
 import { FontSize } from '../../styledHelpers/FontSize';
 
@@ -22,7 +26,6 @@ const ImageContainer = styled.div`
 const Image = styled.div`
     width: 100%;
     height: 100%;
-    background-image: url("./media/city.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -49,14 +52,20 @@ const DescriptionContainer = styled.div`
     }
 `
 export const Entitie = () => {
+
+    const { usersList, photosList } = useSelector<IState, IUsersReducer & IPhotosReducer>(state => ({
+        ...state.users,
+        ...state.photos,
+      }));
+      
     return (
         <Wrapper>
             <ImageContainer>
-                <Image />
+                <Image style={{backgroundImage: `url(${(photosList[5]?.thumbnailUrl)})`}}/>
             </ImageContainer>
             <DescriptionContainer>
-                <span>ABS generic company</span>
-                <p>Caracas 1050, Distrito Capital</p>
+                <span>{usersList?.[0].company.name}</span>
+                <p>{usersList?.[0].address.street}</p>
             </DescriptionContainer>
         </Wrapper>
     )
