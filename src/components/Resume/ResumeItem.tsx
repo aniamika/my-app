@@ -1,5 +1,9 @@
 import React, { FC } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { IState } from '../../reducers';
+import { IUsersReducer } from '../../reducers/usersReducers';
+import { IPostsReducer } from '../../reducers/postsReducers';
 import { BoxShadow } from '../../styledHelpers/BoxShadow';
 import { Colors } from '../../styledHelpers/Colors';
 import { FontSize } from '../../styledHelpers/FontSize';
@@ -67,20 +71,26 @@ const Update = styled.div`
     font-size: ${FontSize[12]};
 `
 const ResumeItem: FC = () => {
+    
+  const { postsList, usersList } = useSelector<IState, IPostsReducer & IUsersReducer>(state => ({
+    ...state.posts,
+    ...state.users,
+  }));
+  
     return (
         <Wrapper>
-            <Header>Resume Item</Header>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et hendrerit orci. Donet vehicular justo ut nulla aliquet, ac tincidunt metus tristique.</p>
+            <Header>{postsList[0]?.title}</Header>
+            <p>{postsList[0]?.body}</p>
             <Footer>
                 <Container>
                     <IconButtonGeneric className="sm h-margin-right-8" src="./media/icons/logo.png" alt=""/>
-                    <span>Subsid. corp.</span>
+                    <span>{usersList[0]?.company.name}</span>
                 </Container>
                 <Category>
                     <IconButtonGeneric className="sm h-margin-right-8" src="./media/icons/entities2.svg" alt=""/>
-                    <span>Client contract</span>
+                    <span>{usersList[0]?.company.catchPhrase}</span>
                 </Category>
-                <Update>Updated 3 days ago by John Doe</Update>
+                <Update>Updated 3 days ago by {usersList[0]?.name}</Update>
             </Footer>
         </Wrapper>
     )

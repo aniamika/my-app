@@ -1,5 +1,10 @@
 import React, { FC } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { IState } from '../../reducers';
+import { IPhotosReducer } from '../../reducers/photosReducers';
+import { IPostsReducer } from '../../reducers/postsReducers';
+import { IUsersReducer } from '../../reducers/usersReducers';
 import { Colors } from '../../styledHelpers/Colors';
 import { FontSize } from '../../styledHelpers/FontSize';
 
@@ -9,7 +14,7 @@ const PublicationWrapper=styled.div`
     margin-bottom: 0.5rem;
 `
 const ImageContainer=styled.div`
-    background-image: url("./media/city.jpg");
+
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -24,7 +29,6 @@ const PersonImage=styled.div`
     height: 1.5rem;
     border-radius: 50%;
     margin-right: 0.5rem;
-    background-image: url("./media/employee-photo.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -56,16 +60,23 @@ const PersonContainer=styled.div`
 `
 
 const SliderPublication:FC = () => {
+
+    const { postsList, usersList, photosList } = useSelector<IState, IPostsReducer & IUsersReducer & IPhotosReducer>(state => ({
+        ...state.posts,
+        ...state.users,
+        ...state.photos,
+      }));
+
     return (
         <PublicationWrapper>
-            <ImageContainer />
+            <ImageContainer style={{backgroundImage: `url(${(photosList[1]?.url)})`}} />
             <DescriptionContainer>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit... and one more line for the demo</p>
+                <p>{postsList[0]?.title}</p>
                 <FooterContainer>
                     <time>7 jan. 2020</time>
                     <PersonContainer>
-                        <PersonImage />
-                        <span>John Doe</span>
+                        <PersonImage style={{backgroundImage: `url(${(photosList[2]?.url)})`}}/>
+                        <span>{usersList[0]?.name}</span>
                     </PersonContainer>
                 </FooterContainer>
             </DescriptionContainer>

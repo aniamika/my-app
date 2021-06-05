@@ -1,5 +1,8 @@
 import React, { ChangeEvent, FC, useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { IState } from "../../reducers";
+import { IPostsReducer } from "../../reducers/postsReducers";
 import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
@@ -63,7 +66,7 @@ const SelectContainer = styled.div`
   margin-right: ${Margins[24]};
 `
 const ResumeItemWrapper = styled.div`
-  border: 2px solid red;
+
 `
 export const Resume: FC = () => {
   const [inputText, setInputText] = useState<string>('');
@@ -72,6 +75,11 @@ export const Resume: FC = () => {
     const text = e.target.value;
     setInputText(text);
   }
+
+  const { postsList } = useSelector<IState, IPostsReducer >(state => ({
+    ...state.posts,
+  }));
+  
   return (
     <Wrapper>
       <Header>
@@ -94,11 +102,9 @@ export const Resume: FC = () => {
         {'something'.toLowerCase().includes(inputText.toLowerCase()) && 
           <div>something</div>
         }
-        <ResumeItem/>
-        <ResumeItem/>
-        <ResumeItem/>
-        <ResumeItem/>
-        <ResumeItem/>
+         {postsList?.map(() => (
+            <ResumeItem/>
+          ))}
       </ResumeItemWrapper>
       <Pagination />
     </Wrapper>

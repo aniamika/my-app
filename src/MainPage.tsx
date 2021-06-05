@@ -11,13 +11,20 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import EntitiesPage from "./pages/EntitiesPage/EntitiesPage";
 import TestPage from "./pages/TestPage/TestPage";
 import { useDispatch } from "react-redux";
-import { getSomeData, getUsers } from "./actions/usersActions";
 import { Padding } from "./styledHelpers/Padding";
+import { getPosts } from "./actions/postsActions";
+import { getComments } from "./actions/commentsActions";
+import { getAlbums } from "./actions/albumsActions";
 import { getPhotos } from "./actions/photosActions";
+import { getTodos } from "./actions/todosActions";
+import { getUsers } from "./actions/usersActions";
 
-type GetUsers = ReturnType<typeof getUsers>;
+type GetPosts = ReturnType<typeof getPosts>;
+type GetComments = ReturnType<typeof getComments>;
+type GetAlbums = ReturnType<typeof getAlbums>;
 type GetPhotos = ReturnType<typeof getPhotos>;
-type GetSomeData = ReturnType<typeof getSomeData>;
+type GetTodos = ReturnType<typeof getTodos>;
+type GetUsers = ReturnType<typeof getUsers>;
 
 const MainContent = styled.main`
   flex: 6;
@@ -35,8 +42,7 @@ const Content = styled.section`
 const MainBox = styled.section`
   overflow-y: auto;
   overflow-x: hidden;
-  height: 100vh;
-  padding-top: 3rem;
+  height: calc(100vh - 3rem);
 `
 const GlobalStyle = createGlobalStyle`
   body {
@@ -105,16 +111,28 @@ const MainPage: FC = () => {
   const dispatch = useDispatch();
   
   useEffect(() => {
-    dispatch<GetUsers>(getUsers());
+    dispatch<GetPosts>(getPosts());
+  }, []);
+
+  useEffect(()=> {
+    dispatch<GetComments>(getComments());
+  }, []);
+
+  useEffect(() => {
+    dispatch<GetAlbums>(getAlbums());
   }, []);
 
   useEffect(()=> {
     dispatch<GetPhotos>(getPhotos());
   }, []);
-  
-  // const clickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
-  //   dispatch<GetSomeData>(getSomeData('Lalalalalala'));
-  // }
+
+  useEffect(() => {
+    dispatch<GetTodos>(getTodos());
+  }, []);
+
+  useEffect(() => {
+    dispatch<GetUsers>(getUsers());
+  }, []);
 
   return (
     <>

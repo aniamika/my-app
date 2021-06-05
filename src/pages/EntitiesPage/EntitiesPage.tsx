@@ -1,13 +1,31 @@
 import React, { ChangeEvent, FC, useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import IconButtonGeneric from "../../components/Common/IconButtonGeneric";
 import Entitie from "../../components/Entitie/Entitie";
+import { IState } from "../../reducers";
+import { IAlbumsReducer } from "../../reducers/albumsReducers";
 import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
 import { Padding } from "../../styledHelpers/Padding";
 
 const Wrapper = styled.section`
+  width: auto;
+  height: auto;
+  transition: all .5s ease-in-out;
+  overflow: hidden;
+  &.full {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow: auto;
+    width: 100vw;
+    height: 100vh;
+    background-color: ${Colors.gray01};
+    padding: ${Padding[16]};
+  }
 `;
 const Header = styled.header`
   margin: 0 0.5rem 0.5rem 0.5rem;
@@ -67,17 +85,23 @@ const ListEntitieContainer = styled.div`
 const MosaicView = styled.button`
   padding: 0.5rem;
   border-radius: 4px 0 0 4px;
-  background-color: ${Colors.blue06};
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid ${Colors.blue06};
+  background-color: ${Colors.gray01};
   span {
-    color: ${Colors.blue01};
+    color: ${Colors.gray04};
     font-size: ${FontSize[12]};
     text-transform: capitalize;
     font-weight: 700;
     margin-left: 0.5rem;
+  }
+  &.show {
+    background-color: ${Colors.blue06};
+    span {
+      color: ${Colors.blue01};
+    }
   }
 `
 const ListView = styled.button`
@@ -89,6 +113,9 @@ const ListView = styled.button`
   justify-content: center;
   background-color: ${Colors.gray01};
   border: 1px solid ${Colors.gray02};
+  &.show {
+    background-color: ${Colors.blue06};
+  }
 `
 const SearchButtonContainer = styled.button`
   position: absolute;
@@ -117,6 +144,9 @@ const ExpandContainer = styled.button`
   display: flex;
   align-items: center;
   color: ${Colors.gray04};
+  &:hover {
+    cursor: nesw-resize;
+  }
 `
 const EllipsisContainer = styled.button`
   padding: 0 ${Padding[8]};
@@ -180,7 +210,9 @@ const FollowedContainer = styled.button`
   font-weight: 700;
 `
 export const EntitiesPage: FC = () => {
-  const [visible, setVisible] = useState(true);
+  const [mosaicViewVisible, setMosaicViewVisible] = useState(true);
+  const [listViewVisible, setListViewVisible] = useState(false);
+  const [fullScreen, setFullScreen] = useState(false);
   const [inputText, setInputText] = useState<string>('');
 
   const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -188,14 +220,35 @@ export const EntitiesPage: FC = () => {
     setInputText(text);
   }
 
- const toggleView = () => {
-    setVisible(function changeValue(oldValue) {
+  const showMosaicView = () => {
+    setMosaicViewVisible(function changeValue() {
+      return true;
+    });
+    setListViewVisible(function changeValue() {
+      return false;
+    });
+  }
+  const showListView = () => {
+    setMosaicViewVisible(function changeValue() {
+      return false;
+    });
+    setListViewVisible(function changeValue() {
+      return true;
+    });
+  }
+
+  const expandEntities = () => {
+    setFullScreen(function changeValue(oldValue) {
       return !oldValue;
     });
   }
 
+  const { albumsList } = useSelector<IState, IAlbumsReducer >(state => ({
+    ...state.albums,
+  }));
+
   return (
-    <Wrapper>
+    <Wrapper className={fullScreen ? "full" : ""}>
       <Header> 
         <HeadingContainer>
           <h2>Entities</h2>
@@ -203,13 +256,13 @@ export const EntitiesPage: FC = () => {
         </HeadingContainer>
         <ViewContainer>
         
-          <MosaicView onClick={toggleView}>
-            <IconButtonGeneric src="./media/icons/grid.svg" className="md" alt="settings"/>
+          <MosaicView onClick={showMosaicView} className={mosaicViewVisible ? "show" : ""}>
+            <IconButtonGeneric src={mosaicViewVisible ? "./media/icons/grid-blue.svg" : "./media/icons/grid.svg"} className="md" alt="settings"/>
             <span>Mosaic</span>
           </MosaicView>
         
-          <ListView onClick={toggleView}> 
-            <IconButtonGeneric src="./media/icons/list.svg" className="md" alt=""/>
+          <ListView onClick={showListView} className={listViewVisible ? "show" : ""}> 
+            <IconButtonGeneric src={listViewVisible ? "./media/icons/list-blue.svg" : "./media/icons/list.svg"} className="md" alt=""/>
           </ListView>
        
         </ViewContainer>
@@ -237,7 +290,7 @@ export const EntitiesPage: FC = () => {
             Filters
           </FiltersContainer>
 
-          <ExpandContainer>
+          <ExpandContainer onClick={expandEntities}>
             <IconButtonGeneric src="./media/icons/expand.svg" className="sm" alt="expand"/>
           </ExpandContainer>
 
@@ -261,67 +314,34 @@ export const EntitiesPage: FC = () => {
         </RightContainer>
       </SortingContainer>
 
-      {visible ? (
+      {mosaicViewVisible && (
         <MosaicViewContainer>
-          <MosaicEntitieContainer>
-            <Entitie/>
-          </MosaicEntitieContainer>
-          <MosaicEntitieContainer>
-            <Entitie/>
-          </MosaicEntitieContainer>
-          <MosaicEntitieContainer>
-            <Entitie/>
-          </MosaicEntitieContainer>
-          <MosaicEntitieContainer>
-            <Entitie/>
-          </MosaicEntitieContainer>
-          <MosaicEntitieContainer>
-            <Entitie/>
-          </MosaicEntitieContainer>
-          <MosaicEntitieContainer>
-            <Entitie/>
-          </MosaicEntitieContainer>
-          <MosaicEntitieContainer>
-            <Entitie/>
-          </MosaicEntitieContainer>
-          <MosaicEntitieContainer>
-            <Entitie/>
-          </MosaicEntitieContainer>
-          <MosaicEntitieContainer>
-            <Entitie/>
-          </MosaicEntitieContainer>
-          <MosaicEntitieContainer>
-            <Entitie/>
-          </MosaicEntitieContainer>
-          <MosaicEntitieContainer>
-            <Entitie/>
-          </MosaicEntitieContainer>
-          <MosaicEntitieContainer>
-            <Entitie/>
-          </MosaicEntitieContainer>
-          <MosaicEntitieContainer>
-            <Entitie/>
-          </MosaicEntitieContainer>
+          {albumsList?.map(() => (
+            <MosaicEntitieContainer>
+              <Entitie/>
+            </MosaicEntitieContainer>
+          ))}
         </MosaicViewContainer>
-      ) : (
+     )}
+     {listViewVisible && (
         <ListViewContainer>
-          <ListEntitieContainer>
-            <Entitie/>
-          </ListEntitieContainer>
-          <ListEntitieContainer>
-            <Entitie/>
-          </ListEntitieContainer>
-          <ListEntitieContainer>
-            <Entitie/>
-          </ListEntitieContainer>
-          <ListEntitieContainer>
-            <Entitie/>
-          </ListEntitieContainer>
-          <ListEntitieContainer>
-            <Entitie/>
-          </ListEntitieContainer>
-        </ListViewContainer>
-      )}
+        <ListEntitieContainer>
+          <Entitie/>
+        </ListEntitieContainer>
+        <ListEntitieContainer>
+          <Entitie/>
+        </ListEntitieContainer>
+        <ListEntitieContainer>
+          <Entitie/>
+        </ListEntitieContainer>
+        <ListEntitieContainer>
+          <Entitie/>
+        </ListEntitieContainer>
+        <ListEntitieContainer>
+          <Entitie/>
+        </ListEntitieContainer>
+      </ListViewContainer>
+     )}
     </Wrapper>
   );
 };

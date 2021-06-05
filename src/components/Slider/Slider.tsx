@@ -1,6 +1,11 @@
 import React, { FC } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { IState } from "../../reducers";
+import { IPhotosReducer } from "../../reducers/photosReducers";
+import { IPostsReducer } from "../../reducers/postsReducers";
+import { IUsersReducer } from "../../reducers/usersReducers";
 import { BoxShadow } from "../../styledHelpers/BoxShadow";
 import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
@@ -19,7 +24,6 @@ const SliderWrapper = styled.section`
   margin-bottom: ${Margins[16]};
 `;
 const LeftContainer = styled.div`
-  background-image: url("./media/city.jpg");
   background-repeat: no-repeat;
   background-position: center; 
   background-size: cover;
@@ -44,6 +48,7 @@ const LeftContainer = styled.div`
   }
   p {
     z-index: 1;
+    margin-bottom: 0.25rem;
   }
 `
 const Footer=styled.div`
@@ -60,15 +65,11 @@ const PersonContainer=styled.div`
     align-items: center;
     color: ${Colors.gray02};
 `
-const PersonImage=styled.div`
+const PersonImage=styled.img`
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
     margin-right: 0.5rem;
-    background-image: url("./media/employee-photo.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
 `
 const RightContainer = styled.div`
   padding: ${Padding[16]};
@@ -87,25 +88,38 @@ const RightContainer = styled.div`
     font-size: ${FontSize[14]};
   }
 `
+const PublicationsContainer = styled.div`
+  max-height: 15.25rem;
+  overflow: auto;
+`
 
 const Slider: FC = () => {
+  
+  const { postsList, usersList, photosList } = useSelector<IState, IPostsReducer & IUsersReducer & IPhotosReducer >(state => ({
+    ...state.posts,
+    ...state.users,
+    ...state.photos,
+  }));
+
   return (
     <SliderWrapper>
-      <LeftContainer>
-        <p>Lorem ipsum dolar sit amet, consectetur adipiscing elit... and one more line for the demo</p>
+      <LeftContainer style={{backgroundImage: `url(${(photosList[0]?.url)})`}}>
+        <p>{postsList[0]?.body}</p>
         <Footer>
           <time>7 jan. 2020</time>
           <PersonContainer>
-              <PersonImage/>
-              <span>John Doe</span>
+              <PersonImage src={photosList[0]?.url}/>
+              <span>{usersList[1]?.name}</span>
           </PersonContainer>
         </Footer>
       </LeftContainer>
       <RightContainer>
         <h2>Latest publications</h2>
-        <SliderPublication/>
-        <SliderPublication/>
-        <SliderPublication/>
+        <PublicationsContainer>
+          {postsList.map(() => (
+            <SliderPublication/>
+          ))}
+        </PublicationsContainer>
         <Link to="/test">See more publications</Link>
       </RightContainer>
     </SliderWrapper>

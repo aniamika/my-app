@@ -11,6 +11,10 @@ import { Padding } from "../../styledHelpers/Padding";
 import { IUsersReducer } from "../../reducers/usersReducers";
 import { useSelector } from "react-redux";
 import { IPhotosReducer } from "../../reducers/photosReducers";
+import { IAlbumsReducer } from "../../reducers/albumsReducers";
+import { ICommentsReducer } from "../../reducers/commentsReducers";
+import { ITodosReducer } from "../../reducers/todosReducers";
+import { IPostsReducer } from "../../reducers/postsReducers";
 
 const Wrapper = styled.aside`
   flex: 2;
@@ -116,15 +120,23 @@ const ListItem = styled.li`
 
 export const LeftMenu: FC = () => {
 
-  const { usersList, photosList } = useSelector<IState, IUsersReducer & IPhotosReducer>(state => ({
+  const { albumsList, commentsList, photosList, postsList, todosList, usersList } = useSelector<IState, IAlbumsReducer & ICommentsReducer & IPhotosReducer & IPostsReducer & ITodosReducer & IUsersReducer >(state => ({
+    ...state.albums,
+    ...state.comments,
+    ...state.photos,
+    ...state.posts,
+    ...state.todos,
     ...state.users,
-    ...state.photos
   }));
   
   return (
-    <Wrapper>
-      {console.log(usersList?.[0])}
+    <Wrapper>      
+      {console.log(albumsList?.[0])}
+      {console.log(commentsList?.[0])}
       {console.log(photosList?.[0])}
+      {console.log(postsList?.[0])}
+      {console.log(todosList?.[0])}
+      {console.log(usersList?.[0])}
       <Card>
       <Link to="/profile">
         <Header>

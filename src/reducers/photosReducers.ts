@@ -9,7 +9,7 @@ const defaultState = (): IPhotosReducer => ({
     photosList: [],
 });
 
-
+// eslint-disable-next-line import/no-anonymous-default-export
 export default ( state = defaultState(), action: any ) => {
     switch (action.type) {
         case actionTypes.GET_PHOTOS: {
@@ -20,7 +20,7 @@ export default ( state = defaultState(), action: any ) => {
             }
         }
         default: {
-            return state;
+            return state
         }
     };
 };
