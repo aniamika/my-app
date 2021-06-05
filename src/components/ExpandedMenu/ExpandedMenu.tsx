@@ -1,6 +1,10 @@
 import React, { ChangeEvent, FC, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { IState } from "../../reducers";
+import { IPhotosReducer } from "../../reducers/photosReducers";
+import { IUsersReducer } from "../../reducers/usersReducers";
 import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
@@ -141,6 +145,11 @@ export const ExpandedMenu: FC = () => {
     setInputText(text);
   }
 
+  const { usersList, photosList } = useSelector<IState, IUsersReducer & IPhotosReducer>(state => ({
+    ...state.users,
+    ...state.photos
+  }));
+  
   return (
     <Wrapper>
 
@@ -243,10 +252,10 @@ export const ExpandedMenu: FC = () => {
             <Link to="/profile">
               <AccountListItem>
                 <AccountImageContainer>
-                  <img src="./media/employee-photo.jpg" alt="" />
+                  <img src={photosList[0]?.url} alt="" />
                 </AccountImageContainer>
                 <div>
-                  <p>Jeanne-Marie de la cli</p>
+                  <p>{usersList[0]?.name}</p>
                   <span>See profile</span>
                 </div>
               </AccountListItem>

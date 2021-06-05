@@ -1,7 +1,6 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import { LeftMenu } from "./components/LeftMenu/LeftMenu";
-import Pagination from "./components/Pagination/Pagination";
 import { TopBar } from "./components/TopBar/TopBar";
 import { Colors } from "./styledHelpers/Colors";
 import { Margins } from "./styledHelpers/Margins";
@@ -11,14 +10,27 @@ import WorkspacePage from "./pages/WorkspacePage/WorkspacePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import EntitiesPage from "./pages/EntitiesPage/EntitiesPage";
 import TestPage from "./pages/TestPage/TestPage";
+import { useDispatch } from "react-redux";
 import { Padding } from "./styledHelpers/Padding";
+import { getPosts } from "./actions/postsActions";
+import { getComments } from "./actions/commentsActions";
+import { getAlbums } from "./actions/albumsActions";
+import { getPhotos } from "./actions/photosActions";
+import { getTodos } from "./actions/todosActions";
+import { getUsers } from "./actions/usersActions";
+
+type GetPosts = ReturnType<typeof getPosts>;
+type GetComments = ReturnType<typeof getComments>;
+type GetAlbums = ReturnType<typeof getAlbums>;
+type GetPhotos = ReturnType<typeof getPhotos>;
+type GetTodos = ReturnType<typeof getTodos>;
+type GetUsers = ReturnType<typeof getUsers>;
 
 const MainContent = styled.main`
   flex: 6;
   overflow: hidden;
   margin-left: ${Margins[16]};
 `;
-
 const Content = styled.section`
   max-width: 1200px;
   padding: ${Padding[24]} ${Padding[16]} ${Padding[8]} ${Padding[16]};
@@ -27,11 +39,10 @@ const Content = styled.section`
   flex: auto;
   overflow: auto;
 `;
-
 const MainBox = styled.section`
   overflow-y: auto;
   overflow-x: hidden;
-  height: 100vh;
+  height: calc(100vh - 3rem);
 `
 const GlobalStyle = createGlobalStyle`
   body {
@@ -74,7 +85,6 @@ const Reset = createGlobalStyle`
     }
   }
 `;
-
 const Scrollbar = createGlobalStyle`
   ::-webkit-scrollbar {
     border-radius: 6px;
@@ -98,6 +108,32 @@ const Scrollbar = createGlobalStyle`
 `;
 
 const MainPage: FC = () => {
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch<GetPosts>(getPosts());
+  }, []);
+
+  useEffect(()=> {
+    dispatch<GetComments>(getComments());
+  }, []);
+
+  useEffect(() => {
+    dispatch<GetAlbums>(getAlbums());
+  }, []);
+
+  useEffect(()=> {
+    dispatch<GetPhotos>(getPhotos());
+  }, []);
+
+  useEffect(() => {
+    dispatch<GetTodos>(getTodos());
+  }, []);
+
+  useEffect(() => {
+    dispatch<GetUsers>(getUsers());
+  }, []);
+
   return (
     <>
     <Reset />
@@ -128,7 +164,6 @@ const MainPage: FC = () => {
               </Route>
             </Switch>
 
-            <Pagination />
           </MainContent>
         </Content>
       </MainBox>
