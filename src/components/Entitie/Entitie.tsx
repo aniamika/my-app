@@ -64,8 +64,8 @@ export const Entitie = () => {
                 <Image style={{backgroundImage: `url(${(photosList[5]?.thumbnailUrl)})`}}/>
             </ImageContainer>
             <DescriptionContainer>
-                <span>{usersList?.[0].company.name}</span>
-                <p>{usersList?.[0].address.street}</p>
+                <span>{usersList[0]?.company.name}</span>
+                <p>{usersList[0]?.address.street}</p>
             </DescriptionContainer>
         </Wrapper>
     )

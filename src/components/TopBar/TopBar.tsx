@@ -134,7 +134,7 @@ export const TopBar: FC = () => {
             <IconButtonGeneric src="./media/icons/logo.png" className="lg" alt="logo"/>
           </LogoContainer>
         </Link>
-        <MenuWrapper ref={wrapperRef} >
+        <MenuWrapper ref={wrapperRef}>
           <Button onClick={menuHandler}>
           <MenuLeftContainer >
             <IconButtonGeneric src="./media/icons/house2.svg" className="md h-margin-right-16" alt=""/>

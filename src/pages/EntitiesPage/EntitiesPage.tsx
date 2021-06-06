@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import IconButtonGeneric from "../../components/Common/IconButtonGeneric";
 import Entitie from "../../components/Entitie/Entitie";
+import Filters from "../../components/Filters/Filters";
 import { IState } from "../../reducers";
 import { IAlbumsReducer } from "../../reducers/albumsReducers";
 import { Colors } from "../../styledHelpers/Colors";
@@ -209,9 +210,18 @@ const FollowedContainer = styled.button`
   color: ${Colors.blue01};
   font-weight: 700;
 `
+const FiltersBox = styled.div`
+  max-height: 0;
+  transition: all .5s ease;
+  overflow: hidden;
+  &.isOpen {
+    max-height: 19rem;
+  }
+`
 export const EntitiesPage: FC = () => {
   const [mosaicViewVisible, setMosaicViewVisible] = useState(true);
   const [listViewVisible, setListViewVisible] = useState(false);
+  const [filters, setFilters] = useState(false);
   const [fullScreen, setFullScreen] = useState(false);
   const [inputText, setInputText] = useState<string>('');
 
@@ -242,6 +252,11 @@ export const EntitiesPage: FC = () => {
       return !oldValue;
     });
   }
+  const showFilters = () => {
+    setFilters(function changeValue(oldValue) {
+      return !oldValue;
+    });
+  };
 
   const { albumsList } = useSelector<IState, IAlbumsReducer >(state => ({
     ...state.albums,
@@ -285,7 +300,7 @@ export const EntitiesPage: FC = () => {
             Sort
           </SortContainer>
 
-          <FiltersContainer>
+          <FiltersContainer onClick={showFilters}>
             <IconButtonGeneric src="./media/icons/filter.svg" className="sm h-margin-right-8" alt="filter"/>
             Filters
           </FiltersContainer>
@@ -313,7 +328,13 @@ export const EntitiesPage: FC = () => {
           </FollowedContainer>
         </RightContainer>
       </SortingContainer>
-
+      
+      <FiltersBox className={filters ? "isOpen" : ""}>
+        {filters && (
+          <Filters/>
+        )}
+      </FiltersBox>
+    
       {mosaicViewVisible && (
         <MosaicViewContainer>
           {albumsList?.map(() => (
