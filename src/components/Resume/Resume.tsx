@@ -1,4 +1,5 @@
 import React, { ChangeEvent, FC, useState } from "react";
+import ReactPaginate from 'react-paginate';
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { IState } from "../../reducers";
@@ -70,12 +71,18 @@ const ResumeItemWrapper = styled.div`
 `
 export const Resume: FC = () => {
   const [inputText, setInputText] = useState<string>('');
+  const [currentPage, setCurrentPage] = useState<number>(0);
 
   const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const text = e.target.value;
     setInputText(text);
   }
 
+  const hanglePageClick = (data: any) => {
+    const selected = data.selected;
+    setCurrentPage(selected);
+  }
+  
   const { postsList } = useSelector<IState, IPostsReducer >(state => ({
     ...state.posts,
   }));
@@ -102,11 +109,26 @@ export const Resume: FC = () => {
         {'something'.toLowerCase().includes(inputText.toLowerCase()) && 
           <div>something</div>
         }
-         {postsList?.map(() => (
+        {postsList.slice(currentPage, currentPage + 10).map(elem => 
+           <ResumeItem/>
+          )}
+         {/* {postsList?.map(() => (
             <ResumeItem/>
-          ))}
+          ))} */}
       </ResumeItemWrapper>
       <Pagination />
+      <ReactPaginate 
+        previousLabel={'previous'}
+        nextLabel={'next'}
+        breakLabel={'...'}
+        breakClassName={'break-me'}
+        pageCount={postsList.length}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={hanglePageClick}
+        containerClassName={'pagination'}
+        activeClassName={'active'} 
+      />
     </Wrapper>
   );
 };
