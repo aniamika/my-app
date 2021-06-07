@@ -5,7 +5,8 @@ import IconButtonGeneric from "../../components/Common/IconButtonGeneric";
 import Entitie from "../../components/Entitie/Entitie";
 import Filters from "../../components/Filters/Filters";
 import { IState } from "../../reducers";
-import { IAlbumsReducer } from "../../reducers/albumsReducers";
+import { IPhotosReducer } from "../../reducers/photosReducers";
+import { IUsersReducer } from "../../reducers/usersReducers";
 import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
@@ -258,9 +259,14 @@ export const EntitiesPage: FC = () => {
     });
   };
 
-  const { albumsList } = useSelector<IState, IAlbumsReducer >(state => ({
-    ...state.albums,
+  const sortAlphabetical = () => {
+    console.log("sorting function");
+  }
+  const { usersList, photosList } = useSelector<IState, IUsersReducer & IPhotosReducer >(state => ({
+    ...state.users,
+    ...state.photos,
   }));
+
 
   return (
     <Wrapper className={fullScreen ? "full" : ""}>
@@ -295,7 +301,7 @@ export const EntitiesPage: FC = () => {
             <IconButtonGeneric src="./media/icons/ellipsis-h.svg" className="sm" alt="ellipsis"/>
           </EllipsisContainer>
 
-          <SortContainer>
+          <SortContainer onClick={sortAlphabetical}>
             <IconButtonGeneric src="./media/icons/sort.svg" className="sm h-margin-right-8" alt="sort"/>
             Sort
           </SortContainer>
@@ -334,33 +340,24 @@ export const EntitiesPage: FC = () => {
           <Filters/>
         )}
       </FiltersBox>
-    
+
       {mosaicViewVisible && (
         <MosaicViewContainer>
-          {albumsList?.map(() => (
+          {/* {usersList?.sort((a, b) => a.company.name - b.company.name).map((element, index) => ( */}
+          {usersList?.map((element, index) => (
             <MosaicEntitieContainer>
-              <Entitie/>
+              <Entitie key={element.id} image={photosList[index]?.thumbnailUrl} companyName={element.company.name} companyAdress={usersList[index]?.address.street}/>
             </MosaicEntitieContainer>
           ))}
         </MosaicViewContainer>
      )}
      {listViewVisible && (
-        <ListViewContainer>
+      <ListViewContainer>
+        {usersList?.map((element, index) => (
         <ListEntitieContainer>
-          <Entitie/>
+          <Entitie key={element.id} image={photosList[index]?.thumbnailUrl} companyName={element.company.name} companyAdress={usersList[index]?.address.street}/>
         </ListEntitieContainer>
-        <ListEntitieContainer>
-          <Entitie/>
-        </ListEntitieContainer>
-        <ListEntitieContainer>
-          <Entitie/>
-        </ListEntitieContainer>
-        <ListEntitieContainer>
-          <Entitie/>
-        </ListEntitieContainer>
-        <ListEntitieContainer>
-          <Entitie/>
-        </ListEntitieContainer>
+        ))}
       </ListViewContainer>
      )}
     </Wrapper>

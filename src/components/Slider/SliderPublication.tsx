@@ -1,10 +1,5 @@
-import React, { FC } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
 import styled from 'styled-components';
-import { IState } from '../../reducers';
-import { IPhotosReducer } from '../../reducers/photosReducers';
-import { IPostsReducer } from '../../reducers/postsReducers';
-import { IUsersReducer } from '../../reducers/usersReducers';
 import { Colors } from '../../styledHelpers/Colors';
 import { FontSize } from '../../styledHelpers/FontSize';
 
@@ -59,24 +54,25 @@ const PersonContainer=styled.div`
     align-items: center;
 `
 
-const SliderPublication:FC = () => {
+interface ISliderPublicationProps {
+    image: string;
+    personImage: string;
+    title: string;
+    name: string;
+}
 
-    const { postsList, usersList, photosList } = useSelector<IState, IPostsReducer & IUsersReducer & IPhotosReducer>(state => ({
-        ...state.posts,
-        ...state.users,
-        ...state.photos,
-      }));
+export const SliderPublication = (props: ISliderPublicationProps) => {
 
     return (
         <PublicationWrapper>
-            <ImageContainer style={{backgroundImage: `url(${(photosList[1]?.url)})`}} />
+            <ImageContainer style={{backgroundImage: `url(${(props.image)})`}} />
             <DescriptionContainer>
-                <p>{postsList[0]?.title}</p>
+                <p>{props.title}</p>
                 <FooterContainer>
                     <time>7 jan. 2020</time>
                     <PersonContainer>
-                        <PersonImage style={{backgroundImage: `url(${(photosList[2]?.url)})`}}/>
-                        <span>{usersList[0]?.name}</span>
+                        <PersonImage style={{backgroundImage: `url(${(props.personImage)})`}}/>
+                        <span>{props.name}</span>
                     </PersonContainer>
                 </FooterContainer>
             </DescriptionContainer>
