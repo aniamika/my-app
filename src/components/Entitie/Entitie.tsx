@@ -1,9 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { IState } from '../../reducers';
-import { IPhotosReducer } from '../../reducers/photosReducers';
-import { IUsersReducer } from '../../reducers/usersReducers';
 import { Colors } from '../../styledHelpers/Colors';
 import { FontSize } from '../../styledHelpers/FontSize';
 
@@ -51,21 +47,23 @@ const DescriptionContainer = styled.div`
         line-height: normal;
     }
 `
-export const Entitie = () => {
 
-    const { usersList, photosList } = useSelector<IState, IUsersReducer & IPhotosReducer>(state => ({
-        ...state.users,
-        ...state.photos,
-      }));
+interface IEntitieProps {
+    image: string;
+    companyName: string;
+    companyAdress: string;
+}
+
+export const Entitie = (props: IEntitieProps) => {
       
     return (
         <Wrapper>
             <ImageContainer>
-                <Image style={{backgroundImage: `url(${(photosList[5]?.thumbnailUrl)})`}}/>
+                <Image style={{backgroundImage: `url(${(props.image)})`}}/>
             </ImageContainer>
             <DescriptionContainer>
-                <span>{usersList[0]?.company.name}</span>
-                <p>{usersList[0]?.address.street}</p>
+                <span>{props.companyName}</span>
+                <p>{props.companyAdress}</p>
             </DescriptionContainer>
         </Wrapper>
     )

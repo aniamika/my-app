@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { IState } from "../../reducers";
 import { IPostsReducer } from "../../reducers/postsReducers";
+import { IUsersReducer } from "../../reducers/usersReducers";
 import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
@@ -83,10 +84,11 @@ export const Resume: FC = () => {
     setCurrentPage(selected);
   }
   
-  const { postsList } = useSelector<IState, IPostsReducer >(state => ({
+  const { postsList, usersList } = useSelector<IState, IPostsReducer & IUsersReducer>(state => ({
     ...state.posts,
+    ...state.users,
   }));
-  
+
   return (
     <Wrapper>
       <Header>
@@ -110,11 +112,15 @@ export const Resume: FC = () => {
           <div>something</div>
         }
         {postsList.slice(currentPage, currentPage + 10).map(elem => 
-           <ResumeItem/>
+           <ResumeItem 
+              key={elem.id}
+              title={elem.title} 
+              body={elem.body} 
+              companyName={usersList[0]?.company.name} 
+              companyCatchPhrase={usersList[0]?.company.catchPhrase} 
+              userName={usersList[0]?.name}
+           />
           )}
-         {/* {postsList?.map(() => (
-            <ResumeItem/>
-          ))} */}
       </ResumeItemWrapper>
       <Pagination />
       <ReactPaginate 

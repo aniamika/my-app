@@ -1,9 +1,5 @@
-import React, { FC } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
 import styled from 'styled-components';
-import { IState } from '../../reducers';
-import { IUsersReducer } from '../../reducers/usersReducers';
-import { IPostsReducer } from '../../reducers/postsReducers';
 import { BoxShadow } from '../../styledHelpers/BoxShadow';
 import { Colors } from '../../styledHelpers/Colors';
 import { FontSize } from '../../styledHelpers/FontSize';
@@ -70,27 +66,30 @@ const Update = styled.div`
     padding-left: 0.5rem;
     font-size: ${FontSize[12]};
 `
-const ResumeItem: FC = () => {
+interface IResumeItemProps {
+    title: string;
+    body: string;
+    companyName: string;
+    companyCatchPhrase: string;
+    userName: string;
+}
+
+const ResumeItem = (props: IResumeItemProps) => {
     
-  const { postsList, usersList } = useSelector<IState, IPostsReducer & IUsersReducer>(state => ({
-    ...state.posts,
-    ...state.users,
-  }));
-  
     return (
         <Wrapper>
-            <Header>{postsList[0]?.title}</Header>
-            <p>{postsList[0]?.body}</p>
+            <Header>{props.title}</Header>
+            <p>{props.body}</p>
             <Footer>
                 <Container>
                     <IconButtonGeneric className="sm h-margin-right-8" src="./media/icons/logo.png" alt=""/>
-                    <span>{usersList[0]?.company.name}</span>
+                    <span>{props.companyName}</span>
                 </Container>
                 <Category>
                     <IconButtonGeneric className="sm h-margin-right-8" src="./media/icons/entities2.svg" alt=""/>
-                    <span>{usersList[0]?.company.catchPhrase}</span>
+                    <span>{props.companyCatchPhrase}</span>
                 </Category>
-                <Update>Updated 3 days ago by {usersList[0]?.name}</Update>
+                <Update>Updated 3 days ago by {props.userName}</Update>
             </Footer>
         </Wrapper>
     )

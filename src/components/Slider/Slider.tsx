@@ -116,8 +116,8 @@ const Slider: FC = () => {
       <RightContainer>
         <h2>Latest publications</h2>
         <PublicationsContainer>
-          {postsList.map(() => (
-            <SliderPublication/>
+          {postsList.map((element, index) => (
+            <SliderPublication key={element.id} personImage={photosList[index]?.url} image={photosList[index]?.url} name={usersList[index]?.name} title={element.title}/>
           ))}
         </PublicationsContainer>
         <Link to="/test">See more publications</Link>
