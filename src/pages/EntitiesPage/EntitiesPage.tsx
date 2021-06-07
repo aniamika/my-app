@@ -225,6 +225,7 @@ export const EntitiesPage: FC = () => {
   const [filters, setFilters] = useState(false);
   const [fullScreen, setFullScreen] = useState(false);
   const [inputText, setInputText] = useState<string>('');
+  const [copied, setCopied] = useState(false);
 
   const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const text = e.target.value;
@@ -262,6 +263,17 @@ export const EntitiesPage: FC = () => {
   const sortAlphabetical = () => {
     console.log("sorting function");
   }
+
+  const copy = () => {
+    const el = document.createElement("input");
+    el.value = window.location.href;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+    setCopied(true);
+  }
+
   const { usersList, photosList } = useSelector<IState, IUsersReducer & IPhotosReducer >(state => ({
     ...state.users,
     ...state.photos,
@@ -315,9 +327,9 @@ export const EntitiesPage: FC = () => {
             <IconButtonGeneric src="./media/icons/expand.svg" className="sm" alt="expand"/>
           </ExpandContainer>
 
-          <ShareContainer>
+          <ShareContainer onClick={copy}>
             <IconButtonGeneric src="./media/icons/share.svg" className="sm h-margin-right-8" alt="share"/>
-            Share
+            {!copied ? "Share link" : "Link copied!"}
           </ShareContainer>
         </LeftContainer>
         <RightContainer>
