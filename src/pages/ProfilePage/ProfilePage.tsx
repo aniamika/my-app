@@ -60,7 +60,7 @@ const ImageContainer = styled.div`
     content: "*";
     display: block;
     border-radius: 16px;
-    background-color: #0381BE;
+    background-color: ${Colors.blue03};
     z-index: 1;
     position: absolute;
     bottom: 0;
