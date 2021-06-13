@@ -357,18 +357,26 @@ export const EntitiesPage: FC = () => {
         <MosaicViewContainer>
           {/* {usersList?.sort((a, b) => a.company.name - b.company.name).map((element, index) => ( */}
           {usersList?.map((element, index) => (
-            <MosaicEntitieContainer>
-              <Entitie key={element.id} image={photosList[index]?.thumbnailUrl} companyName={element.company.name} companyAdress={usersList[index]?.address.street}/>
-            </MosaicEntitieContainer>
+            <>
+              {element.company.name.toLowerCase().includes(inputText.toLowerCase()) && 
+                <MosaicEntitieContainer>
+                  <Entitie key={element.id} image={photosList[index]?.thumbnailUrl} companyName={element.company.name} companyAdress={usersList[index]?.address.street}/>
+                </MosaicEntitieContainer>
+              }
+            </>
           ))}
         </MosaicViewContainer>
      )}
      {listViewVisible && (
       <ListViewContainer>
         {usersList?.map((element, index) => (
-        <ListEntitieContainer>
-          <Entitie key={element.id} image={photosList[index]?.thumbnailUrl} companyName={element.company.name} companyAdress={usersList[index]?.address.street}/>
-        </ListEntitieContainer>
+        <>
+          {element.company.name.toLowerCase().includes(inputText.toLowerCase()) && 
+            <ListEntitieContainer>
+              <Entitie key={element.id} image={photosList[index]?.thumbnailUrl} companyName={element.company.name} companyAdress={usersList[index]?.address.street}/>
+            </ListEntitieContainer>
+          }
+        </>
         ))}
       </ListViewContainer>
      )}

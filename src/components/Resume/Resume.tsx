@@ -108,18 +108,19 @@ export const Resume: FC = () => {
         </FilterBox>
       </Header>
       <ResumeItemWrapper>
-        {'something'.toLowerCase().includes(inputText.toLowerCase()) && 
-          <div>something</div>
-        }
         {postsList.slice(currentPage, currentPage + 10).map(elem => 
-           <ResumeItem 
-              key={elem.id}
-              title={elem.title} 
-              body={elem.body} 
-              companyName={usersList[0]?.company.name} 
-              companyCatchPhrase={usersList[0]?.company.catchPhrase} 
-              userName={usersList[0]?.name}
-           />
+          <>
+            {elem.title.toLowerCase().includes(inputText.toLowerCase()) && (
+              <ResumeItem 
+                key={elem.id}
+                title={elem.title} 
+                body={elem.body} 
+                companyName={usersList[0]?.company.name} 
+                companyCatchPhrase={usersList[0]?.company.catchPhrase} 
+                userName={usersList[0]?.name}
+              />
+            )}
+            </>
           )}
       </ResumeItemWrapper>
       <Pagination />
