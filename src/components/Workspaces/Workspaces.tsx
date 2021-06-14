@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
@@ -29,11 +30,10 @@ export const Workspaces: FC = () => {
     <Wrapper>
       <Header>Workspaces</Header>
       <ScrollableBox>
-        <SingleItem/>
-        <SingleItem/>
-        <SingleItem/>
-        <SingleItem/>
-        <SingleItem/>
+        <SingleItem category={"Client contract"} categoryImage={"./media/city.jpg"} categoryIcon={"./media/icons/pencil.svg"} />
+        <SingleItem category={"Supplier contract"} categoryImage={"./media/city.jpg"} categoryIcon={"./media/icons/pencil.svg"}/>
+        <SingleItem category={"Corporate"} categoryImage={"./media/city.jpg"} categoryIcon={"./media/icons/entities2.svg"}/>
+        <SingleItem category={"Group norms"} categoryImage={"./media/city.jpg"} categoryIcon={"./media/icons/file-invoice.svg"}/>
       </ScrollableBox>
     </Wrapper>
   );
