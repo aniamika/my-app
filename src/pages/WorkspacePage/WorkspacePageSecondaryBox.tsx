@@ -39,6 +39,20 @@ const SimpleBox = styled.div`
   margin-bottom: 1rem;
   padding: 1rem;
   margin: 0 0.5rem;
+  position: relative;
+`
+const Background = styled.div`
+  width: calc(100% - 2rem);
+  height: calc(100% - 2rem);
+  background-image: url("./media/icons/entities.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+  opacity: 0.1;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 1rem;
 `
 const SimpleBoxHeader = styled.div`
   align-items: center;
@@ -51,6 +65,11 @@ const SimpleBoxHeading = styled.h2`
   display: flex;
   justify-content: flex-start;
   margin-bottom: 1rem;
+  font-size: ${FontSize[20]};
+  opacity: 1;
+  b {
+    font-weight: 600;
+  }
 `
 const SimpleBoxMain = styled.p`
   color: ${Colors.blue02};
@@ -63,25 +82,28 @@ export const WorkspacePageSecondaryBox: FC = () => {
         <SecondaryBoxHeading>Start working on corporate matters</SecondaryBoxHeading>
         <MainBox>
           <SimpleBox>
+            <Background/> 
             <SimpleBoxHeader>
               <IconButtonGeneric className="xxl" src="./media/icons/entities.svg" alt="search icon"/>
             </SimpleBoxHeader>
-            <SimpleBoxHeading>Explore your <b> entities</b></SimpleBoxHeading>
+            <SimpleBoxHeading><p>Explore your</p><b>entities</b></SimpleBoxHeading>
             <SimpleBoxMain>Take a few minutes to look at the most important elements and specificities of your entities.</SimpleBoxMain>
           </SimpleBox>
           <SimpleBox>
+            <Background/> 
             <SimpleBoxHeader>
               <IconButtonGeneric className="xxl" src="./media/icons/entities.svg" alt="search icon"/>
             </SimpleBoxHeader>
-            <SimpleBoxHeading>Structure the <b> ownership</b></SimpleBoxHeading>
-            <SimpleBoxMain>Take a few minutes to look at the most important elements and specificities of your entities.</SimpleBoxMain>
+            <SimpleBoxHeading><p>Structure the</p><b>ownership</b></SimpleBoxHeading>
+            <SimpleBoxMain>Get a clear view of the ownership by looking at the relations between individuals and entities.</SimpleBoxMain>
           </SimpleBox>
           <SimpleBox>
+            <Background/> 
             <SimpleBoxHeader>
               <IconButtonGeneric className="xxl" src="./media/icons/entities.svg" alt="search icon"/>
             </SimpleBoxHeader>
-            <SimpleBoxHeading>Define the <b> calendar</b></SimpleBoxHeading>
-            <SimpleBoxMain>Take a few minutes to look at the most important elements and specificities of your entities.</SimpleBoxMain>
+            <SimpleBoxHeading><p>Define the</p><b>calendar</b></SimpleBoxHeading>
+            <SimpleBoxMain>Prepare future events by creating detailed plans around the life of your entity.</SimpleBoxMain>
           </SimpleBox>
         </MainBox>
       </SecondaryBox>
