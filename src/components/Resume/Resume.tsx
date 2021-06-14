@@ -64,8 +64,16 @@ const SearchButtonContainer = styled.button`
   justify-content: center;
   height: 2rem;
 `;
-const SelectContainer = styled.div`
-  margin-right: ${Margins[24]};
+const FollowedContainer = styled.button`
+  border: 1px solid ${Colors.blue01};
+  border-radius: 4px;
+  padding: ${Padding[4]} ${Padding[8]};
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: ${FontSize[12]};
+  color: ${Colors.blue01};
+  font-weight: 700;
 `
 const ResumeItemWrapper = styled.div`
 
@@ -100,24 +108,25 @@ export const Resume: FC = () => {
               <IconButtonGeneric className="sm" src="./media/icons/search.svg" alt="search icon"/>
             </SearchButtonContainer>
           </FilterContainer>
-          <SelectContainer>
-            <select> 
-              <option>Followed</option>
-            </select>
-          </SelectContainer>
+          <FollowedContainer>
+            <IconButtonGeneric src="./media/icons/dot-circle.svg" className="sm h-margin-right-8" alt="menu"/>
+            <option>Followed</option>
+            <IconButtonGeneric src="./media/icons/arrow-down.svg" className="xs h-margin-left-8" alt="menu"/>
+          </FollowedContainer>
         </FilterBox>
       </Header>
       <ResumeItemWrapper>
-        {postsList.slice(currentPage, currentPage + 10).map(elem => 
+        {/* {postsList.filter(elem => elem.userId === 1).slice(currentPage, currentPage + 10).map(elem =>  */}
+                {postsList.slice(currentPage, currentPage + 10).map(elem => 
           <>
             {elem.title.toLowerCase().includes(inputText.toLowerCase()) && (
               <ResumeItem 
                 key={elem.id}
                 title={elem.title} 
                 body={elem.body} 
-                companyName={usersList[0]?.company.name} 
-                companyCatchPhrase={usersList[0]?.company.catchPhrase} 
-                userName={usersList[0]?.name}
+                companyName={usersList[elem.userId]?.company.name} 
+                companyCatchPhrase={usersList[elem.userId]?.company.catchPhrase} 
+                userName={usersList[elem.userId]?.name}
               />
             )}
             </>

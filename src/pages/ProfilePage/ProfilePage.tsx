@@ -31,21 +31,21 @@ const HeaderButtonsContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-bottom: ${Margins[16]};
+  margin-bottom: ${Margins[32]};
 `
 const HeaderButton = styled.button`
   display: flex;
   align-items: center;
   font-weight: 500;
   font-size: ${FontSize[14]};
+  color: ${Colors.blue02};
 `
 const HeaderMain = styled.div`
-  border: 1px solid red;
   display: flex;
   justify-content: space-between;
 `
 const PersonContainer = styled.div`
-  border: 1px solid red;
+  margin-right: ${Margins[16]};
 `
 const ImageContainer = styled.div`
   display: flex;
@@ -57,10 +57,14 @@ const ImageContainer = styled.div`
   position: relative;
 
   &:after {
-    content: "*";
+    content: "";
     display: block;
     border-radius: 16px;
-    background-color: ${Colors.blue03};
+    background-color: ${Colors.orange};
+    background-image: url("./media/icons/star.svg");
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
     z-index: 1;
     position: absolute;
     bottom: 0;
@@ -88,27 +92,40 @@ const SeeProfileButton = styled.button`
   font-size: ${FontSize[16]};
   font-weight: 500;
 `
-const PersonInfo = styled.div`
-  background: lightblue;
+const LeftContainer = styled.div`
   display: flex;
+  align-items: flex-start;
+`
+const PersonInfo = styled.div`
+  display: flex;
+  height: 100%;
   flex-direction: column;
+  justify-content: space-between;
 `
 const PersonName = styled.p`
-
+  margin-bottom: ${Margins[8]};
+  font-weight: 500;
 `
 const PersonCompany = styled.div`
-
+  margin-bottom: ${Margins[8]};
+  font-weight: 500;
 `
 const PersonCity = styled.div`
-
+  margin-bottom: ${Margins[8]};
 `
 const PersonRole = styled.div`
 
 `
-const PersonDetails = styled.div`
-  background: lightgreen;
+const RightContainer = styled.div`
+  justify-content: space-between;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
+`
+const PersonDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `
 const Section = styled.div`
   padding: ${Padding[16]};
@@ -117,6 +134,15 @@ const Section = styled.div`
 const SectionHeader = styled.p`
   font-weight: 500;
   margin-bottom: ${Margins[16]};
+`
+const EditButton = styled.button`
+
+`
+const PersonEmail = styled.div`
+  margin-bottom: ${Margins[8]};
+`
+const PersonPhoneNumber = styled.div`
+
 `
 
 export const ProfilePage = () => {
@@ -148,19 +174,31 @@ export const ProfilePage = () => {
           </HeaderButton>
         </HeaderButtonsContainer>
         <HeaderMain>
-          <PersonContainer>
-            <ImageContainer>
-                <Image src={photosList[0]?.url} />
-            </ImageContainer>
-            <SeeProfileButton>See profile</SeeProfileButton>
-          </PersonContainer>
-          <PersonInfo> 
-            <PersonName>Humberta swift</PersonName>
-            <PersonCompany>Clifford Chance</PersonCompany>
-            <PersonCity>New York</PersonCity>
-            <PersonRole>Partner</PersonRole>
-          </PersonInfo>
-          <PersonDetails> Details </PersonDetails>
+          <LeftContainer>
+            <PersonContainer>
+              <ImageContainer>
+                  <Image src={photosList[0]?.url} />
+              </ImageContainer>
+              <SeeProfileButton>See profile</SeeProfileButton>
+            </PersonContainer>
+            <PersonInfo> 
+              <PersonName>Humberta swift</PersonName>
+              <PersonCompany>Clifford Chance</PersonCompany>
+              <PersonCity>New York</PersonCity>
+              <PersonRole>Partner</PersonRole>
+            </PersonInfo>
+          </LeftContainer>
+
+          <RightContainer>
+            <EditButton>
+              <IconButtonGeneric src="./media/icons/pencil.svg" className="sm" alt="edit person information"/>
+            </EditButton>
+            <PersonDetails>
+              <PersonEmail>humbertaswift@gmail.com</PersonEmail>
+              <PersonPhoneNumber>762538201</PersonPhoneNumber>
+            </PersonDetails>
+          </RightContainer>
+
         </HeaderMain>
       </Header>
 
