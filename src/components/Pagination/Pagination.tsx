@@ -16,21 +16,23 @@ const GlobalStyle = createGlobalStyle`
     font-size: ${FontSize[12]};
     margin-bottom: ${Margins[16]};
 
-  }
-  li  {
-    color: ${Colors.blue03};
-    padding: 0 0.5rem;
-    &:hover {
-      cursor: pointer;
-    }
-    &.disabled {
-      color: ${Colors.gray01};
-    }
-    &.active {
-        color: ${Colors.black};
-        font-weight: 500;
+    li {
+      color: ${Colors.blue03};
+      padding: 0 0.5rem;
+      &:hover {
+        cursor: pointer;
       }
+      &.disabled {
+        color: ${Colors.gray01};
+      }
+      &.active {
+          color: ${Colors.black};
+          font-weight: 500;
+        }
+    }
+
   }
+
 `;
 
 export const Pagination: FC = () => {
