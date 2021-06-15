@@ -187,16 +187,31 @@ const FilterContainer = styled.div`
     }
   }
 `;
-const FollowedContainer = styled.button`
-  border: 1px solid ${Colors.blue01};
-  border-radius: 4px;
-  padding: ${Padding[4]} ${Padding[8]};
+const FollowedContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  border: 1px solid ${Colors.blue01};
+  border-radius: 4px;
+  overflow: hidden;
+  .followed-icon {
+    position: absolute;
+    left: 0.5rem;
+  }
+  .followed-arrow {
+    position: absolute;
+    right: 0.5rem;
+  }
+`
+const Followed = styled.select`
+  border: none;
   font-size: ${FontSize[12]};
   color: ${Colors.blue01};
   font-weight: 700;
+  padding: ${Padding[8]} ${Padding[32]};
+  -webkit-appearance: none;
+  cursor: pointer;
 `
 const FiltersBox = styled.div`
   max-height: 0;
@@ -341,11 +356,16 @@ export const EntitiesPage: FC = () => {
               <IconButtonGeneric className="sm" src="./media/icons/search.svg" alt="search icon"/>
             </SearchButtonContainer>
           </FilterContainer>
+
           <FollowedContainer>
-            <IconButtonGeneric src="./media/icons/dot-circle.svg" className="sm h-margin-right-8" alt="menu"/>
-            Followed
-            <IconButtonGeneric src="./media/icons/arrow-down.svg" className="xs h-margin-left-8" alt="menu"/>
+            <IconButtonGeneric src="./media/icons/dot-circle.svg" className="sm h-margin-right-8 followed-icon" alt="menu"/>
+            <Followed>
+              <option>Followed</option>
+            </Followed>
+            <IconButtonGeneric src="./media/icons/arrow-down.svg" className="xs h-margin-left-8 followed-arrow" alt="menu"/>
           </FollowedContainer>
+
+
         </RightContainer>
       </SortingContainer>
       <FiltersBox className={filters ? "isOpen" : ""}>
