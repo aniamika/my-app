@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { BoxShadow } from '../../styledHelpers/BoxShadow';
 import { Colors } from '../../styledHelpers/Colors';
@@ -84,35 +85,42 @@ const Footer = styled.p`
     margin-bottom: 0.5rem;
 `
 
+interface ISingleItemProps {
+    category: string;
+    categoryImage: string;
+    categoryIcon: string;
+}
 
-const SingleItem: FC = () => {
+const SingleItem = (props: ISingleItemProps) => {
     return (
-        <ItemWrapper>
-        <TopBox>
-        <BackgroundImage src="./media/city.jpg" alt=""/>
-        </TopBox>
-        <MainContent>
-        <Category>
-            <CategoryIconBox>
-            <IconButtonGeneric src='./media/icons/comments.svg' alt='' className='xxl'/>
-            </CategoryIconBox>
-            <CategoryName>Client contract</CategoryName>
-        </Category>
-        <DescriptionBox>
-            <CategoryBox>
-            <IconButtonGeneric className="sm h-margin-right-8" src="./media/icons/comments.svg" alt=""/>
-            <span>Contract</span>
-            </CategoryBox>
-            <UsersBox>
-            <IconButtonGeneric className="sm h-margin-right-8" src="./media/icons/people.svg" alt=""/>
-            <span>150 users</span>
-            </UsersBox>
-        </DescriptionBox>
-        </MainContent>
-        <Footer>
-        Last update 2 days ago
-        </Footer>
-        </ItemWrapper>
+        <Link to="/workspace">
+            <ItemWrapper>
+            <TopBox>
+                <BackgroundImage src={props.categoryImage} alt="workspace category image"/>
+            </TopBox>
+            <MainContent>
+            <Category>
+                <CategoryIconBox>
+                    <IconButtonGeneric src={props.categoryIcon} alt='workspace category icon' className='xxl'/>
+                </CategoryIconBox>
+                <CategoryName>{props.category}</CategoryName>
+            </Category>
+            <DescriptionBox>
+                <CategoryBox>
+                <IconButtonGeneric className="sm h-margin-right-8" src="./media/icons/comments.svg" alt=""/>
+                <span>Contract</span>
+                </CategoryBox>
+                <UsersBox>
+                <IconButtonGeneric className="sm h-margin-right-8" src="./media/icons/people.svg" alt=""/>
+                <span>150 users</span>
+                </UsersBox>
+            </DescriptionBox>
+            </MainContent>
+            <Footer>
+            Last update 2 days ago
+            </Footer>
+            </ItemWrapper>
+        </Link>
     )
 }
 export default SingleItem;

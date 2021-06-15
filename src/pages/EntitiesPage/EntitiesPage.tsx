@@ -1,12 +1,15 @@
 import React, { ChangeEvent, FC, useState } from "react";
 import { useSelector } from "react-redux";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
 import IconButtonGeneric from "../../components/Common/IconButtonGeneric";
 import Entitie from "../../components/Entitie/Entitie";
 import Filters from "../../components/Filters/Filters";
+
 import { IState } from "../../reducers";
 import { IPhotosReducer } from "../../reducers/photosReducers";
 import { IUsersReducer } from "../../reducers/usersReducers";
+
 import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
@@ -67,23 +70,7 @@ const ViewContainer = styled.div`
   align-items: center;
   justify-content: flex-start;
 `
-const MosaicViewContainer = styled.div`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-`
-const MosaicEntitieContainer = styled.div`
-  width: 25%;
-`
-const ListViewContainer = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  flex-wrap: nowrap;
-`
-const ListEntitieContainer = styled.div`
-  width: 100%;
-`
+
 const MosaicView = styled.button`
   padding: 0.5rem;
   border-radius: 4px 0 0 4px;
@@ -200,16 +187,31 @@ const FilterContainer = styled.div`
     }
   }
 `;
-const FollowedContainer = styled.button`
-  border: 1px solid ${Colors.blue01};
-  border-radius: 4px;
-  padding: ${Padding[4]} ${Padding[8]};
+const FollowedContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  border: 1px solid ${Colors.blue01};
+  border-radius: 4px;
+  overflow: hidden;
+  .followed-icon {
+    position: absolute;
+    left: 0.5rem;
+  }
+  .followed-arrow {
+    position: absolute;
+    right: 0.5rem;
+  }
+`
+const Followed = styled.select`
+  border: none;
   font-size: ${FontSize[12]};
   color: ${Colors.blue01};
   font-weight: 700;
+  padding: ${Padding[8]} ${Padding[32]};
+  -webkit-appearance: none;
+  cursor: pointer;
 `
 const FiltersBox = styled.div`
   max-height: 0;
@@ -219,36 +221,35 @@ const FiltersBox = styled.div`
     max-height: 19rem;
   }
 `
+const ElementsContainer = styled.div<{ isMosaic: boolean; isListView: boolean }>`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  ${props => props.isListView && css`
+      flex-direction: row;
+  `}
+`
 export const EntitiesPage: FC = () => {
-  const [mosaicViewVisible, setMosaicViewVisible] = useState(true);
-  const [listViewVisible, setListViewVisible] = useState(false);
-  const [filters, setFilters] = useState(false);
-  const [fullScreen, setFullScreen] = useState(false);
+  const [isMosaic, setIsMosaic] = useState<boolean>(true);
+  const [isListView, setIsListView] = useState<boolean>(false);
+  const [filters, setFilters] = useState<boolean>(false);
+  const [fullScreen, setFullScreen] = useState<boolean>(false);
   const [inputText, setInputText] = useState<string>('');
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState<boolean>(false);
+  const [isSortedFromA, setIsSortedFromA] = useState<boolean>(true);
 
   const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const text = e.target.value;
     setInputText(text);
   }
-
   const showMosaicView = () => {
-    setMosaicViewVisible(function changeValue() {
-      return true;
-    });
-    setListViewVisible(function changeValue() {
-      return false;
-    });
+    setIsMosaic(true);
+    setIsListView(false);
   }
   const showListView = () => {
-    setMosaicViewVisible(function changeValue() {
-      return false;
-    });
-    setListViewVisible(function changeValue() {
-      return true;
-    });
+    setIsListView(true);
+    setIsMosaic(false);
   }
-
   const expandEntities = () => {
     setFullScreen(function changeValue(oldValue) {
       return !oldValue;
@@ -259,10 +260,6 @@ export const EntitiesPage: FC = () => {
       return !oldValue;
     });
   };
-
-  const sortAlphabetical = () => {
-    console.log("sorting function");
-  }
 
   const copy = () => {
     const el = document.createElement("input");
@@ -279,7 +276,27 @@ export const EntitiesPage: FC = () => {
     ...state.photos,
   }));
 
+  const sortAlphabetical = () => {
 
+    usersList?.sort(function (a, b) {
+      let nameA = a.company.name;
+      let nameB = b.company.name;
+
+      if (nameA < nameB) {
+          return isSortedFromA ? -1 : 1
+      }
+      if (nameA > nameB) {
+          return isSortedFromA ? 1 : -1
+      }
+      else {
+          return 0
+      }
+  })
+  
+  isSortedFromA ? setIsSortedFromA(false) : setIsSortedFromA(true);
+
+}
+  
   return (
     <Wrapper className={fullScreen ? "full" : ""}>
       <Header> 
@@ -289,13 +306,13 @@ export const EntitiesPage: FC = () => {
         </HeadingContainer>
         <ViewContainer>
         
-          <MosaicView onClick={showMosaicView} className={mosaicViewVisible ? "show" : ""}>
-            <IconButtonGeneric src={mosaicViewVisible ? "./media/icons/grid-blue.svg" : "./media/icons/grid.svg"} className="md" alt="settings"/>
+          <MosaicView onClick={showMosaicView} className={isMosaic ? "show" : ""}>
+            <IconButtonGeneric src={isMosaic ? "./media/icons/grid-blue.svg" : "./media/icons/grid.svg"} className="md" alt="settings"/>
             <span>Mosaic</span>
           </MosaicView>
         
-          <ListView onClick={showListView} className={listViewVisible ? "show" : ""}> 
-            <IconButtonGeneric src={listViewVisible ? "./media/icons/list-blue.svg" : "./media/icons/list.svg"} className="md" alt=""/>
+          <ListView onClick={showListView} className={isListView ? "show" : ""}> 
+            <IconButtonGeneric src={isListView ? "./media/icons/list-blue.svg" : "./media/icons/list.svg"} className="md" alt=""/>
           </ListView>
        
         </ViewContainer>
@@ -339,47 +356,33 @@ export const EntitiesPage: FC = () => {
               <IconButtonGeneric className="sm" src="./media/icons/search.svg" alt="search icon"/>
             </SearchButtonContainer>
           </FilterContainer>
+
           <FollowedContainer>
-            <IconButtonGeneric src="./media/icons/dot-circle.svg" className="sm h-margin-right-8" alt="menu"/>
-            Followed
-            <IconButtonGeneric src="./media/icons/arrow-down.svg" className="xs h-margin-left-8" alt="menu"/>
+            <IconButtonGeneric src="./media/icons/dot-circle.svg" className="sm h-margin-right-8 followed-icon" alt="menu"/>
+            <Followed>
+              <option>Followed</option>
+            </Followed>
+            <IconButtonGeneric src="./media/icons/arrow-down.svg" className="xs h-margin-left-8 followed-arrow" alt="menu"/>
           </FollowedContainer>
+
+
         </RightContainer>
       </SortingContainer>
-      
       <FiltersBox className={filters ? "isOpen" : ""}>
         {filters && (
           <Filters/>
         )}
       </FiltersBox>
 
-      {mosaicViewVisible && (
-        <MosaicViewContainer>
-          {/* {usersList?.sort((a, b) => a.company.name - b.company.name).map((element, index) => ( */}
-          {usersList?.map((element, index) => (
-            <>
-              {element.company.name.toLowerCase().includes(inputText.toLowerCase()) && 
-                <MosaicEntitieContainer>
-                  <Entitie key={element.id} image={photosList[index]?.thumbnailUrl} companyName={element.company.name} companyAdress={usersList[index]?.address.street}/>
-                </MosaicEntitieContainer>
-              }
-            </>
-          ))}
-        </MosaicViewContainer>
-     )}
-     {listViewVisible && (
-      <ListViewContainer>
+      <ElementsContainer isMosaic={isMosaic} isListView={!isListView}>
         {usersList?.map((element, index) => (
-        <>
-          {element.company.name.toLowerCase().includes(inputText.toLowerCase()) && 
-            <ListEntitieContainer>
-              <Entitie key={element.id} image={photosList[index]?.thumbnailUrl} companyName={element.company.name} companyAdress={usersList[index]?.address.street}/>
-            </ListEntitieContainer>
-          }
-        </>
+          <>
+            {element.company.name.toLowerCase().includes(inputText.toLowerCase()) && 
+              <Entitie isMosaic={isMosaic} isListView={!isListView} key={element.id} image={photosList[index]?.thumbnailUrl} companyName={element.company.name} companyAdress={usersList[index]?.address.street}/>
+            }
+          </>
         ))}
-      </ListViewContainer>
-     )}
+      </ElementsContainer>
     </Wrapper>
   );
 };
