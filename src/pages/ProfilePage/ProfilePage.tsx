@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import IconButtonGeneric from "../../components/Common/IconButtonGeneric";
@@ -13,6 +13,7 @@ import { Colors } from "../../styledHelpers/Colors";
 import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
 import { Padding } from "../../styledHelpers/Padding";
+import ProfileInfoForm from "./ProfileInfoForm";
 
 const Wrapper = styled.section`
   overflow: auto;
@@ -22,6 +23,7 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   min-height: 5.3rem;
+  position: relative;
 `;
 const Header = styled.header`
   padding: ${Padding[16]};
@@ -92,7 +94,7 @@ const SeeProfileButton = styled.button`
   font-size: ${FontSize[16]};
   font-weight: 500;
 `
-const LeftContainer = styled.div`
+const PersonDetailsContainer = styled.div`
   display: flex;
   align-items: flex-start;
 `
@@ -121,6 +123,8 @@ const RightContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  margin-left: auto;
+  justify-content: flex-end;
 `
 const PersonDetails = styled.div`
   display: flex;
@@ -136,7 +140,10 @@ const SectionHeader = styled.p`
   margin-bottom: ${Margins[16]};
 `
 const EditButton = styled.button`
-
+  position: absolute;
+  right: 1rem;
+  top: 4.125rem;
+  z-index: 1;
 `
 const PersonEmail = styled.div`
   margin-bottom: ${Margins[8]};
@@ -144,7 +151,11 @@ const PersonEmail = styled.div`
 const PersonPhoneNumber = styled.div`
 
 `
-
+const PersonInfoContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`
 export const ProfilePage = () => {
 
   const { albumsList, commentsList, photosList, postsList, todosList, usersList } = useSelector<IState, IAlbumsReducer & ICommentsReducer & IPhotosReducer & IPostsReducer & ITodosReducer & IUsersReducer >(state => ({
@@ -156,6 +167,10 @@ export const ProfilePage = () => {
     ...state.users,
   }));
   
+  const [isPersonInfoEditable, setPersonInfoEditable] = useState<boolean>(true);
+
+  const toggleForm = () => setPersonInfoEditable(!isPersonInfoEditable);
+
   return (
     <Wrapper>
       <Header> 
@@ -173,34 +188,44 @@ export const ProfilePage = () => {
             Add to a cluster
           </HeaderButton>
         </HeaderButtonsContainer>
+        
+        <EditButton onClick={toggleForm}>
+          <IconButtonGeneric src="./media/icons/pencil.svg" className="sm" alt="edit person information"/>
+          </EditButton>
         <HeaderMain>
-          <LeftContainer>
-            <PersonContainer>
-              <ImageContainer>
-                  <Image src={photosList[0]?.url} />
-              </ImageContainer>
-              <SeeProfileButton>See profile</SeeProfileButton>
-            </PersonContainer>
-            <PersonInfo> 
-              <PersonName>Humberta swift</PersonName>
-              <PersonCompany>Clifford Chance</PersonCompany>
-              <PersonCity>New York</PersonCity>
-              <PersonRole>Partner</PersonRole>
-            </PersonInfo>
-          </LeftContainer>
 
-          <RightContainer>
-            <EditButton>
-              <IconButtonGeneric src="./media/icons/pencil.svg" className="sm" alt="edit person information"/>
-            </EditButton>
-            <PersonDetails>
-              <PersonEmail>humbertaswift@gmail.com</PersonEmail>
-              <PersonPhoneNumber>762538201</PersonPhoneNumber>
-            </PersonDetails>
-          </RightContainer>
+          <PersonContainer>
+            <ImageContainer>
+                <Image src={photosList[0]?.url} />
+            </ImageContainer>
+            <SeeProfileButton>See profile</SeeProfileButton>
+          </PersonContainer>
+
+          {isPersonInfoEditable ? (
+            <ProfileInfoForm />
+          ) : (
+            <PersonInfoContainer>
+              <PersonDetailsContainer>
+                <PersonInfo> 
+                  <PersonName>Humberta swift</PersonName>
+                  <PersonCompany>Clifford Chance</PersonCompany>
+                  <PersonCity>New York</PersonCity>
+                  <PersonRole>Partner</PersonRole>
+                </PersonInfo>
+              </PersonDetailsContainer>
+
+              <RightContainer>
+                <PersonDetails>
+                  <PersonEmail>humbertaswift@gmail.com</PersonEmail>
+                  <PersonPhoneNumber>762538201</PersonPhoneNumber>
+                </PersonDetails>
+              </RightContainer>
+            </PersonInfoContainer>
+          )}
 
         </HeaderMain>
       </Header>
+
 
       <Section> 
         <SectionHeader>Panel informations</SectionHeader>
