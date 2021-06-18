@@ -15,6 +15,7 @@ import { Margins } from "../../styledHelpers/Margins";
 import { Padding } from "../../styledHelpers/Padding";
 import ProfileInfoForm from "./ProfileInfoForm";
 
+
 const Wrapper = styled.section`
   overflow: auto;
   background: ${Colors.white};
@@ -98,25 +99,104 @@ const PersonDetailsContainer = styled.div`
   display: flex;
   align-items: flex-start;
 `
+const FormInfoContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`
+const FormDetailsContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+`
+const FormInfo = styled.div`
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+`
+const FormName = styled.input`
+  margin-bottom: ${Margins[8]};
+  font-weight: 500;
+  font-size: ${FontSize[16]};
+  color: ${Colors.blue02};
+`
+const FormCompany = styled.input`
+  margin-bottom: ${Margins[8]};
+  font-weight: 500;
+  font-size: ${FontSize[16]};
+  color: ${Colors.blue02};
+`
+const FormCity = styled.input`
+  margin-bottom: ${Margins[8]};
+  font-weight: 500;
+  font-size: ${FontSize[16]};
+  color: ${Colors.blue02};
+`
+const FormRole = styled.input`
+  font-weight: 500;
+  font-size: ${FontSize[16]};
+  color: ${Colors.blue02};
+`
+const FormRightContainer = styled.div`
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: auto;
+  justify-content: flex-end;
+`
+const FormDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`
+const FormEmail = styled.input`
+  margin-bottom: ${Margins[8]};
+  font-weight: 500;
+  font-size: ${FontSize[16]};
+  color: ${Colors.blue02};
+`
+const FormPhoneNumber = styled.input`
+  font-weight: 500;
+  font-size: ${FontSize[16]};
+  color: ${Colors.blue02};
+`
 const PersonInfo = styled.div`
   display: flex;
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
 `
-const PersonName = styled.p`
+const PersonName = styled.input`
   margin-bottom: ${Margins[8]};
   font-weight: 500;
+  font-size: ${FontSize[16]};
+  color: ${Colors.blue02};
+  border: 1px solid transparent;
+  background: ${Colors.white};
 `
-const PersonCompany = styled.div`
+const PersonCompany = styled.input`
   margin-bottom: ${Margins[8]};
   font-weight: 500;
+  font-size: ${FontSize[16]};
+  color: ${Colors.blue02};
+  border: 1px solid transparent;
+  background: ${Colors.white};
 `
-const PersonCity = styled.div`
+const PersonCity = styled.input`
   margin-bottom: ${Margins[8]};
+  font-weight: 500;
+  font-size: ${FontSize[16]};
+  color: ${Colors.blue02};
+  border: 1px solid transparent;
+  background: ${Colors.white};
 `
-const PersonRole = styled.div`
-
+const PersonRole = styled.input`
+  font-weight: 500;
+  font-size: ${FontSize[16]};
+  color: ${Colors.blue02};
+  border: 1px solid transparent;
+  background: ${Colors.white};
 `
 const RightContainer = styled.div`
   justify-content: space-between;
@@ -145,11 +225,20 @@ const EditButton = styled.button`
   top: 4.125rem;
   z-index: 1;
 `
-const PersonEmail = styled.div`
+const PersonEmail = styled.input`
   margin-bottom: ${Margins[8]};
+  font-weight: 500;
+  font-size: ${FontSize[16]};
+  color: ${Colors.blue02};
+  border: 1px solid transparent;
+  background: ${Colors.white};
 `
-const PersonPhoneNumber = styled.div`
-
+const PersonPhoneNumber = styled.input`
+  font-weight: 500;
+  font-size: ${FontSize[16]};
+  color: ${Colors.blue02};
+  border: 1px solid transparent;
+  background: ${Colors.white};
 `
 const PersonInfoContainer = styled.div`
   display: flex;
@@ -167,9 +256,15 @@ export const ProfilePage = () => {
     ...state.users,
   }));
   
-  const [isPersonInfoEditable, setPersonInfoEditable] = useState<boolean>(true);
-
   const toggleForm = () => setPersonInfoEditable(!isPersonInfoEditable);
+
+  const [isPersonInfoEditable, setPersonInfoEditable] = useState<boolean>(true);
+  const [isFormNameInputValue, setFormNameInputValue] = useState("");
+  const [isFormCompanyInputValue, setFormCompanyInputValue] = useState("");
+  const [isFormCityInputValue, setFormCityInputValue] = useState("");
+  const [isFormRoleInputValue, setFormRoleInputValue] = useState("");
+  const [isFormEmailInputValue, setFormEmailInputValue] = useState("");
+  const [isFormPhoneNumberInputValue, setFormPhoneNumberInputValue] = useState("");
 
   return (
     <Wrapper>
@@ -195,29 +290,45 @@ export const ProfilePage = () => {
         <HeaderMain>
 
           <PersonContainer>
-            <ImageContainer>
-                <Image src={photosList[0]?.url} />
-            </ImageContainer>
-            <SeeProfileButton>See profile</SeeProfileButton>
-          </PersonContainer>
+          <ImageContainer>
+              <Image src={photosList[0]?.url} />
+          </ImageContainer>
+          <SeeProfileButton>See profile</SeeProfileButton>
+        </PersonContainer>
 
           {isPersonInfoEditable ? (
-            <ProfileInfoForm />
+            <FormInfoContainer>
+              <FormDetailsContainer>
+                <FormInfo> 
+                  <FormName value={isFormNameInputValue} onChange={(e) => setFormNameInputValue(e.target.value)} type="text" placeholder="Name"/>
+                  <FormCompany value={isFormCompanyInputValue} onChange={(e) => setFormCompanyInputValue(e.target.value)} type="text" placeholder="Company"/>
+                  <FormCity value={isFormCityInputValue} onChange={(e) => setFormCityInputValue(e.target.value)} type="text" placeholder="City"/>
+                  <FormRole value={isFormRoleInputValue} onChange={(e) => setFormRoleInputValue(e.target.value)} type="text" placeholder="Role"/>
+                </FormInfo>
+              </FormDetailsContainer>
+        
+              <FormRightContainer>
+                <FormDetails>
+                  <FormEmail value={isFormEmailInputValue} onChange={(e) => setFormEmailInputValue(e.target.value)} placeholder="humbertaswift@gmail.com" type="email"/>
+                  <FormPhoneNumber value={isFormPhoneNumberInputValue} onChange={(e) => setFormPhoneNumberInputValue(e.target.value)} placeholder="762538201" type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"/>
+                </FormDetails>
+              </FormRightContainer>
+            </FormInfoContainer>
           ) : (
             <PersonInfoContainer>
               <PersonDetailsContainer>
                 <PersonInfo> 
-                  <PersonName>Humberta swift</PersonName>
-                  <PersonCompany>Clifford Chance</PersonCompany>
-                  <PersonCity>New York</PersonCity>
-                  <PersonRole>Partner</PersonRole>
+                  <PersonName value={isFormNameInputValue} type="text" placeholder="Name" disabled/>
+                  <PersonCompany value={isFormCompanyInputValue} type="text" placeholder="Company" disabled/>
+                  <PersonCity value={isFormCityInputValue} type="text" placeholder="City" disabled/>
+                  <PersonRole value={isFormRoleInputValue} type="text" placeholder="Role" disabled/>
                 </PersonInfo>
               </PersonDetailsContainer>
 
               <RightContainer>
                 <PersonDetails>
-                  <PersonEmail>humbertaswift@gmail.com</PersonEmail>
-                  <PersonPhoneNumber>762538201</PersonPhoneNumber>
+                  <PersonEmail value={isFormEmailInputValue} type="text" placeholder="Email" disabled/>
+                  <PersonPhoneNumber value={isFormPhoneNumberInputValue} type="text" placeholder="Phone number" disabled/>
                 </PersonDetails>
               </RightContainer>
             </PersonInfoContainer>
