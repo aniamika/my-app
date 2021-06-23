@@ -13,6 +13,8 @@ export const Colors = {
   blue04: "#4B5268",
   blue05: "#61687B",
   blue06: "#EAECF5",
+  blue07: "#e6f0f3",
+  blue08: "#4693a7",
 
   orange: '#AA7134',
 };

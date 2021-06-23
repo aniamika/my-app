@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import IconButtonGeneric from "../../components/Common/IconButtonGeneric";
 import { IState } from "../../reducers";
@@ -14,6 +15,7 @@ import { FontSize } from "../../styledHelpers/FontSize";
 import { Margins } from "../../styledHelpers/Margins";
 import { Padding } from "../../styledHelpers/Padding";
 import ProfileInfoForm from "./ProfileInfoForm";
+import ProfilePageDetails from "./ProfilePageDetails";
 
 
 const Wrapper = styled.section`
@@ -211,14 +213,6 @@ const PersonDetails = styled.div`
   flex-direction: column;
   align-items: flex-start;
 `
-const Section = styled.div`
-  padding: ${Padding[16]};
-  border-bottom: 1px solid ${Colors.gray02};
-`
-const SectionHeader = styled.p`
-  font-weight: 500;
-  margin-bottom: ${Margins[16]};
-`
 const EditButton = styled.button`
   position: absolute;
   right: 1rem;
@@ -247,13 +241,8 @@ const PersonInfoContainer = styled.div`
 `
 export const ProfilePage = () => {
 
-  const { albumsList, commentsList, photosList, postsList, todosList, usersList } = useSelector<IState, IAlbumsReducer & ICommentsReducer & IPhotosReducer & IPostsReducer & ITodosReducer & IUsersReducer >(state => ({
-    ...state.albums,
-    ...state.comments,
+  const { photosList } = useSelector<IState, IPhotosReducer >(state => ({
     ...state.photos,
-    ...state.posts,
-    ...state.todos,
-    ...state.users,
   }));
   
   const toggleForm = () => setPersonInfoEditable(!isPersonInfoEditable);
@@ -282,11 +271,17 @@ export const ProfilePage = () => {
             <IconButtonGeneric src="./media/icons/briefcase.svg" className="sm h-margin-right-8" alt="message"/>
             Add to a cluster
           </HeaderButton>
+          <HeaderButton>
+            <Link to="/">
+              <IconButtonGeneric src="./media/icons/cross.svg" className="sm" alt="close"/>
+            </Link>
+          </HeaderButton>
         </HeaderButtonsContainer>
         
         <EditButton onClick={toggleForm}>
           <IconButtonGeneric src="./media/icons/pencil.svg" className="sm" alt="edit person information"/>
-          </EditButton>
+        </EditButton>
+
         <HeaderMain>
 
           <PersonContainer>
@@ -296,7 +291,7 @@ export const ProfilePage = () => {
           <SeeProfileButton>See profile</SeeProfileButton>
         </PersonContainer>
 
-          {isPersonInfoEditable ? (
+          {!isPersonInfoEditable ? (
             <FormInfoContainer>
               <FormDetailsContainer>
                 <FormInfo> 
@@ -337,27 +332,8 @@ export const ProfilePage = () => {
         </HeaderMain>
       </Header>
 
-
-      <Section> 
-        <SectionHeader>Panel informations</SectionHeader>
-      </Section>
-
-      <Section> 
-        <SectionHeader>Services & projects</SectionHeader>
-      </Section>
-
-      <Section> 
-        <SectionHeader>Proposals</SectionHeader>
-      </Section>
-
-      <Section> 
-        <SectionHeader>Internal reviews</SectionHeader>
-      </Section>
-
-      <Section> 
-        <SectionHeader>See more Reviews</SectionHeader>
-      </Section>
-
+      <ProfilePageDetails />
+     
     </Wrapper>
   );
 };
