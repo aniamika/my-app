@@ -9,6 +9,7 @@ import { Margins } from "../../styledHelpers/Margins";
 import { Padding } from "../../styledHelpers/Padding";
 
 const Wrapper = styled.div`
+    position: relative;
     table {
         border-collapse: collapse;
         width: 100%;
@@ -33,7 +34,7 @@ const Wrapper = styled.div`
 const Form = styled.form`
 `
 const MainFormContainer = styled.div`
-    position: relative;
+
     padding: ${Padding[16]};
     border-bottom: 1px solid ${Colors.gray02};
     div {
@@ -175,11 +176,12 @@ export const ProfilePageDetails = () => {
 
     return (
       <Wrapper>
-        <Form>
-            <MainFormContainer>   
-                <EditButton onClick={toggleForm}>
+                          <EditButton onClick={toggleForm}>
                     <IconButtonGeneric src="./media/icons/pencil.svg" className="sm" alt="edit person information"/>
                 </EditButton>
+        <Form>
+            <MainFormContainer>   
+
                 <div>
                     <label htmlFor="expertise">Expertise</label>
                     <input type="text" id="expertise" name="expertise" value="" disabled={isFormEditable}/>
