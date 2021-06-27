@@ -259,18 +259,24 @@ export const ProfilePage = () => {
     <Wrapper>
       <Header> 
         <HeaderButtonsContainer>
-          <HeaderButton>
-            <IconButtonGeneric src="./media/icons/message.svg" className="sm h-margin-right-8" alt="message"/>
-            Message
-          </HeaderButton>
-          <HeaderButton>
-            <IconButtonGeneric src="./media/icons/file-invoice.svg" className="sm h-margin-right-8" alt="message"/>
-            Create a request
-          </HeaderButton>
-          <HeaderButton>
-            <IconButtonGeneric src="./media/icons/briefcase.svg" className="sm h-margin-right-8" alt="message"/>
-            Add to a cluster
-          </HeaderButton>
+          <Link to="/test">
+            <HeaderButton>
+              <IconButtonGeneric src="./media/icons/message.svg" className="sm h-margin-right-8" alt="message"/>
+              Message
+            </HeaderButton>
+          </Link>
+          <Link to="/test">
+            <HeaderButton>
+              <IconButtonGeneric src="./media/icons/file-invoice.svg" className="sm h-margin-right-8" alt="message"/>
+              Create a request
+            </HeaderButton>
+          </Link>
+          <Link to="/test">
+            <HeaderButton>
+              <IconButtonGeneric src="./media/icons/briefcase.svg" className="sm h-margin-right-8" alt="message"/>
+              Add to a cluster
+            </HeaderButton>
+          </Link>
           <HeaderButton>
             <Link to="/">
               <IconButtonGeneric src="./media/icons/cross.svg" className="sm" alt="close"/>
