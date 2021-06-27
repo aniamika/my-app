@@ -301,7 +301,7 @@ export const ProfilePageDetails = () => {
                     <input type="text" id="terms" name="terms" value={terms} onChange={(e) => setTerms(e.target.value)} disabled={isFormEditable}/>
 
                     <div className="attachment">
-                        <input type="text" id="terms" name="terms" value={attachment} onChange={(e) => setAttachment(e.target.value)} disabled={isFormEditable}/>
+                        <input type="file" accept={attachment} onChange={(e) => setAttachment(e.target.value)} disabled={isFormEditable}/>
                     </div>
                 </Group>
 
