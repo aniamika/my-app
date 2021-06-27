@@ -10,26 +10,37 @@ import { Padding } from "../../styledHelpers/Padding";
 
 const Wrapper = styled.div`
     position: relative;
+    overflow-x: hidden;
     table {
         border-collapse: collapse;
         width: 100%;
-    }
-
-    td {
+        input {
+            background-color: ${Colors.white};
+            margin-right: 0;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        td {
         border: 1px solid ${Colors.white};
         text-align: left;
         padding: ${Padding[8]};
+        }
+        th {
+            border-top: 1px solid ${Colors.white};
+            border-right: 1px solid ${Colors.white};
+            border-left: 1px solid ${Colors.white};
+            border-bottom: 1px solid ${Colors.gray02};
+            text-align: left;
+            padding: ${Padding[8]};
+            font-weight: 600;
+            color: ${Colors.blue02};
+        }
     }
-    th {
-        border-top: 1px solid ${Colors.white};
-        border-right: 1px solid ${Colors.white};
-        border-left: 1px solid ${Colors.white};
-        border-bottom: 1px solid ${Colors.gray02};
-        text-align: left;
-        padding: ${Padding[8]};
-        font-weight: 600;
-        color: ${Colors.blue02};
-    }
+
+
+
 `
 const Form = styled.form`
 `
@@ -176,12 +187,11 @@ export const ProfilePageDetails = () => {
 
     return (
       <Wrapper>
-                          <EditButton onClick={toggleForm}>
-                    <IconButtonGeneric src="./media/icons/pencil.svg" className="sm" alt="edit person information"/>
-                </EditButton>
+            <EditButton onClick={toggleForm}>
+                <IconButtonGeneric src="./media/icons/pencil.svg" className="sm" alt="edit person information"/>
+            </EditButton>
         <Form>
             <MainFormContainer>   
-
                 <div>
                     <label htmlFor="expertise">Expertise</label>
                     <input type="text" id="expertise" name="expertise" value="" disabled={isFormEditable}/>
@@ -214,8 +224,6 @@ export const ProfilePageDetails = () => {
                     <div className="attachment">
                         <input type="text" id="terms" name="terms" value="" disabled={isFormEditable}/>
                     </div>
-
-                    {/* <input type="text" value={expertise} onChange={(e) => setExpertise(e.target.value)}></input> */}
                 </Group>
 
                 <Group> 
@@ -267,28 +275,64 @@ export const ProfilePageDetails = () => {
                             <th>Firm</th>
                         </tr>
                         <tr>
-                            <td>Operation</td>
-                            <td>Renault Co</td>
-                            <td>France</td>
-                            <td>#Tax</td>
-                            <td>20/01/2018</td>
-                            <td>Racine</td>
+                            <td>
+                                <input type="text" value="Operation" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="Renault Co" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="France" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="#Tax" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="date" value="20/01/2018" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="Racine" disabled={isFormEditable}/>    
+                            </td>
                         </tr>
                         <tr>
-                            <td>Op. Prometh</td>
-                            <td>Renault HQ</td>
-                            <td>USA</td>
-                            <td>#M&A</td>
-                            <td>18/02/2019</td>
-                            <td>Clifford chance</td>
+                            <td>
+                                <input type="text" value="Op. Prometh" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="Renault HQ" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="USA" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="#M&A" disabled={isFormEditable}/> 
+                            </td>
+                            <td>
+                                <input type="date" value="18/02/2019" disabled={isFormEditable}/>      
+                            </td>
+                            <td>
+                                <input type="text" value="Clifford chance" disabled={isFormEditable}/>  
+                            </td>
                         </tr>
                         <tr>
-                            <td>Op. Latandre</td>
-                            <td>Renault Br</td>
-                            <td>Italy</td>
-                            <td>#Social</td>
-                            <td>18/02/2019</td>
-                            <td>SVZ</td>
+                            <td>
+                                <input type="text" value="Op. Latandre" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="Renault Br" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value=" Italy" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="#Social" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="date" value="18/02/2019" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="SVZ" disabled={isFormEditable}/>
+                            </td>
                         </tr>
                     </table>
                     <Link to="/test">
@@ -305,27 +349,67 @@ export const ProfilePageDetails = () => {
                             <th>Location</th>
                             <th>Expertise</th>
                             <th>Date</th>
+                            <th>Firm</th>
                         </tr>
                         <tr>
-                            <td>Operation</td>
-                            <td>Renault Co</td>
-                            <td>France</td>
-                            <td>#Tax</td>
-                            <td>20/01/2018</td>
+                            <td>
+                                <input type="text" value="Operation" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="Renault Co" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="France" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="#Tax" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="date" value="20/01/2018" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="Racine" disabled={isFormEditable}/>    
+                            </td>
                         </tr>
                         <tr>
-                            <td>Op. Prometh</td>
-                            <td>Renault HQ</td>
-                            <td>USA</td>
-                            <td>#M&A</td>
-                            <td>18/02/2019</td>
+                            <td>
+                                <input type="text" value="Op. Prometh" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="Renault HQ" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="USA" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="#M&A" disabled={isFormEditable}/> 
+                            </td>
+                            <td>
+                                <input type="date" value="18/02/2019" disabled={isFormEditable}/>      
+                            </td>
+                            <td>
+                                <input type="text" value="Clifford chance" disabled={isFormEditable}/>  
+                            </td>
                         </tr>
                         <tr>
-                            <td>Op. Latandre</td>
-                            <td>Renault Br</td>
-                            <td>Italy</td>
-                            <td>#Social</td>
-                            <td>18/02/2019</td>
+                            <td>
+                                <input type="text" value="Op. Latandre" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="Renault Br" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value=" Italy" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="#Social" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="date" value="18/02/2019" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="SVZ" disabled={isFormEditable}/>
+                            </td>
                         </tr>
                     </table>
                     <Link to="/test">
@@ -343,22 +427,46 @@ export const ProfilePageDetails = () => {
                             <th>Law firm</th>
                         </tr>
                         <tr>
-                            <td>2019</td>
-                            <td>CS 153</td>
-                            <td>3500$</td>
-                            <td>Clifford chance</td>
+                            <td>
+                                <input type="number" value="2019" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="CS 153" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="3500$" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="Clifford chance" disabled={isFormEditable}/>
+                            </td>
                         </tr>
                         <tr>
-                            <td>2018</td>
-                            <td>CS 153</td>
-                            <td>9500$</td>
-                            <td>Linklaters</td>
+                            <td>
+                                <input type="number" value="2018" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="CS 153" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="9500$" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="Linklaters DSRCSRSAEAEAEAEDD" disabled={isFormEditable}/>
+                            </td>
                         </tr>
                         <tr>
-                            <td>2017</td>
-                            <td>CS 47</td>
-                            <td>10500$</td>
-                            <td>Linklaters</td>
+                            <td>
+                                <input type="number" value="2017" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="CS 47" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="10500$" disabled={isFormEditable}/>
+                            </td>
+                            <td>
+                                <input type="text" value="Linklaters DSRCSRSAEAEAEAEDD" disabled={isFormEditable}/>
+                            </td>
                         </tr>
                     </table>
                 </Group>
